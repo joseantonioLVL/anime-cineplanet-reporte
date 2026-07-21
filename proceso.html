@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<title>Proceso del estudio — Comunidad Anime × Cineplanet</title>
+<style>
+:root { --pri: #8a1538; }
+body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 32px auto; padding: 0 24px;
+        color: #222; line-height: 1.65; font-size: 15px; background: #fafbfc; }
+.header { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
+          color: white; padding: 20px 28px; border-radius: 10px; margin-bottom: 24px;
+          display: flex; align-items: center; gap: 16px; }
+.header .badge { background: white; color: #8a1538; padding: 6px 14px;
+                  border-radius: 6px; font-weight: 700; font-size: 13px;
+                  text-transform: uppercase; letter-spacing: 0.5px; }
+.header h1 { margin: 0; font-size: 22px; font-weight: 600; color: white; flex: 1; }
+.back { display: inline-block; margin-bottom: 14px; color: #8a1538;
+         text-decoration: none; font-size: 13.5px; font-weight: 600; }
+.back:hover { text-decoration: underline; }
+.content { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+            padding: 28px 36px; }
+h1 { font-size: 26px; color: #8a1538; margin-top: 20px; font-weight: 600; }
+h2 { font-size: 20px; color: #8a1538; margin-top: 30px; padding-bottom: 8px;
+     border-bottom: 2px solid #8a1538; font-weight: 600; }
+h3 { font-size: 16.5px; color: #444; margin-top: 22px; font-weight: 600; }
+h4 { font-size: 14.5px; color: #666; margin-top: 14px; font-weight: 600; }
+p { margin: 10px 0; }
+code { background: #f6f6f6; padding: 1px 5px; border-radius: 3px;
+        font-size: 13px; color: #555; font-family: 'SF Mono', Menlo, monospace; }
+pre { background: #f9f9f9; padding: 14px 18px; border-radius: 4px;
+       overflow-x: auto; font-size: 12.5px; line-height: 1.55;
+       border-left: 3px solid #8a1538; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; margin: 14px 0; font-size: 13.5px; width: 100%; }
+th { background: #f6f6f6; padding: 8px 12px; text-align: left;
+      border-bottom: 2px solid #ccc; font-weight: 600; }
+td { padding: 6px 12px; border-bottom: 1px solid #eee; }
+tr:nth-child(even) td { background: #fafafa; }
+ul, ol { margin: 8px 0; padding-left: 24px; }
+li { margin: 4px 0; }
+blockquote { border-left: 3px solid #ccc; margin: 12px 0; padding: 6px 16px;
+              color: #555; font-style: italic; background: #fafafa; }
+hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+.txt-embed { background: #f9f9f9; padding: 18px 22px; border-radius: 4px;
+              font-family: 'SF Mono', Menlo, monospace; font-size: 13px;
+              line-height: 1.6; white-space: pre-wrap; overflow-x: auto;
+              border-left: 3px solid #8a1538; margin: 0; }
+.footer { margin-top: 30px; text-align: center; color: #888; font-size: 12.5px; }
+</style>
+</head><body>
+
+<a class="back" href="index.html">← Volver al portal</a>
+
+<div class="header">
+  <span class="badge">📋 Proceso</span>
+  <h1>Proceso del estudio</h1>
+</div>
+
+<div class="content">
+<pre class="txt-embed">PROCESO — Estudio Comunidad Anime × Cineplanet
+================================================
+
+Fecha snapshot: 2026-07-21
+Total de fans encuestados: 610 (155 No Socios + 455 Socios)
+
+
+1. UNIVERSO Y RECLUTAMIENTO
+---------------------------
+Dos brazos paralelos con universos distintos.
+
+Brazo A — No Socios (n=155):
+  Fans de anime en Lima que NO visitaron Cineplanet en los últimos 6 meses
+  (o nunca). Reclutados por LVL a través de canales digitales.
+  Instrumento: R Shiny custom (surveylvl.shinyapps.io).
+
+Brazo B — Socios (n=455):
+  Socios activos de Cineplanet fans de anime en Lima. Reclutados por CP
+  desde su base de socios.
+  Instrumento: 10 encuestas paralelas en SurveyMonkey con diseño BIBD
+  (Balanced Incomplete Block Design), asignación aleatoria por reclutador.
+
+
+2. FILTROS APLICADOS
+--------------------
+No Socios:
+  - Estado terminal = "complete"
+  - qualified_fan = TRUE (freq >= 3-4/sem OR horas >= 1h/sem)
+  - S2 (última visita CP) = "Más de 6 meses" / "Nunca" / "No recuerdo"
+  - 100% de preguntas obligatorias respondidas
+
+Socios:
+  - response_status = "completed"
+  - Fan filter idéntico al de No Socios
+  - 100% de preguntas obligatorias respondidas (incluye best AND worst en
+    las 12 tareas MaxDiff)
+  - Camino de reducción: 789 crudos → 675 completed → 610 fan → 455 completos
+
+
+3. INSTRUMENTO
+--------------
+No Socios (120 columnas):
+  - Screener + demografía (edad, género, zona)
+  - Hogar (pareja, hijos, educación, vivienda, situación laboral, ingreso)
+  - Escalas Reysen Fanship + FANDOM Community (6 items Likert 1-7)
+  - Historia con el anime (nostalgia)
+  - Consumo (plataformas de streaming, cine principal)
+  - 8 categorías de gasto mensual en rangos (S/0 a Más de S/100)
+  - 12 tareas MaxDiff × 4 items sobre 16 conceptos (30 bloques pre-computados,
+    balance perfecto: cada concepto aparece 3 veces por bloque)
+  - Bloque de ANCLA: marcar cuáles de los 16 conceptos le interesarían
+  - Deep-dive del top-3 personal: por cada concepto, 6 preguntas (Juster,
+    con quién iría, tamaño de grupo, incrementalidad, credibilidad,
+    competitive set)
+  - Cierre: opt-in al diario pagado
+
+Socios (24 columnas de análisis + 12 tareas MaxDiff):
+  - Screener + demografía reducida (sin género, sin edad, sin ingreso mensual)
+  - Escalas Reysen Fanship + FANDOM Community (6 items Likert 1-7)
+  - Nostalgia
+  - Consumo (última visita CP, frecuencia y horas de anime, zona)
+  - 8 categorías de gasto mensual (mismas que No Socios)
+  - 12 tareas MaxDiff × 4 items sobre 16 conceptos (BIBD: 10 bloques × 12 tareas)
+  - Hogar (con quiénes vive, edad de hijos)
+  - NO tiene bloque de ancla ni deep-dive del top-3
+
+
+4. RECODIFICACIONES (para análisis, no aplicadas al raw)
+--------------------------------------------------------
+Gastos: rango a punto medio
+  S/0 = 0, S/1-25 = 12.5, S/26-50 = 37.5, S/51-75 = 62.5,
+  S/76-100 = 87.5, Más de S/100 = 130 (baseline; sensibilidad probada con
+  100, 125, 130 y rank ordinal — ranking robusto en los 4 escenarios)
+
+Frecuencia anime:
+  Menos 1/sem = 0.5, 1-2/sem = 1.5, 3-4/sem = 3.5, 5-6/sem = 5.5,
+  Todos los días = 7
+
+Horas anime/semana:
+  Menos 1h = 0.5, 1-5h = 3, 5-10h = 7.5, Más de 10h = 12
+
+Nostalgia (era en que se enganchó):
+  infancia = 4, adolescencia = 3, adulto_prepandemia = 2, pandemia = 1
+
+Juster (No Socios): calibración clásica 1966
+  1 → 0.02, 2 → 0.15, 3 → 0.40, 4 → 0.65, 5 → 0.85
+
+
+5. MODELO MAXDIFF (HIERARCHICAL BAYES)
+--------------------------------------
+Software: ChoiceModelR 1.3.1 en R
+Especificación: Best + Worst como 2 MNL separados por tarea (X invertida
+                en worst, mismos betas). Prior single-normal.
+MCMC: R = 20000 iteraciones, use = 10000 (burn-in), keep = 10 → 1000 draws
+      efectivos por respondente.
+
+Diferencia clave entre brazos:
+  No Socios incluye el bloque de ancla como 16 pseudo-tareas binarias
+  (concepto vs NONE) con NONE = utilidad 0. Esto ancla la escala al umbral
+  personal: utilidad > 0 = concepto arriba del umbral (le vale la pena al
+  fan). Métrica principal reportada: "% de fans que lo quiere" = fracción
+  con utilidad > 0.
+
+  Socios NO tiene ancla. Las utilidades son relativas. Métrica principal
+  reportada: share of preference = exp(util) / Σ exp(util). Los shares
+  suman 100% entre los 16 conceptos.
+
+Los rankings de conceptos SÍ son comparables ordinalmente entre brazos.
+Las magnitudes NO son directamente comparables.
+
+Validación (idéntica en ambos brazos):
+  - Rankings HB vs conteo bruto best-worst: r = 0.994 (No Socios),
+    r = 0.998 (Socios)
+  - Correlación con % marcados en ancla: r = 0.960 (No Socios; no aplica
+    a Socios)
+  - Reproducibilidad con otra seed: Pearson 0.9997 (No Socios)
+  - Sensitivity dropping RLH < 0.4 (n=145): Pearson 0.9990 (No Socios)
+  - RLH mediana: 0.60 (No Socios), 0.625 (Socios). Random baseline con
+    p = 4: 0.25.
+  - Acceptance rate MCMC: 0.30 (ideal, ambos brazos)
+
+
+6. SEGMENTACIÓN K=4
+-------------------
+Metodología idéntica en ambos brazos:
+  K-means K = 4 sobre los promedios de 6 items Reysen/FANDOM (Likert 1-7,
+  sin escalar).
+  seed = 2026, nstart = 50.
+  Ordenamiento de clusters por media global de X (para que 1 = Aislado,
+  4 = Core).
+
+Etiquetas: Fan Aislado / Fan Casual / Fan Intermedio / Fan Core
+
+Distribución No Socios (n=155):
+  Fan Aislado: 8 (5.2%)
+  Fan Casual: 29 (18.7%)
+  Fan Intermedio: 56 (36.1%)
+  Fan Core: 62 (40.0%)
+  Silhouette medio: 0.53
+
+Distribución Socios (n=455):
+  Fan Aislado: 75 (16.5%)
+  Fan Casual: 121 (26.6%)
+  Fan Intermedio: 98 (21.5%)
+  Fan Core: 161 (35.4%)
+  Silhouette medio: 0.46
+
+
+7. ARCHIVOS EN ESTA CARPETA
+---------------------------
+
+REPORTES HTML (abrir en el navegador; comienza por index.html):
+
+index.html
+  Portal de reportes. Muestra 3 cards clickeables para No Socios, Socios
+  y Consolidado. Además incluye un selector interactivo del scatter Reysen
+  × FANDOM con 3 vistas (solo No Socios, solo Socios, ambos brazos
+  superpuestos con distinto shape por brazo y mismo color por perfil).
+
+reporte_no_socios.html
+  Resultados No Socios (n=155). 7 secciones: segmentación K=4, gastos,
+  perfil demográfico + validación externa, ranking MaxDiff, cruce por
+  segmento y demografía, deep-dive del top-3 con calculadora Juster
+  interactiva (input N_UNIVERSO + presets 10k/50k/100k/200k), tabla
+  resumen de 16 conceptos.
+
+reporte_socios.html
+  Resultados Socios (n=455). 6 secciones: segmentación K=4, gastos con
+  Kruskal-Wallis, ranking MaxDiff (share of preference), cruce por
+  segmento, caracterización demográfica y validación externa, tabla
+  resumen. Nota metodológica sobre sensibilidad al tope S/130 colapsada.
+
+reporte_consolidado.html
+  Vista comparativa lado a lado. Cruce MaxDiff × tipos de fan con
+  heatmaps de ambos brazos, ranking comparado, gastos con η² por brazo,
+  concordancia entre brazos por concepto.
+
+
+CSVs DE DATOS (encoding UTF-8, separador coma):
+
+conceptos_16.csv (16 × 2)
+  Catálogo de los 16 conceptos con nombre completo.
+
+no_socios_base.csv (155 × 120)
+  Base cruda completa de No Socios: metadata, screener, hogar, Reysen,
+  gastos, MaxDiff 12 tareas × (shown/best/worst), ancla, top-3, deep-dive,
+  cierre diario.
+
+no_socios_utilidades_hb.csv (155 × 17)
+  Utilidades individuales HB. Columnas: respondent_id + C01..C18.
+  Utilidad ANCLADA al umbral personal: utilidad > 0 = concepto arriba
+  del umbral.
+
+no_socios_segmentos.csv (155 × 11)
+  Segmentos K=4 (columna c4: C4_1..C4_4) más variables derivadas
+  (score_reysen, score_fandom, freq_num, horas_num, gasto_total,
+  nostalgia_num).
+
+socios_base.csv (455 × 35)
+  Covariables + metadata SM (first_name, email, custom_value, timestamps,
+  IP, collector_id, response_status). Sin ancla ni deep-dive (por diseño
+  del instrumento SM).
+
+socios_maxdiff_long.csv (5460 × 6)
+  Choice data long-format = 455 × 12 tareas. Columnas: respondent_id,
+  bloque, task, shown, best, worst.
+
+socios_utilidades_hb.csv (455 × 17)
+  Utilidades individuales HB. Columnas: respondent_id + C01..C18.
+  Utilidad RELATIVA (sin ancla). Interpretar solo ordinalmente o vía
+  share of preference.
+
+socios_segmentos.csv (455 × 6)
+  Segmentos K=4 con etiquetas Fan Aislado/Casual/Intermedio/Core.
+
+
+8. LLAVES PARA UNIR CSVs
+------------------------
+No Socios:
+  Entre no_socios_base y no_socios_utilidades_hb: respondent_id (UUID Shiny).
+  Entre no_socios_base y no_socios_segmentos: dni (normalizado con
+  strip leading zeros porque los CSVs lo leen como número).
+
+Socios:
+  Entre todos los CSVs de Socios: respondent_id (12+ dígitos SM).
+</pre>
+</div>
+
+<div class="footer">
+  Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a>
+</div>
+
+</body></html>

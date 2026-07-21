@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<title>Framework de validación — Comunidad Anime × Cineplanet</title>
+<style>
+:root { --pri: #8a1538; }
+body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 32px auto; padding: 0 24px;
+        color: #222; line-height: 1.65; font-size: 15px; background: #fafbfc; }
+.header { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
+          color: white; padding: 20px 28px; border-radius: 10px; margin-bottom: 24px;
+          display: flex; align-items: center; gap: 16px; }
+.header .badge { background: white; color: #8a1538; padding: 6px 14px;
+                  border-radius: 6px; font-weight: 700; font-size: 13px;
+                  text-transform: uppercase; letter-spacing: 0.5px; }
+.header h1 { margin: 0; font-size: 22px; font-weight: 600; color: white; flex: 1; }
+.back { display: inline-block; margin-bottom: 14px; color: #8a1538;
+         text-decoration: none; font-size: 13.5px; font-weight: 600; }
+.back:hover { text-decoration: underline; }
+.content { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+            padding: 28px 36px; }
+h1 { font-size: 26px; color: #8a1538; margin-top: 20px; font-weight: 600; }
+h2 { font-size: 20px; color: #8a1538; margin-top: 30px; padding-bottom: 8px;
+     border-bottom: 2px solid #8a1538; font-weight: 600; }
+h3 { font-size: 16.5px; color: #444; margin-top: 22px; font-weight: 600; }
+h4 { font-size: 14.5px; color: #666; margin-top: 14px; font-weight: 600; }
+p { margin: 10px 0; }
+code { background: #f6f6f6; padding: 1px 5px; border-radius: 3px;
+        font-size: 13px; color: #555; font-family: 'SF Mono', Menlo, monospace; }
+pre { background: #f9f9f9; padding: 14px 18px; border-radius: 4px;
+       overflow-x: auto; font-size: 12.5px; line-height: 1.55;
+       border-left: 3px solid #8a1538; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; margin: 14px 0; font-size: 13.5px; width: 100%; }
+th { background: #f6f6f6; padding: 8px 12px; text-align: left;
+      border-bottom: 2px solid #ccc; font-weight: 600; }
+td { padding: 6px 12px; border-bottom: 1px solid #eee; }
+tr:nth-child(even) td { background: #fafafa; }
+ul, ol { margin: 8px 0; padding-left: 24px; }
+li { margin: 4px 0; }
+blockquote { border-left: 3px solid #ccc; margin: 12px 0; padding: 6px 16px;
+              color: #555; font-style: italic; background: #fafafa; }
+hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+.txt-embed { background: #f9f9f9; padding: 18px 22px; border-radius: 4px;
+              font-family: 'SF Mono', Menlo, monospace; font-size: 13px;
+              line-height: 1.6; white-space: pre-wrap; overflow-x: auto;
+              border-left: 3px solid #8a1538; margin: 0; }
+.footer { margin-top: 30px; text-align: center; color: #888; font-size: 12.5px; }
+</style>
+</head><body>
+
+<a class="back" href="index.html">← Volver al portal</a>
+
+<div class="header">
+  <span class="badge">✅ Validación</span>
+  <h1>Framework de validación</h1>
+</div>
+
+<div class="content">
+<h1>Framework de validación: resultados → hallazgos → preguntas</h1>
+<p><strong>Fecha</strong>: 2026-07-21
+<strong>Alcance</strong>: 19 hallazgos cuantitativos derivados de los 4 reportes
+<strong>Estado global</strong>: 19/19 hallazgos verificados OK contra los CSVs fuente</p>
+<hr />
+<h2>El problema</h2>
+<p>Un estudio cuantitativo produce 3 capas de output que se pueden mezclar:</p>
+<ul>
+<li><strong>Resultados</strong>: los números crudos que salen de las estimaciones (61.3%, η²=0.132, r=0.994).</li>
+<li><strong>Hallazgos</strong>: la lectura interpretativa que hacemos de esos números ("Viajes VIP es el top-1 en No Socios").</li>
+<li><strong>Preguntas de investigación</strong>: los "por qué" que quedan abiertos y motivan investigación adicional (cuali, deep-dive, etc.).</li>
+</ul>
+<p>Sin un framework de validación, es fácil que un hallazgo "circule" en el equipo sin que nadie recuerde exactamente qué número lo sostiene, y las preguntas de investigación se conviertan en intuiciones no aterrizadas en la data.</p>
+<hr />
+<h2>Framework en cascada — 3 niveles</h2>
+<pre><code>Nivel 3: PREGUNTAS DE INVESTIGACIÓN
+  ↑ deben derivar verificablemente de →
+Nivel 2: HALLAZGOS (interpretaciones)
+  ↑ deben derivar verificablemente de →
+Nivel 1: RESULTADOS (los números)
+</code></pre>
+<p>Cada nivel se valida contra el anterior. Si un hallazgo tiene pregunta pero no resultado, la pregunta es especulación. Si un resultado no está bien estimado, todo lo que se apoya en él es inseguro.</p>
+<hr />
+<h2>Nivel 1 — Validez de resultados</h2>
+<h3>Criterios</h3>
+<table>
+<thead>
+<tr>
+<th>Chequeo</th>
+<th>Cómo se verifica</th>
+<th>Estado en este estudio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Convergencia MCMC</td>
+<td>Acceptance rate ~0.30; RLH mediana &gt; baseline random</td>
+<td>✅ 0.30 / 0.60 vs 0.31 random (NS), 0.625 vs 0.25 (SC)</td>
+</tr>
+<tr>
+<td>Reproducibilidad</td>
+<td>Correr con seed distinto y comparar</td>
+<td>✅ Pearson 0.9997 (NS), verificado en <code>14_validar_reproducibilidad_hb_v2.R</code></td>
+</tr>
+<tr>
+<td>Cross-check contra métrica cruda</td>
+<td>HB vs conteo bruto best-worst</td>
+<td>✅ r=0.994 (NS), r=0.998 (SC)</td>
+</tr>
+<tr>
+<td>Sensibilidad a supuestos arbitrarios</td>
+<td>4 escenarios de tope S/130</td>
+<td>✅ Ranking idéntico, ninguna variable cambia categoría</td>
+</tr>
+<tr>
+<td>Auditoría de números en outputs</td>
+<td>Recomputo manual vs CSVs</td>
+<td>✅ 14/14 números clave verificados (<code>26_auditar_numeros_html.R</code>)</td>
+</tr>
+<tr>
+<td>Umbrales estadísticos convencionales</td>
+<td>η² Cohen, Cramer V Cohen</td>
+<td>✅ 0.01/0.06/0.14 y 0.1/0.3/0.5</td>
+</tr>
+</tbody>
+</table>
+<h3>Riesgos identificados que quedan</h3>
+<ul>
+<li><strong>Bases chicas</strong>: Fan Aislado n=8, Charlas n=3, Playlist n=7 — marcados explícitamente en cada aparición.</li>
+<li><strong>Métricas distintas por brazo</strong>: %umbral (No Socios, con ancla) vs share (Socios, sin ancla). Comparables ordinalmente, NO en magnitud.</li>
+<li><strong>Sustitución cruzada Juster</strong>: el %incremental no distingue "visita 100% nueva" de "sustitución de otro cine". Documentado en el reporte No Socios.</li>
+<li><strong>Muestras no aleatorias</strong>: los dos brazos son de conveniencia (reclutados por canales digitales / desde base CP). Los IC y tests deben interpretarse como referenciales de la muestra, no del universo Lima.</li>
+</ul>
+<hr />
+<h2>Nivel 2 — Validez de hallazgos</h2>
+<h3>Criterios</h3>
+<p>Para que una afirmación sea "hallazgo válido" (no "opinión con datos"):</p>
+<ol>
+<li><strong>Trazabilidad exacta</strong>: cada número mencionado tiene fuente en un CSV/tabla del reporte</li>
+<li><strong>Consistencia</strong>: el mismo número no aparece con valores distintos en distintos archivos</li>
+<li><strong>Base suficiente</strong>: n adecuado para la afirmación; base chica flaggeada</li>
+<li><strong>Sin sobre-generalización</strong>: la afirmación no extiende más allá del universo/muestra</li>
+<li><strong>Sin editorial</strong>: solo lo que el dato sostiene, sin agregar interpretación causal no probada</li>
+<li><strong>Robusto a supuestos alternos</strong>: si el hallazgo cambia con supuestos plausibles distintos, marcarlo como frágil</li>
+</ol>
+<h3>Cómo aplicamos la validación (auditoría automatizada)</h3>
+<p>El script <code>36_auditar_hallazgos.R</code> en <code>04_analisis/</code>:</p>
+<ul>
+<li>Carga los CSVs de <code>bases_finales/</code> (fuente única de verdad)</li>
+<li>Para cada hallazgo, RECOMPUTA el número que lo sostiene</li>
+<li>Compara contra el número afirmado en el hallazgo</li>
+<li>Marca <code>OK</code> / <code>REVISAR</code> / <code>FAIL</code></li>
+<li>Genera <code>VALIDACION_HALLAZGOS.csv</code> con la tabla de trazabilidad</li>
+</ul>
+<p><strong>Resultado actual</strong>: 19/19 hallazgos OK.</p>
+<h3>Tabla resumen de trazabilidad</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Hallazgo</th>
+<th>Prioridad</th>
+<th>Chequeo</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1_NS</td>
+<td>Cine anime no discrimina en No Socios</td>
+<td>alta</td>
+<td>η² &lt; 0.03 &amp; p &gt; 0.05</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H1_SC</td>
+<td>Cine anime no discrimina en Socios</td>
+<td>alta</td>
+<td>η² &lt; 0.03 &amp; p &gt; 0.05</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Top-1 conceptual difiere: Viajes VIP (NS) vs Clásicos (SC)</td>
+<td>alta</td>
+<td>C08=61% NS, C03=22.2% SC</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>Fan Aislado 3× más grande en SC (16.5% vs 5.2%)</td>
+<td>alta</td>
+<td>Conteos + IC Wilson NS</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>Fan Intermedio SC solitario (R=6.61, F=3.79)</td>
+<td>media</td>
+<td>Medias por perfil</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>Silhouette 0.53 (NS) vs 0.46 (SC)</td>
+<td>baja</td>
+<td>K-means recomputado</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H6</td>
+<td>Festival CP×Crunchy #2 en ambos brazos</td>
+<td>alta</td>
+<td>Rankings</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H7</td>
+<td>Viajes VIP 54% incremental</td>
+<td>alta</td>
+<td>Deep-dive slots 1-3</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H8</td>
+<td>Membresía Socio 10.9% share en SC (vs 41% umbral NS)</td>
+<td>media</td>
+<td>Share of preference vs %umbral</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H9</td>
+<td>Conciertos 89% credibilidad, solo #5 demanda</td>
+<td>baja</td>
+<td>believ_top2 + rank</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H10</td>
+<td>Playlist y Charlas bottom en ambos brazos</td>
+<td>media</td>
+<td>Rankings bottom-3</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H11</td>
+<td>Sustitución cruzada no capturada por Juster</td>
+<td>alta</td>
+<td>Limitación instrumento</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H12</td>
+<td>group_size promedio 3-5</td>
+<td>media</td>
+<td>Media por concepto</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H13</td>
+<td>Festival: 56% amigos anime; Charlas: 100% partner (n=3)</td>
+<td>media</td>
+<td>grepl multi-select</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H14</td>
+<td>Callao valora Museo más</td>
+<td>baja</td>
+<td>Media util por zona</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H15</td>
+<td>Mujeres valoran más Conciertos (η²=0.085)</td>
+<td>media</td>
+<td>ANOVA por sexo</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H16</td>
+<td>Usuarios Crunchyroll: +24pp en Festival</td>
+<td>baja</td>
+<td>Multi-select platforms</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H17</td>
+<td>26% de No Socios usan fansubs</td>
+<td>media</td>
+<td>41/155</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H18</td>
+<td>Frecuencia anime: Cramer V=0.22 en SC</td>
+<td>baja</td>
+<td>Chi²</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3>Cómo interpretar el "OK"</h3>
+<p><code>OK</code> significa: el número afirmado coincide (con tolerancia) con el recomputo desde el CSV fuente. <strong>NO significa</strong>:</p>
+<ul>
+<li>Que el hallazgo sea "verdad definitiva" (los riesgos siguen aplicando).</li>
+<li>Que la interpretación causal sea correcta (correlación ≠ causalidad).</li>
+<li>Que se generalice al universo Lima (muestras no aleatorias).</li>
+</ul>
+<p><code>REVISAR</code> significa: el número difiere. Puede ser por redondeo distinto, cambio de metodología, o error real. Requiere revisión manual.</p>
+<p><code>FAIL</code> significa: el chequeo no pudo ejecutarse (error de código, columna faltante). Requiere debug.</p>
+<hr />
+<h2>Nivel 3 — Validez de preguntas de investigación</h2>
+<h3>Criterios</h3>
+<p>Para que una pregunta de investigación sea "válida" (no "curiosidad al aire"):</p>
+<ol>
+<li><strong>Deriva verificable de un hallazgo con estado OK</strong> — no de intuición externa.</li>
+<li><strong>Es abordable con el instrumento cualitativo actual</strong> — el diario WhatsApp de 5 días con 32 participantes puede aportar evidencia.</li>
+<li><strong>Genera decisión</strong> — la respuesta afecta una acción concreta (targeting, priorización de concepto, etc.).</li>
+<li><strong>Está bien scoped</strong> — específica, no una "gran pregunta abstracta" que no puede responderse.</li>
+</ol>
+<h3>Ejemplo aplicado</h3>
+<pre><code>Hallazgo (Nivel 2): H3 — Fan Aislado es 3× más grande en Socios (16.5% vs 5.2%)
+  Nivel 1 (resultado): 8/155 vs 75/455; IC 95% NS = [2.7%, 10.0%]
+  Riesgos: base chica NS, muestras no aleatorias
+
+Pregunta de investigación derivada (Nivel 3):
+  &quot;¿Qué caracteriza al socio de Cineplanet fan de anime que no se identifica
+   como fan intenso?&quot;
+
+Validez de la pregunta:
+  ✅ Deriva de H3 (que está OK)
+  ✅ Abordable con el diario: los participantes tienen perfil identificable ex-ante
+     (Reysen bajo + FANDOM bajo + freq/horas altas)
+  ✅ Genera decisión: afecta targeting de comunicación de Membresía Anime,
+     mensaje de &quot;socio anime&quot; vs &quot;socio general&quot;, diseño de contenido
+  ✅ Scoped: pregunta sobre un perfil específico, no &quot;todo el anime&quot;
+</code></pre>
+<p>Documento completo con las 18 preguntas: <code>PREGUNTAS_INVESTIGACION_DIARIO.md</code>.</p>
+<hr />
+<h2>Cómo re-correr la validación</h2>
+<p>Cada vez que se agregue un hallazgo nuevo o cambie un número en los reportes:</p>
+<pre><code class="language-bash">Rscript /Users/jose/Library/CloudStorage/Dropbox/LVL/Anime/04_analisis/36_auditar_hallazgos.R
+</code></pre>
+<p>Genera:
+- Reporte en consola con <code>OK / REVISAR / FAIL</code> por hallazgo
+- <code>VALIDACION_HALLAZGOS.csv</code> con la tabla detallada (id, hallazgo, prioridad, estado, número esperado, número calculado, detalle, riesgos)</p>
+<p>Para agregar un hallazgo nuevo al chequeo: seguir el patrón de <code>reg("HN", "texto", function() { ... })</code> en el script.</p>
+<hr />
+<h2>Nota metodológica: qué NO valida este framework</h2>
+<ul>
+<li><strong>Validez externa</strong>: si los hallazgos se generalizan al universo Lima. Requiere un estudio con muestreo probabilístico.</li>
+<li><strong>Causalidad</strong>: los hallazgos son asociaciones, no relaciones causales.</li>
+<li><strong>Interpretación cualitativa</strong>: qué significa cada patrón. Eso lo hace el investigador con soporte del diario cuali.</li>
+<li><strong>Business case</strong>: si un hallazgo justifica una decisión de negocio. Eso requiere costos, riesgos y contexto competitivo que no están en el estudio.</li>
+</ul>
+<p>Este framework valida <strong>consistencia interna</strong>: que lo que decimos que los datos dicen es efectivamente lo que los datos dicen. Es el mínimo indispensable para tener una conversación de negocio honesta.</p>
+<hr />
+<h2>Archivos relacionados</h2>
+<ul>
+<li><code>04_analisis/36_auditar_hallazgos.R</code> — script de auditoría automatizada</li>
+<li><code>04_analisis/VALIDACION_HALLAZGOS.csv</code> — tabla de trazabilidad</li>
+<li><code>04_analisis/PREGUNTAS_INVESTIGACION_DIARIO.md</code> — 18 preguntas derivadas</li>
+<li><code>04_analisis/bases_finales/</code> — CSVs fuente de verdad + HTMLs + PROCESO.txt</li>
+<li><code>04_analisis/bases_finales/PROCESO.txt</code> — proceso completo del estudio</li>
+</ul>
+</div>
+
+<div class="footer">
+  Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a>
+</div>
+
+</body></html>
