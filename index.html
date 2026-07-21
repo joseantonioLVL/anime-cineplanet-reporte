@@ -153,6 +153,45 @@ code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 13p
   </div>
 </div>
 
+<h2>Proceso, validación y siguiente paso cuali</h2>
+<p class="sub">Los reportes de arriba contienen los <b>resultados</b> (los números) y los <b>hallazgos</b> (lo que interpretamos). Debajo, tres documentos que explicitan el proceso: cómo se construyó el estudio, cómo se validaron los hallazgos contra los datos crudos, y qué preguntas de investigación cualitativa se derivan.</p>
+
+<div class="cards">
+  <a class="card ns" href="PROCESO.txt">
+    <div class="n">Proceso</div>
+    <h2>Cómo se construyó el estudio</h2>
+    <div class="desc">Universo, filtros, instrumento, recodificaciones, modelo HB, segmentación K=4. La receta completa para replicarlo.</div>
+    <ul>
+      <li>8 secciones directas (universo → llaves para join)</li>
+      <li>Descripciones factuales sin editorial</li>
+    </ul>
+    <div class="cta">Ver proceso →</div>
+  </a>
+
+  <a class="card sc" href="VALIDACION_HALLAZGOS.md">
+    <div class="n">Validación</div>
+    <h2>Framework en cascada</h2>
+    <div class="desc">3 niveles de validez: resultados → hallazgos → preguntas de investigación. Tabla de trazabilidad para 19 hallazgos, todos verificados contra los CSVs fuente.</div>
+    <ul>
+      <li>Criterios por nivel + riesgos identificados</li>
+      <li>Script <code>36_auditar_hallazgos.R</code> para re-correr chequeos</li>
+      <li>19/19 hallazgos OK en la última auditoría</li>
+    </ul>
+    <div class="cta">Ver framework →</div>
+  </a>
+
+  <a class="card cons" href="PREGUNTAS_INVESTIGACION_DIARIO.md">
+    <div class="n">Cuanti → Cuali</div>
+    <h2>Preguntas de investigación</h2>
+    <div class="desc">18 preguntas de investigación que quedan abiertas de los hallazgos cuantitativos, mapeadas al diario cualitativo (WhatsApp, 32 participantes, 5 días).</div>
+    <ul>
+      <li>7 temáticas (decisión de asistencia, perfiles atípicos, conceptos, sustitución, contexto social, plataformas, validación)</li>
+      <li>Cada pregunta con prioridad y forma de abordarla en el diario</li>
+    </ul>
+    <div class="cta">Ver preguntas →</div>
+  </a>
+</div>
+
 <div class="meta">
   <h3>Diferencias metodológicas clave entre brazos</h3>
   <table>
@@ -173,15 +212,13 @@ code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 13p
 </div>
 
 <div class="meta">
-  <h3>Archivos y ubicaciones</h3>
+  <h3>Archivos en este portal</h3>
   <ul>
-    <li><b>Este portal</b>: <code>04_analisis/index.html</code></li>
-    <li><b>Reporte No Socios</b>: <code>04_analisis/base_limpia/reporte_segmentos_v3.html</code></li>
-    <li><b>Reporte Socios</b>: <code>04_analisis/socios_sm/reporte_socios_v3.html</code></li>
-    <li><b>Reporte Consolidado</b>: <code>04_analisis/reporte_consolidado_v1.html</code></li>
-    <li><b>Datos No Socios</b>: <code>04_analisis/base_limpia/resultados/</code></li>
-    <li><b>Datos Socios</b>: <code>04_analisis/socios_sm/resultados_socios/</code></li>
-    <li><b>Scripts</b>: <code>01–26</code> en base_limpia, <code>27–30</code> en socios_sm, <code>31–33</code> en 04_analisis</li>
+    <li><b>Reportes HTML</b>: <code>reporte_no_socios.html</code>, <code>reporte_socios.html</code>, <code>reporte_consolidado.html</code></li>
+    <li><b>Proceso del estudio</b>: <code>PROCESO.txt</code></li>
+    <li><b>Framework de validación</b>: <code>VALIDACION_HALLAZGOS.md</code> + <code>VALIDACION_HALLAZGOS.csv</code> (tabla trazabilidad)</li>
+    <li><b>Puente cuanti-cuali</b>: <code>PREGUNTAS_INVESTIGACION_DIARIO.md</code></li>
+    <li><b>Script de auditoría reproducible</b>: <code>36_auditar_hallazgos.R</code></li>
   </ul>
 </div>
 
