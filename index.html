@@ -59,6 +59,61 @@ h2 { font-size: 22px; margin: 44px 0 12px 0; padding-bottom: 8px;
            color: #666; font-size: 12px; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
 
+/* Documentos embebidos */
+.doc-embed { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+              margin: 12px 0; overflow: hidden; }
+.doc-embed[open] { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.doc-embed summary {
+  cursor: pointer; padding: 16px 20px; background: white;
+  display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center;
+  list-style: none;
+}
+.doc-embed summary::-webkit-details-marker { display: none; }
+.doc-embed summary::before {
+  content: "▶"; color: #8a1538; font-size: 12px; grid-column: 3;
+  transition: transform 0.2s;
+}
+.doc-embed[open] summary::before { transform: rotate(90deg); }
+.doc-embed summary:hover { background: #fafbfc; }
+.doc-badge {
+  background: #8a1538; color: white; padding: 4px 10px; border-radius: 4px;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.doc-title { font-weight: 600; font-size: 15px; color: #222; }
+.doc-hint { font-size: 12.5px; color: #666; margin-top: 2px; display: block; grid-column: 2; }
+.doc-embed summary .doc-title { grid-column: 2; }
+
+.doc-content {
+  padding: 8px 32px 24px 32px; border-top: 1px solid #eee; font-size: 14.5px; line-height: 1.65;
+}
+.doc-content h1 { font-size: 22px; color: #8a1538; margin-top: 20px; }
+.doc-content h2 { font-size: 18px; color: #8a1538; margin-top: 24px; padding-bottom: 6px;
+                    border-bottom: 1px solid #eee; border-color: #8a1538; }
+.doc-content h3 { font-size: 15.5px; color: #444; margin-top: 18px; }
+.doc-content h4 { font-size: 14px; color: #666; margin-top: 12px; }
+.doc-content p { margin: 8px 0; }
+.doc-content code { background: #f6f6f6; padding: 1px 5px; border-radius: 3px;
+                     font-size: 13px; color: #555; font-family: 'SF Mono', Menlo, monospace; }
+.doc-content pre { background: #f9f9f9; padding: 12px 16px; border-radius: 4px;
+                    overflow-x: auto; font-size: 12.5px; line-height: 1.5;
+                    border-left: 3px solid #8a1538; }
+.doc-content pre code { background: none; padding: 0; }
+.doc-content table { border-collapse: collapse; margin: 12px 0; font-size: 13px; width: auto; }
+.doc-content table th { background: #f6f6f6; padding: 6px 10px; text-align: left;
+                          border-bottom: 2px solid #ccc; }
+.doc-content table td { padding: 5px 10px; border-bottom: 1px solid #eee; }
+.doc-content table tr:nth-child(even) td { background: #fafafa; }
+.doc-content ul, .doc-content ol { margin: 6px 0; padding-left: 22px; }
+.doc-content li { margin: 3px 0; }
+.doc-content blockquote { border-left: 3px solid #ccc; margin: 10px 0; padding: 4px 14px;
+                            color: #555; font-style: italic; }
+.doc-content hr { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+.txt-embed { background: #f9f9f9; padding: 16px 20px; border-radius: 4px;
+              font-family: 'SF Mono', Menlo, monospace; font-size: 12.5px;
+              line-height: 1.55; white-space: pre-wrap; overflow-x: auto;
+              border-left: 3px solid #8a1538; margin: 0; }
+
 /* Selector scatter */
 .scatter-box { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
                 padding: 20px 24px; margin: 24px 0; }
@@ -154,43 +209,819 @@ code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 13p
 </div>
 
 <h2>Proceso, validación y siguiente paso cuali</h2>
-<p class="sub">Los reportes de arriba contienen los <b>resultados</b> (los números) y los <b>hallazgos</b> (lo que interpretamos). Debajo, tres documentos que explicitan el proceso: cómo se construyó el estudio, cómo se validaron los hallazgos contra los datos crudos, y qué preguntas de investigación cualitativa se derivan.</p>
+<p class="sub">Los reportes de arriba contienen los <b>resultados</b> (los números) y los <b>hallazgos</b> (lo que interpretamos). Debajo, todo el proceso de razonamiento: cómo se construyó el estudio, cómo se validaron los hallazgos contra los datos crudos, y qué preguntas de investigación cualitativa se derivan. Haz clic en cada sección para expandir.</p>
 
-<div class="cards">
-  <a class="card ns" href="PROCESO.txt">
-    <div class="n">Proceso</div>
-    <h2>Cómo se construyó el estudio</h2>
-    <div class="desc">Universo, filtros, instrumento, recodificaciones, modelo HB, segmentación K=4. La receta completa para replicarlo.</div>
-    <ul>
-      <li>8 secciones directas (universo → llaves para join)</li>
-      <li>Descripciones factuales sin editorial</li>
-    </ul>
-    <div class="cta">Ver proceso →</div>
-  </a>
+<details class="doc-embed">
+  <summary>
+    <span class="doc-badge">📋 Proceso</span>
+    <span class="doc-title">Cómo se construyó el estudio</span>
+    <span class="doc-hint">Universo, filtros, instrumento, recodificaciones, modelo HB, segmentación</span>
+  </summary>
+  <div class="doc-content"><pre class="txt-embed">PROCESO — Estudio Comunidad Anime × Cineplanet
+================================================
 
-  <a class="card sc" href="VALIDACION_HALLAZGOS.md">
-    <div class="n">Validación</div>
-    <h2>Framework en cascada</h2>
-    <div class="desc">3 niveles de validez: resultados → hallazgos → preguntas de investigación. Tabla de trazabilidad para 19 hallazgos, todos verificados contra los CSVs fuente.</div>
-    <ul>
-      <li>Criterios por nivel + riesgos identificados</li>
-      <li>Script <code>36_auditar_hallazgos.R</code> para re-correr chequeos</li>
-      <li>19/19 hallazgos OK en la última auditoría</li>
-    </ul>
-    <div class="cta">Ver framework →</div>
-  </a>
+Fecha snapshot: 2026-07-21
+Total de fans encuestados: 610 (155 No Socios + 455 Socios)
 
-  <a class="card cons" href="PREGUNTAS_INVESTIGACION_DIARIO.md">
-    <div class="n">Cuanti → Cuali</div>
-    <h2>Preguntas de investigación</h2>
-    <div class="desc">18 preguntas de investigación que quedan abiertas de los hallazgos cuantitativos, mapeadas al diario cualitativo (WhatsApp, 32 participantes, 5 días).</div>
-    <ul>
-      <li>7 temáticas (decisión de asistencia, perfiles atípicos, conceptos, sustitución, contexto social, plataformas, validación)</li>
-      <li>Cada pregunta con prioridad y forma de abordarla en el diario</li>
-    </ul>
-    <div class="cta">Ver preguntas →</div>
-  </a>
-</div>
+
+1. UNIVERSO Y RECLUTAMIENTO
+---------------------------
+Dos brazos paralelos con universos distintos.
+
+Brazo A — No Socios (n=155):
+  Fans de anime en Lima que NO visitaron Cineplanet en los últimos 6 meses
+  (o nunca). Reclutados por LVL a través de canales digitales.
+  Instrumento: R Shiny custom (surveylvl.shinyapps.io).
+
+Brazo B — Socios (n=455):
+  Socios activos de Cineplanet fans de anime en Lima. Reclutados por CP
+  desde su base de socios.
+  Instrumento: 10 encuestas paralelas en SurveyMonkey con diseño BIBD
+  (Balanced Incomplete Block Design), asignación aleatoria por reclutador.
+
+
+2. FILTROS APLICADOS
+--------------------
+No Socios:
+  - Estado terminal = "complete"
+  - qualified_fan = TRUE (freq >= 3-4/sem OR horas >= 1h/sem)
+  - S2 (última visita CP) = "Más de 6 meses" / "Nunca" / "No recuerdo"
+  - 100% de preguntas obligatorias respondidas
+
+Socios:
+  - response_status = "completed"
+  - Fan filter idéntico al de No Socios
+  - 100% de preguntas obligatorias respondidas (incluye best AND worst en
+    las 12 tareas MaxDiff)
+  - Camino de reducción: 789 crudos → 675 completed → 610 fan → 455 completos
+
+
+3. INSTRUMENTO
+--------------
+No Socios (120 columnas):
+  - Screener + demografía (edad, género, zona)
+  - Hogar (pareja, hijos, educación, vivienda, situación laboral, ingreso)
+  - Escalas Reysen Fanship + FANDOM Community (6 items Likert 1-7)
+  - Historia con el anime (nostalgia)
+  - Consumo (plataformas de streaming, cine principal)
+  - 8 categorías de gasto mensual en rangos (S/0 a Más de S/100)
+  - 12 tareas MaxDiff × 4 items sobre 16 conceptos (30 bloques pre-computados,
+    balance perfecto: cada concepto aparece 3 veces por bloque)
+  - Bloque de ANCLA: marcar cuáles de los 16 conceptos le interesarían
+  - Deep-dive del top-3 personal: por cada concepto, 6 preguntas (Juster,
+    con quién iría, tamaño de grupo, incrementalidad, credibilidad,
+    competitive set)
+  - Cierre: opt-in al diario pagado
+
+Socios (24 columnas de análisis + 12 tareas MaxDiff):
+  - Screener + demografía reducida (sin género, sin edad, sin ingreso mensual)
+  - Escalas Reysen Fanship + FANDOM Community (6 items Likert 1-7)
+  - Nostalgia
+  - Consumo (última visita CP, frecuencia y horas de anime, zona)
+  - 8 categorías de gasto mensual (mismas que No Socios)
+  - 12 tareas MaxDiff × 4 items sobre 16 conceptos (BIBD: 10 bloques × 12 tareas)
+  - Hogar (con quiénes vive, edad de hijos)
+  - NO tiene bloque de ancla ni deep-dive del top-3
+
+
+4. RECODIFICACIONES (para análisis, no aplicadas al raw)
+--------------------------------------------------------
+Gastos: rango a punto medio
+  S/0 = 0, S/1-25 = 12.5, S/26-50 = 37.5, S/51-75 = 62.5,
+  S/76-100 = 87.5, Más de S/100 = 130 (baseline; sensibilidad probada con
+  100, 125, 130 y rank ordinal — ranking robusto en los 4 escenarios)
+
+Frecuencia anime:
+  Menos 1/sem = 0.5, 1-2/sem = 1.5, 3-4/sem = 3.5, 5-6/sem = 5.5,
+  Todos los días = 7
+
+Horas anime/semana:
+  Menos 1h = 0.5, 1-5h = 3, 5-10h = 7.5, Más de 10h = 12
+
+Nostalgia (era en que se enganchó):
+  infancia = 4, adolescencia = 3, adulto_prepandemia = 2, pandemia = 1
+
+Juster (No Socios): calibración clásica 1966
+  1 → 0.02, 2 → 0.15, 3 → 0.40, 4 → 0.65, 5 → 0.85
+
+
+5. MODELO MAXDIFF (HIERARCHICAL BAYES)
+--------------------------------------
+Software: ChoiceModelR 1.3.1 en R
+Especificación: Best + Worst como 2 MNL separados por tarea (X invertida
+                en worst, mismos betas). Prior single-normal.
+MCMC: R = 20000 iteraciones, use = 10000 (burn-in), keep = 10 → 1000 draws
+      efectivos por respondente.
+
+Diferencia clave entre brazos:
+  No Socios incluye el bloque de ancla como 16 pseudo-tareas binarias
+  (concepto vs NONE) con NONE = utilidad 0. Esto ancla la escala al umbral
+  personal: utilidad > 0 = concepto arriba del umbral (le vale la pena al
+  fan). Métrica principal reportada: "% de fans que lo quiere" = fracción
+  con utilidad > 0.
+
+  Socios NO tiene ancla. Las utilidades son relativas. Métrica principal
+  reportada: share of preference = exp(util) / Σ exp(util). Los shares
+  suman 100% entre los 16 conceptos.
+
+Los rankings de conceptos SÍ son comparables ordinalmente entre brazos.
+Las magnitudes NO son directamente comparables.
+
+Validación (idéntica en ambos brazos):
+  - Rankings HB vs conteo bruto best-worst: r = 0.994 (No Socios),
+    r = 0.998 (Socios)
+  - Correlación con % marcados en ancla: r = 0.960 (No Socios; no aplica
+    a Socios)
+  - Reproducibilidad con otra seed: Pearson 0.9997 (No Socios)
+  - Sensitivity dropping RLH < 0.4 (n=145): Pearson 0.9990 (No Socios)
+  - RLH mediana: 0.60 (No Socios), 0.625 (Socios). Random baseline con
+    p = 4: 0.25.
+  - Acceptance rate MCMC: 0.30 (ideal, ambos brazos)
+
+
+6. SEGMENTACIÓN K=4
+-------------------
+Metodología idéntica en ambos brazos:
+  K-means K = 4 sobre los promedios de 6 items Reysen/FANDOM (Likert 1-7,
+  sin escalar).
+  seed = 2026, nstart = 50.
+  Ordenamiento de clusters por media global de X (para que 1 = Aislado,
+  4 = Core).
+
+Etiquetas: Fan Aislado / Fan Casual / Fan Intermedio / Fan Core
+
+Distribución No Socios (n=155):
+  Fan Aislado: 8 (5.2%)
+  Fan Casual: 29 (18.7%)
+  Fan Intermedio: 56 (36.1%)
+  Fan Core: 62 (40.0%)
+  Silhouette medio: 0.53
+
+Distribución Socios (n=455):
+  Fan Aislado: 75 (16.5%)
+  Fan Casual: 121 (26.6%)
+  Fan Intermedio: 98 (21.5%)
+  Fan Core: 161 (35.4%)
+  Silhouette medio: 0.46
+
+
+7. ARCHIVOS EN ESTA CARPETA
+---------------------------
+
+REPORTES HTML (abrir en el navegador; comienza por index.html):
+
+index.html
+  Portal de reportes. Muestra 3 cards clickeables para No Socios, Socios
+  y Consolidado. Además incluye un selector interactivo del scatter Reysen
+  × FANDOM con 3 vistas (solo No Socios, solo Socios, ambos brazos
+  superpuestos con distinto shape por brazo y mismo color por perfil).
+
+reporte_no_socios.html
+  Resultados No Socios (n=155). 7 secciones: segmentación K=4, gastos,
+  perfil demográfico + validación externa, ranking MaxDiff, cruce por
+  segmento y demografía, deep-dive del top-3 con calculadora Juster
+  interactiva (input N_UNIVERSO + presets 10k/50k/100k/200k), tabla
+  resumen de 16 conceptos.
+
+reporte_socios.html
+  Resultados Socios (n=455). 6 secciones: segmentación K=4, gastos con
+  Kruskal-Wallis, ranking MaxDiff (share of preference), cruce por
+  segmento, caracterización demográfica y validación externa, tabla
+  resumen. Nota metodológica sobre sensibilidad al tope S/130 colapsada.
+
+reporte_consolidado.html
+  Vista comparativa lado a lado. Cruce MaxDiff × tipos de fan con
+  heatmaps de ambos brazos, ranking comparado, gastos con η² por brazo,
+  concordancia entre brazos por concepto.
+
+
+CSVs DE DATOS (encoding UTF-8, separador coma):
+
+conceptos_16.csv (16 × 2)
+  Catálogo de los 16 conceptos con nombre completo.
+
+no_socios_base.csv (155 × 120)
+  Base cruda completa de No Socios: metadata, screener, hogar, Reysen,
+  gastos, MaxDiff 12 tareas × (shown/best/worst), ancla, top-3, deep-dive,
+  cierre diario.
+
+no_socios_utilidades_hb.csv (155 × 17)
+  Utilidades individuales HB. Columnas: respondent_id + C01..C18.
+  Utilidad ANCLADA al umbral personal: utilidad > 0 = concepto arriba
+  del umbral.
+
+no_socios_segmentos.csv (155 × 11)
+  Segmentos K=4 (columna c4: C4_1..C4_4) más variables derivadas
+  (score_reysen, score_fandom, freq_num, horas_num, gasto_total,
+  nostalgia_num).
+
+socios_base.csv (455 × 35)
+  Covariables + metadata SM (first_name, email, custom_value, timestamps,
+  IP, collector_id, response_status). Sin ancla ni deep-dive (por diseño
+  del instrumento SM).
+
+socios_maxdiff_long.csv (5460 × 6)
+  Choice data long-format = 455 × 12 tareas. Columnas: respondent_id,
+  bloque, task, shown, best, worst.
+
+socios_utilidades_hb.csv (455 × 17)
+  Utilidades individuales HB. Columnas: respondent_id + C01..C18.
+  Utilidad RELATIVA (sin ancla). Interpretar solo ordinalmente o vía
+  share of preference.
+
+socios_segmentos.csv (455 × 6)
+  Segmentos K=4 con etiquetas Fan Aislado/Casual/Intermedio/Core.
+
+
+8. LLAVES PARA UNIR CSVs
+------------------------
+No Socios:
+  Entre no_socios_base y no_socios_utilidades_hb: respondent_id (UUID Shiny).
+  Entre no_socios_base y no_socios_segmentos: dni (normalizado con
+  strip leading zeros porque los CSVs lo leen como número).
+
+Socios:
+  Entre todos los CSVs de Socios: respondent_id (12+ dígitos SM).
+</pre></div>
+</details>
+
+<details class="doc-embed">
+  <summary>
+    <span class="doc-badge">✅ Validación</span>
+    <span class="doc-title">Framework en cascada: resultados → hallazgos → preguntas</span>
+    <span class="doc-hint">3 niveles de validez, tabla de trazabilidad de 19 hallazgos (19/19 OK)</span>
+  </summary>
+  <div class="doc-content"><h1>Framework de validación: resultados → hallazgos → preguntas</h1>
+<p><strong>Fecha</strong>: 2026-07-21
+<strong>Alcance</strong>: 19 hallazgos cuantitativos derivados de los 4 reportes
+<strong>Estado global</strong>: 19/19 hallazgos verificados OK contra los CSVs fuente</p>
+<hr />
+<h2>El problema</h2>
+<p>Un estudio cuantitativo produce 3 capas de output que se pueden mezclar:</p>
+<ul>
+<li><strong>Resultados</strong>: los números crudos que salen de las estimaciones (61.3%, η²=0.132, r=0.994).</li>
+<li><strong>Hallazgos</strong>: la lectura interpretativa que hacemos de esos números ("Viajes VIP es el top-1 en No Socios").</li>
+<li><strong>Preguntas de investigación</strong>: los "por qué" que quedan abiertos y motivan investigación adicional (cuali, deep-dive, etc.).</li>
+</ul>
+<p>Sin un framework de validación, es fácil que un hallazgo "circule" en el equipo sin que nadie recuerde exactamente qué número lo sostiene, y las preguntas de investigación se conviertan en intuiciones no aterrizadas en la data.</p>
+<hr />
+<h2>Framework en cascada — 3 niveles</h2>
+<pre><code>Nivel 3: PREGUNTAS DE INVESTIGACIÓN
+  ↑ deben derivar verificablemente de →
+Nivel 2: HALLAZGOS (interpretaciones)
+  ↑ deben derivar verificablemente de →
+Nivel 1: RESULTADOS (los números)
+</code></pre>
+<p>Cada nivel se valida contra el anterior. Si un hallazgo tiene pregunta pero no resultado, la pregunta es especulación. Si un resultado no está bien estimado, todo lo que se apoya en él es inseguro.</p>
+<hr />
+<h2>Nivel 1 — Validez de resultados</h2>
+<h3>Criterios</h3>
+<table>
+<thead>
+<tr>
+<th>Chequeo</th>
+<th>Cómo se verifica</th>
+<th>Estado en este estudio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Convergencia MCMC</td>
+<td>Acceptance rate ~0.30; RLH mediana &gt; baseline random</td>
+<td>✅ 0.30 / 0.60 vs 0.31 random (NS), 0.625 vs 0.25 (SC)</td>
+</tr>
+<tr>
+<td>Reproducibilidad</td>
+<td>Correr con seed distinto y comparar</td>
+<td>✅ Pearson 0.9997 (NS), verificado en <code>14_validar_reproducibilidad_hb_v2.R</code></td>
+</tr>
+<tr>
+<td>Cross-check contra métrica cruda</td>
+<td>HB vs conteo bruto best-worst</td>
+<td>✅ r=0.994 (NS), r=0.998 (SC)</td>
+</tr>
+<tr>
+<td>Sensibilidad a supuestos arbitrarios</td>
+<td>4 escenarios de tope S/130</td>
+<td>✅ Ranking idéntico, ninguna variable cambia categoría</td>
+</tr>
+<tr>
+<td>Auditoría de números en outputs</td>
+<td>Recomputo manual vs CSVs</td>
+<td>✅ 14/14 números clave verificados (<code>26_auditar_numeros_html.R</code>)</td>
+</tr>
+<tr>
+<td>Umbrales estadísticos convencionales</td>
+<td>η² Cohen, Cramer V Cohen</td>
+<td>✅ 0.01/0.06/0.14 y 0.1/0.3/0.5</td>
+</tr>
+</tbody>
+</table>
+<h3>Riesgos identificados que quedan</h3>
+<ul>
+<li><strong>Bases chicas</strong>: Fan Aislado n=8, Charlas n=3, Playlist n=7 — marcados explícitamente en cada aparición.</li>
+<li><strong>Métricas distintas por brazo</strong>: %umbral (No Socios, con ancla) vs share (Socios, sin ancla). Comparables ordinalmente, NO en magnitud.</li>
+<li><strong>Sustitución cruzada Juster</strong>: el %incremental no distingue "visita 100% nueva" de "sustitución de otro cine". Documentado en el reporte No Socios.</li>
+<li><strong>Muestras no aleatorias</strong>: los dos brazos son de conveniencia (reclutados por canales digitales / desde base CP). Los IC y tests deben interpretarse como referenciales de la muestra, no del universo Lima.</li>
+</ul>
+<hr />
+<h2>Nivel 2 — Validez de hallazgos</h2>
+<h3>Criterios</h3>
+<p>Para que una afirmación sea "hallazgo válido" (no "opinión con datos"):</p>
+<ol>
+<li><strong>Trazabilidad exacta</strong>: cada número mencionado tiene fuente en un CSV/tabla del reporte</li>
+<li><strong>Consistencia</strong>: el mismo número no aparece con valores distintos en distintos archivos</li>
+<li><strong>Base suficiente</strong>: n adecuado para la afirmación; base chica flaggeada</li>
+<li><strong>Sin sobre-generalización</strong>: la afirmación no extiende más allá del universo/muestra</li>
+<li><strong>Sin editorial</strong>: solo lo que el dato sostiene, sin agregar interpretación causal no probada</li>
+<li><strong>Robusto a supuestos alternos</strong>: si el hallazgo cambia con supuestos plausibles distintos, marcarlo como frágil</li>
+</ol>
+<h3>Cómo aplicamos la validación (auditoría automatizada)</h3>
+<p>El script <code>36_auditar_hallazgos.R</code> en <code>04_analisis/</code>:</p>
+<ul>
+<li>Carga los CSVs de <code>bases_finales/</code> (fuente única de verdad)</li>
+<li>Para cada hallazgo, RECOMPUTA el número que lo sostiene</li>
+<li>Compara contra el número afirmado en el hallazgo</li>
+<li>Marca <code>OK</code> / <code>REVISAR</code> / <code>FAIL</code></li>
+<li>Genera <code>VALIDACION_HALLAZGOS.csv</code> con la tabla de trazabilidad</li>
+</ul>
+<p><strong>Resultado actual</strong>: 19/19 hallazgos OK.</p>
+<h3>Tabla resumen de trazabilidad</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Hallazgo</th>
+<th>Prioridad</th>
+<th>Chequeo</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1_NS</td>
+<td>Cine anime no discrimina en No Socios</td>
+<td>alta</td>
+<td>η² &lt; 0.03 &amp; p &gt; 0.05</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H1_SC</td>
+<td>Cine anime no discrimina en Socios</td>
+<td>alta</td>
+<td>η² &lt; 0.03 &amp; p &gt; 0.05</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Top-1 conceptual difiere: Viajes VIP (NS) vs Clásicos (SC)</td>
+<td>alta</td>
+<td>C08=61% NS, C03=22.2% SC</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>Fan Aislado 3× más grande en SC (16.5% vs 5.2%)</td>
+<td>alta</td>
+<td>Conteos + IC Wilson NS</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>Fan Intermedio SC solitario (R=6.61, F=3.79)</td>
+<td>media</td>
+<td>Medias por perfil</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>Silhouette 0.53 (NS) vs 0.46 (SC)</td>
+<td>baja</td>
+<td>K-means recomputado</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H6</td>
+<td>Festival CP×Crunchy #2 en ambos brazos</td>
+<td>alta</td>
+<td>Rankings</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H7</td>
+<td>Viajes VIP 54% incremental</td>
+<td>alta</td>
+<td>Deep-dive slots 1-3</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H8</td>
+<td>Membresía Socio 10.9% share en SC (vs 41% umbral NS)</td>
+<td>media</td>
+<td>Share of preference vs %umbral</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H9</td>
+<td>Conciertos 89% credibilidad, solo #5 demanda</td>
+<td>baja</td>
+<td>believ_top2 + rank</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H10</td>
+<td>Playlist y Charlas bottom en ambos brazos</td>
+<td>media</td>
+<td>Rankings bottom-3</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H11</td>
+<td>Sustitución cruzada no capturada por Juster</td>
+<td>alta</td>
+<td>Limitación instrumento</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H12</td>
+<td>group_size promedio 3-5</td>
+<td>media</td>
+<td>Media por concepto</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H13</td>
+<td>Festival: 56% amigos anime; Charlas: 100% partner (n=3)</td>
+<td>media</td>
+<td>grepl multi-select</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H14</td>
+<td>Callao valora Museo más</td>
+<td>baja</td>
+<td>Media util por zona</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H15</td>
+<td>Mujeres valoran más Conciertos (η²=0.085)</td>
+<td>media</td>
+<td>ANOVA por sexo</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H16</td>
+<td>Usuarios Crunchyroll: +24pp en Festival</td>
+<td>baja</td>
+<td>Multi-select platforms</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H17</td>
+<td>26% de No Socios usan fansubs</td>
+<td>media</td>
+<td>41/155</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>H18</td>
+<td>Frecuencia anime: Cramer V=0.22 en SC</td>
+<td>baja</td>
+<td>Chi²</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3>Cómo interpretar el "OK"</h3>
+<p><code>OK</code> significa: el número afirmado coincide (con tolerancia) con el recomputo desde el CSV fuente. <strong>NO significa</strong>:</p>
+<ul>
+<li>Que el hallazgo sea "verdad definitiva" (los riesgos siguen aplicando).</li>
+<li>Que la interpretación causal sea correcta (correlación ≠ causalidad).</li>
+<li>Que se generalice al universo Lima (muestras no aleatorias).</li>
+</ul>
+<p><code>REVISAR</code> significa: el número difiere. Puede ser por redondeo distinto, cambio de metodología, o error real. Requiere revisión manual.</p>
+<p><code>FAIL</code> significa: el chequeo no pudo ejecutarse (error de código, columna faltante). Requiere debug.</p>
+<hr />
+<h2>Nivel 3 — Validez de preguntas de investigación</h2>
+<h3>Criterios</h3>
+<p>Para que una pregunta de investigación sea "válida" (no "curiosidad al aire"):</p>
+<ol>
+<li><strong>Deriva verificable de un hallazgo con estado OK</strong> — no de intuición externa.</li>
+<li><strong>Es abordable con el instrumento cualitativo actual</strong> — el diario WhatsApp de 5 días con 32 participantes puede aportar evidencia.</li>
+<li><strong>Genera decisión</strong> — la respuesta afecta una acción concreta (targeting, priorización de concepto, etc.).</li>
+<li><strong>Está bien scoped</strong> — específica, no una "gran pregunta abstracta" que no puede responderse.</li>
+</ol>
+<h3>Ejemplo aplicado</h3>
+<pre><code>Hallazgo (Nivel 2): H3 — Fan Aislado es 3× más grande en Socios (16.5% vs 5.2%)
+  Nivel 1 (resultado): 8/155 vs 75/455; IC 95% NS = [2.7%, 10.0%]
+  Riesgos: base chica NS, muestras no aleatorias
+
+Pregunta de investigación derivada (Nivel 3):
+  &quot;¿Qué caracteriza al socio de Cineplanet fan de anime que no se identifica
+   como fan intenso?&quot;
+
+Validez de la pregunta:
+  ✅ Deriva de H3 (que está OK)
+  ✅ Abordable con el diario: los participantes tienen perfil identificable ex-ante
+     (Reysen bajo + FANDOM bajo + freq/horas altas)
+  ✅ Genera decisión: afecta targeting de comunicación de Membresía Anime,
+     mensaje de &quot;socio anime&quot; vs &quot;socio general&quot;, diseño de contenido
+  ✅ Scoped: pregunta sobre un perfil específico, no &quot;todo el anime&quot;
+</code></pre>
+<p>Documento completo con las 18 preguntas: <code>PREGUNTAS_INVESTIGACION_DIARIO.md</code>.</p>
+<hr />
+<h2>Cómo re-correr la validación</h2>
+<p>Cada vez que se agregue un hallazgo nuevo o cambie un número en los reportes:</p>
+<pre><code class="language-bash">Rscript /Users/jose/Library/CloudStorage/Dropbox/LVL/Anime/04_analisis/36_auditar_hallazgos.R
+</code></pre>
+<p>Genera:
+- Reporte en consola con <code>OK / REVISAR / FAIL</code> por hallazgo
+- <code>VALIDACION_HALLAZGOS.csv</code> con la tabla detallada (id, hallazgo, prioridad, estado, número esperado, número calculado, detalle, riesgos)</p>
+<p>Para agregar un hallazgo nuevo al chequeo: seguir el patrón de <code>reg("HN", "texto", function() { ... })</code> en el script.</p>
+<hr />
+<h2>Nota metodológica: qué NO valida este framework</h2>
+<ul>
+<li><strong>Validez externa</strong>: si los hallazgos se generalizan al universo Lima. Requiere un estudio con muestreo probabilístico.</li>
+<li><strong>Causalidad</strong>: los hallazgos son asociaciones, no relaciones causales.</li>
+<li><strong>Interpretación cualitativa</strong>: qué significa cada patrón. Eso lo hace el investigador con soporte del diario cuali.</li>
+<li><strong>Business case</strong>: si un hallazgo justifica una decisión de negocio. Eso requiere costos, riesgos y contexto competitivo que no están en el estudio.</li>
+</ul>
+<p>Este framework valida <strong>consistencia interna</strong>: que lo que decimos que los datos dicen es efectivamente lo que los datos dicen. Es el mínimo indispensable para tener una conversación de negocio honesta.</p>
+<hr />
+<h2>Archivos relacionados</h2>
+<ul>
+<li><code>04_analisis/36_auditar_hallazgos.R</code> — script de auditoría automatizada</li>
+<li><code>04_analisis/VALIDACION_HALLAZGOS.csv</code> — tabla de trazabilidad</li>
+<li><code>04_analisis/PREGUNTAS_INVESTIGACION_DIARIO.md</code> — 18 preguntas derivadas</li>
+<li><code>04_analisis/bases_finales/</code> — CSVs fuente de verdad + HTMLs + PROCESO.txt</li>
+<li><code>04_analisis/bases_finales/PROCESO.txt</code> — proceso completo del estudio</li>
+</ul></div>
+</details>
+
+<details class="doc-embed">
+  <summary>
+    <span class="doc-badge">🔬 Cuanti → Cuali</span>
+    <span class="doc-title">18 preguntas de investigación derivadas para el diario cualitativo</span>
+    <span class="doc-hint">Puente al brazo cuali: WhatsApp, 32 participantes, 5 días</span>
+  </summary>
+  <div class="doc-content"><h1>Del cuanti al cuali: preguntas de investigación derivadas de los hallazgos</h1>
+<p><strong>Fecha</strong>: 2026-07-21
+<strong>Fuente cuanti</strong>: 610 fans encuestados (155 No Socios + 455 Socios), reportes en <code>bases_finales/</code>
+<strong>Fuente cuali</strong>: diario WhatsApp, 32 participantes, 5 días, arrancó 2026-07-11 (cohorte activa)</p>
+<hr />
+<h2>Cómo leer este documento</h2>
+<p>Los hallazgos cuantitativos son <strong>descriptivos</strong> (los datos dicen "esto pasa"). El diario cualitativo puede responder <strong>explicativos</strong> (por qué pasa, qué lo motiva). Este documento sistematiza esa transición.</p>
+<p>Cada bloque tiene:</p>
+<ul>
+<li><strong>Dato</strong>: el número que sale de la cuanti</li>
+<li><strong>Fuente</strong>: dónde verlo en los reportes</li>
+<li><strong>Lo que no explica</strong>: qué queda abierto</li>
+<li><strong>Preguntas de investigación</strong>: qué explorar cualitativamente</li>
+<li><strong>En el diario</strong>: cómo aparece o puede aparecer en los datos que estamos recolectando</li>
+<li><strong>Prioridad</strong>: alta / media / baja</li>
+</ul>
+<hr />
+<h2>Tema A — La decisión de asistir al cine anime</h2>
+<h3>1. Cine anime es la única categoría de gasto que NO discrimina tipos de fan (base compartida)</h3>
+<ul>
+<li><strong>Dato</strong>: en ambos brazos, cine anime no significativo (η²=0.023 No Socios / 0.013 Socios; p&gt;0.05). Todos los tipos gastan lo mismo aquí (~S/60-80/mes), aun cuando difieren en TODAS las otras categorías (eventos, merch, streaming, etc.).</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 2, Reporte Socios Sec 2, Consolidado Sec 3.</li>
+<li><strong>Lo que no explica</strong>: si todos gastan igual, ¿qué determina cuánto van al cine anime?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Cuál es la fricción principal para ir al cine anime (oferta escasa, precio, horarios, acompañantes)?</li>
+<li>¿Son "consumers pasivos" (van si hay algo) o "buscadores activos" (revisan cartelera)?</li>
+<li>¿La decisión de ir es individual o depende de disponibilidad de acompañantes?</li>
+<li><strong>En el diario</strong>: los participantes registran durante 5 días cada oportunidad "posible visita al cine" descartada y por qué. Cada uno genera ~3-5 puntos de decisión, con contexto rico.</li>
+<li><strong>Prioridad</strong>: 🔴 alta</li>
+</ul>
+<h3>2. Top-1 conceptual cambia radicalmente entre brazos</h3>
+<ul>
+<li><strong>Dato</strong>: en No Socios lidera <strong>Viajes y experiencias VIP como premio</strong> (61% arriba del umbral). En Socios lidera <strong>Clásicos anime en pantalla grande</strong> (22% share). Viajes VIP baja al #3 en Socios.</li>
+<li><strong>Fuente</strong>: Consolidado Sec 4, Reporte No Socios Sec 4, Reporte Socios Sec 3.</li>
+<li><strong>Lo que no explica</strong>: ¿por qué el no-socio busca "premio extraordinario" mientras el socio busca "formato tradicional bien ejecutado"?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>Para el no-socio, ¿el atractivo de "viaje VIP" es aspiracional o transaccional (querer ganar algo caro sin pagarlo)?</li>
+<li>Para el socio, ¿"Clásicos" es nostalgia, ritual del cine, o mejor calidad de proyección?</li>
+<li>¿El socio ya viene por el cine y valora lo que funciona; el no-socio necesita un disparador excepcional para venir?</li>
+<li><strong>En el diario</strong>: pregunta del día 3 en el guion actual explora "qué tendría que pasar para que fueras al cine". Comparar respuestas de socios vs no-socios en la cohorte.</li>
+<li><strong>Prioridad</strong>: 🔴 alta</li>
+</ul>
+<hr />
+<h2>Tema B — Perfiles atípicos</h2>
+<h3>3. Fan Aislado es 3× más grande en Socios (16.5%) que en No Socios (5.2%)</h3>
+<ul>
+<li><strong>Dato</strong>: hay una masa de socios de CP fans de anime que <strong>no se identifican fuertemente como fans</strong> (Reysen 3.97) y <strong>no participan de la comunidad</strong> (FANDOM 2.20).</li>
+<li><strong>Fuente</strong>: Consolidado Sec 2, Reporte Socios Sec 1.</li>
+<li><strong>Lo que no explica</strong>: ¿por qué compraron la membresía si no son fans intensos? ¿son "socios por conveniencia" que casualmente consumen anime?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Cuál es la ruta de entrada al fandom del Fan Aislado (pareja fan, amigos, algoritmo de streaming)?</li>
+<li>¿Ver anime les parece "guilty pleasure", consumo normal sin identificación, o compañía de otro fan?</li>
+<li>¿La membresía CP la usan para anime, para otras películas, o para socializar?</li>
+<li>¿Qué diferencia a un Fan Aislado No Socio (5%) de uno Socio (16.5%) más allá de la membresía?</li>
+<li><strong>En el diario</strong>: identificar en la cohorte a participantes con perfil Fan Aislado (Reysen bajo + FANDOM bajo + freq/horas altas). Codificar sus 5 días buscando patrones: "¿con quién ve anime?", "¿cuándo dice 'soy fan'?".</li>
+<li><strong>Prioridad</strong>: 🔴 alta</li>
+</ul>
+<h3>4. Fan Intermedio Socios es "solitario" (Reysen 6.61 / FANDOM 3.79)</h3>
+<ul>
+<li><strong>Dato</strong>: en Socios aparece un perfil con <strong>identidad como fan muy alta pero baja participación comunitaria</strong>. En No Socios el mismo perfil es balanceado (6.30 / 5.74).</li>
+<li><strong>Fuente</strong>: Consolidado Sec 2, Reporte Socios Sec 1.</li>
+<li><strong>Lo que no explica</strong>: ¿por qué un fan intenso individualmente no conecta con la comunidad?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Es un fan intenso "por dentro" (consumo alto, colección) pero no participa por elección o por falta de acceso?</li>
+<li>¿Le atrae contenido más solitario (streaming) o le atraería conectarse si hubiera oportunidad?</li>
+<li>¿Existe estigma social (edad, entorno laboral) que lo hace no querer identificarse como parte de la comunidad?</li>
+<li><strong>En el diario</strong>: mapear el consumo solitario vs social. Preguntar en día 4: "¿con quién compartes que te gusta el anime?" y observar quiénes responden "nadie" o "solo online".</li>
+<li><strong>Prioridad</strong>: 🟡 media</li>
+</ul>
+<h3>5. Silhouette Socios más bajo (0.46 vs 0.53 No Socios)</h3>
+<ul>
+<li><strong>Dato</strong>: en Socios los 4 tipos de fan tienen <strong>fronteras más difusas</strong>. La solución de segmentación es menos limpia.</li>
+<li><strong>Fuente</strong>: Consolidado Sec 2 conclusión, Reporte Socios Sec 1.</li>
+<li><strong>Lo que no explica</strong>: ¿por qué en Socios hay más ambigüedad? ¿existen sub-perfiles no capturados?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Hay perfiles intermedios (fan-consumidor, fan-coleccionista, fan-social) que la K-means aplasta en 4 categorías?</li>
+<li>¿La membresía CP atrae un abanico de motivaciones que no calzan con las 4 categorías clásicas?</li>
+<li><strong>En el diario</strong>: análisis inductivo desde las respuestas cuali para identificar posibles sub-perfiles emergentes.</li>
+<li><strong>Prioridad</strong>: 🟢 baja</li>
+</ul>
+<hr />
+<h2>Tema C — Conceptos con lecturas específicas</h2>
+<h3>6. Festival Cineplanet × Crunchyroll es el único top-2 sin ambigüedad de universo</h3>
+<ul>
+<li><strong>Dato</strong>: #2 en No Socios (48% arriba del umbral) y #2 en Socios (18% share). Único concepto con consenso amplio en ambos brazos.</li>
+<li><strong>Fuente</strong>: Consolidado Sec 4.</li>
+<li><strong>Lo que no explica</strong>: ¿qué le gusta específicamente al fan del concepto "festival"? ¿la marca Crunchyroll, la palabra "festival", la promesa de comunidad?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Qué imagina el fan cuando piensa en "Festival CP × Crunchyroll"? (paneles, proyecciones, cosplay, merch, todo)</li>
+<li>¿Iría como consumidor pasivo (a ver) o activo (a participar, cosplay, competencias)?</li>
+<li>¿La alianza CP × Crunchyroll suma credibilidad o es indiferente?</li>
+<li><strong>En el diario</strong>: pregunta abierta día 4 sobre "eventos anime a los que has ido o quisieras ir". Codificar menciones a marca vs formato.</li>
+<li><strong>Prioridad</strong>: 🟡 media</li>
+</ul>
+<h3>7. Viajes VIP: 55% de los evaluadores lo verían como visita "nueva" al cine</h3>
+<ul>
+<li><strong>Dato</strong>: en el deep-dive de No Socios, Viajes VIP tiene 54% de "incremental" declarado (visita nueva, no sustitución). El % más alto del top-5.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 6 (deep-dive).</li>
+<li><strong>Lo que no explica</strong>: ¿por qué es "más incremental" que otros conceptos? ¿es porque es aspiracional y no compite con "ir al cine este sábado"?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿El fan concibe "Viajes VIP" como una compra distinta a "ir al cine" (más cerca de un sorteo o programa de lealtad)?</li>
+<li>Si Cineplanet ofreciera un "Viaje VIP" para el próximo mes, ¿cómo lo tratarían en su presupuesto?</li>
+<li><strong>En el diario</strong>: preguntar por productos de fidelización/premios en general y observar si los tratan como "visita al cine" o categoría separada.</li>
+<li><strong>Prioridad</strong>: 🟢 baja</li>
+</ul>
+<h3>8. Membresía Socio Anime CP pierde relevancia en Socios (10.9% share vs 41% en NS)</h3>
+<ul>
+<li><strong>Dato</strong>: la "membresía anime" atrae al no-socio (que buscaría entrar a un programa exclusivo) pero interesa mucho menos al que ya es socio general (10.9% share, top #4).</li>
+<li><strong>Fuente</strong>: Consolidado Sec 4, Reporte Socios Sec 3.</li>
+<li><strong>Lo que no explica</strong>: ¿por qué el socio actual no valora una segunda membresía específica de anime?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿El socio percibe la membresía CP como "suficiente" para su interés anime?</li>
+<li>¿Prefiere beneficios anime dentro de la membresía existente en vez de una separada?</li>
+<li>Para el no-socio, ¿la "Membresía Anime" es una puerta de entrada más suave que la membresía general?</li>
+<li><strong>En el diario</strong>: preguntar por membresías/programas de lealtad activos y cuáles usan efectivamente.</li>
+<li><strong>Prioridad</strong>: 🟡 media</li>
+</ul>
+<h3>9. Conciertos anime tienen credibilidad más alta (89% top-2 box) pero solo #5 en demanda</h3>
+<ul>
+<li><strong>Dato</strong>: en el deep-dive de No Socios, "Conciertos de música anime en vivo" es el concepto que más fans creen que "puede existir en Lima 2026" (89% dijo 4-5 en credibilidad). Sin embargo solo el 36% lo quiere.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 6.</li>
+<li><strong>Lo que no explica</strong>: si es creíble, ¿por qué no genera demanda?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿La barrera es precio (concierto es caro), formato (no lo asocian a cine) o audiencia (es para hardcore)?</li>
+<li>¿El fan asocia "conciertos" a mercado japonés (Vocaloid, JAM Project) o a covers locales?</li>
+<li><strong>En el diario</strong>: preguntar por experiencias de conciertos anime asistidos o considerados.</li>
+<li><strong>Prioridad</strong>: 🟢 baja</li>
+</ul>
+<h3>10. Playlist y Charlas: no funcionan en NINGÚN brazo</h3>
+<ul>
+<li><strong>Dato</strong>: Playlist anime en el cine y Charlas y paneles del anime quedan en el bottom-3 en ambos brazos.</li>
+<li><strong>Fuente</strong>: Consolidado Sec 4.</li>
+<li><strong>Lo que no explica</strong>: ¿por qué no atraen? ¿es el concepto (no lo entienden) o la ejecución imaginada (no le ven valor)?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿"Playlist" se percibe como fondo ambiental (poco valor) vs. experiencia distintiva?</li>
+<li>¿"Charlas y paneles" se asocia a fandom académico/hardcore (excluyente)?</li>
+<li><strong>En el diario</strong>: pregunta día 5 sobre "qué haría un cine anime especial además de proyectar películas". Ver si estos formatos aparecen espontáneamente.</li>
+<li><strong>Prioridad</strong>: 🟢 baja</li>
+</ul>
+<hr />
+<h2>Tema D — Sustitución y volumen</h2>
+<h3>11. Sustitución cruzada no está capturada en el %incremental del Juster</h3>
+<ul>
+<li><strong>Dato</strong>: el %incremental del deep-dive captura "sí, iría adicionalmente vs sustituiría mi visita a Cineplanet". Pero NO distingue si el fan estaría sustituyendo una visita a <strong>otro cine</strong> (Cinépolis, Cinemark) — que también es ganancia para CP.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 6, disclaimer explícito en la calculadora Juster.</li>
+<li><strong>Lo que no explica</strong>: si Cineplanet ofrece un concepto anime único, ¿cuántos fans lo tratarían como "cine específico CP" vs "cualquier cine"?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿El fan tiene lealtad a Cineplanet como marca o va al cine más cercano/barato?</li>
+<li>Si el concepto atractivo estuviera solo en otro cine, ¿el fan cambiaría de marca?</li>
+<li><strong>En el diario</strong>: preguntar por la última visita al cine y por qué eligió ese cine (marca vs. ubicación vs. cartelera).</li>
+<li><strong>Prioridad</strong>: 🔴 alta (para la interpretación de volumen)</li>
+</ul>
+<h3>12. Volumen incremental depende de tamaño de grupo (autoreportado)</h3>
+<ul>
+<li><strong>Dato</strong>: la fórmula del volumen incluye <code>group_size</code> (autoreportado, media 3-5 personas por concepto). Este multiplicador es sensible a extremos.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 6 método.</li>
+<li><strong>Lo que no explica</strong>: ¿el fan realmente asistiría con 4-5 personas, o dice eso pensando en el ideal social?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿La decisión de ir al cine anime la toma el fan solo o con acompañantes?</li>
+<li>¿Qué fricciones aparecen para coordinar visitas grupales?</li>
+<li><strong>En el diario</strong>: registrar visitas reales al cine durante los 5 días y con quién fueron efectivamente.</li>
+<li><strong>Prioridad</strong>: 🟡 media</li>
+</ul>
+<hr />
+<h2>Tema E — Contexto social del fandom</h2>
+<h3>13. "Con quién iría" varía mucho por concepto (deep-dive NS)</h3>
+<ul>
+<li><strong>Dato</strong>: para Festival CP × Crunchy, 56% marca "amigos anime" y 31% "pareja". Para Charlas y paneles (n=3), 100% marca "pareja". Los patrones son muy distintos entre conceptos.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 6.</li>
+<li><strong>Lo que no explica</strong>: ¿el fan tiene círculos sociales separados (amigos anime vs pareja) que activa según contexto?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Hay conceptos "de citas" vs "de comunidad" claramente diferenciados?</li>
+<li>¿Los amigos anime son físicos o mayoritariamente online?</li>
+<li><strong>En el diario</strong>: pregunta día 2 sobre círculos sociales activos alrededor del anime.</li>
+<li><strong>Prioridad</strong>: 🟡 media</li>
+</ul>
+<h3>14. Zona Lima: Callao valora más "Museo temático" (η² pequeño pero significativo)</h3>
+<ul>
+<li><strong>Dato</strong>: en el cruce demográfico de No Socios, Callao aparece como zona con mayor demanda por Museo temático.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 5 cruces demográficos.</li>
+<li><strong>Lo que no explica</strong>: ¿Callao tiene menor oferta de experiencias culturales/museos que otras zonas?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿La zona geográfica influye por acceso a alternativas o por perfil socioeconómico?</li>
+<li><strong>En el diario</strong>: no directamente. Analizar post-hoc si algún participante de Callao aporta contexto.</li>
+<li><strong>Prioridad</strong>: 🟢 baja</li>
+</ul>
+<h3>15. Género: mujeres valoran más Viajes VIP y Conciertos (Consolidado / NS)</h3>
+<ul>
+<li><strong>Dato</strong>: en No Socios, Conciertos difiere por género (η²=0.09, p&lt;0.001). Mujeres 45.2% arriba del umbral vs hombres 25.4%.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 5 cruces demográficos.</li>
+<li><strong>Lo que no explica</strong>: ¿es artefacto del fandom (Vocaloid/K-Pop más femenino) o preferencia genuina por experiencia musical?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Las mujeres del fandom anime tienen preferencias distintas por tipo de experiencia (más social/musical) vs hombres (más coleccionismo/técnica)?</li>
+<li><strong>En el diario</strong>: si la cohorte tiene balance de género, comparar respuestas cualitativas.</li>
+<li><strong>Prioridad</strong>: 🟡 media</li>
+</ul>
+<hr />
+<h2>Tema F — Plataformas y comportamiento de consumo</h2>
+<h3>16. Usuarios de Crunchyroll valoran mucho más el Festival CP × Crunchy</h3>
+<ul>
+<li><strong>Dato</strong>: en No Socios, los usuarios de Crunchyroll son 24 pp más propensos a querer el Festival CP × Crunchy que los no usuarios.</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 5, Consolidado (implícito).</li>
+<li><strong>Lo que no explica</strong>: ¿es afinidad de marca real o simplemente el fan más comprometido con anime usa Crunchyroll Y quiere más experiencias?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿La marca Crunchyroll aporta valor al concepto o es proxy de "fan más intenso"?</li>
+<li><strong>En el diario</strong>: preguntar por marcas de streaming preferidas y por qué.</li>
+<li><strong>Prioridad</strong>: 🟢 baja</li>
+</ul>
+<h3>17. Fansubs son un canal declarado por ~26% de los No Socios</h3>
+<ul>
+<li><strong>Dato</strong>: 41/155 fans (26%) reportan ver anime en fansubs (piratería).</li>
+<li><strong>Fuente</strong>: Reporte No Socios Sec 5 distribución de plataformas.</li>
+<li><strong>Lo que no explica</strong>: ¿es tema de precio, disponibilidad, o hábito heredado?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Los fans de fansubs pagarían por experiencias premium en el cine si el streaming es gratis en fansubs?</li>
+<li>¿Es el fandom más hardcore (que Crunchyroll no basta) o el más económico?</li>
+<li><strong>En el diario</strong>: preguntar por relación con "pagar por anime" (streaming, cine, merch) y prioridades.</li>
+<li><strong>Prioridad</strong>: 🟡 media</li>
+</ul>
+<hr />
+<h2>Tema G — Validación externa (métodos)</h2>
+<h3>18. Frecuencia de anime es lo más asociado al tipo de fan en Socios (Cramer V = 0.22)</h3>
+<ul>
+<li><strong>Dato</strong>: aunque la segmentación se hizo sobre Reysen/FANDOM, la frecuencia de ver anime (variable externa) es la que más se asocia al perfil resultante.</li>
+<li><strong>Fuente</strong>: Reporte Socios Sec 5 (caracterización + validación externa).</li>
+<li><strong>Lo que no explica</strong>: si "cuánto ven" predice el perfil, ¿por qué no usar directamente frecuencia como criterio de segmentación operativa (más simple)?</li>
+<li><strong>Preguntas de investigación</strong>:</li>
+<li>¿Se puede predecir el tipo de fan solo con frecuencia + horas de anime, sin las 6 preguntas Reysen/FANDOM?</li>
+<li><strong>Diario</strong>: N/A (es tema metodológico, no cualitativo).</li>
+<li><strong>Prioridad</strong>: 🟢 baja (interna al análisis)</li>
+</ul>
+<hr />
+<h2>Priorización de exploración cualitativa</h2>
+<p>Para el análisis del diario ya en campo (cohorte 2026-07-11 a 2026-07-15):</p>
+<p><strong>Prioridad alta</strong> (impactan interpretación del cuanti y decisiones de negocio):
+- Hallazgo 1: fricciones para ir al cine anime (base compartida)
+- Hallazgo 2: por qué top-1 difiere entre brazos (motivación diferencial)
+- Hallazgo 3: qué es el Fan Aislado de Socios (perfil sorprendente)
+- Hallazgo 11: sustitución cruzada (cambia el business case)</p>
+<p><strong>Prioridad media</strong> (aportan matiz interpretativo):
+- Hallazgos 4, 6, 8, 12, 13, 15, 17</p>
+<p><strong>Prioridad baja</strong> (post-hoc si hay ancho de banda):
+- Hallazgos 5, 7, 9, 10, 14, 16, 18</p>
+<hr />
+<h2>Sugerencia de agenda para el análisis del diario</h2>
+<p><strong>Fase 1 — Codificación abierta</strong> (semana 1 post-cierre del diario):
+Leer todos los mensajes buscando patrones emergentes SIN filtros previos, para no forzar interpretaciones. Identificar temas nuevos.</p>
+<p><strong>Fase 2 — Codificación cerrada</strong> (semana 2):
+Con la lista de 18 preguntas de este documento, ir hallazgo por hallazgo verificando qué evidencia aporta el diario.</p>
+<p><strong>Fase 3 — Triangulación</strong> (semana 2-3):
+Cruzar cada hallazgo cuanti con la evidencia cuali:
+- Consistente: ambos apuntan al mismo mecanismo → conclusión robusta
+- Discordante: la cuali dice algo distinto → hallazgo revisado
+- Silente: el diario no aporta evidencia → pendiente investigar</p>
+<p><strong>Fase 4 — Documento integrado</strong> (semana 3-4):
+Reporte final con hallazgos cuanti + interpretación cuali por tema. Formato: 10-15 slides o memo largo, según cliente.</p></div>
+</details>
 
 <div class="meta">
   <h3>Diferencias metodológicas clave entre brazos</h3>
