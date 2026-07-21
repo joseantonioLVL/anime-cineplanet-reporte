@@ -3,290 +3,295 @@
 <meta charset="UTF-8">
 <title>Proceso del estudio — Comunidad Anime × Cineplanet</title>
 <style>
-:root { --pri: #8a1538; }
+:root { --pri: #8a1538; --dato: #2e7d32; --result: #1565c0; --metodo: #b08d3a;
+         --neutro: #999; --ns: #8a1538; --sc: #4a9b9b; }
 body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-        max-width: 980px; margin: 32px auto; padding: 0 24px;
-        color: #222; line-height: 1.65; font-size: 15px; background: #fafbfc; }
-.header { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
-          color: white; padding: 20px 28px; border-radius: 10px; margin-bottom: 24px;
-          display: flex; align-items: center; gap: 16px; }
-.header .badge { background: white; color: #8a1538; padding: 6px 14px;
-                  border-radius: 6px; font-weight: 700; font-size: 13px;
-                  text-transform: uppercase; letter-spacing: 0.5px; }
-.header h1 { margin: 0; font-size: 22px; font-weight: 600; color: white; flex: 1; }
+        max-width: 1080px; margin: 0 auto; padding: 24px;
+        color: #222; line-height: 1.55; font-size: 15px; background: #fafbfc; }
 .back { display: inline-block; margin-bottom: 14px; color: #8a1538;
          text-decoration: none; font-size: 13.5px; font-weight: 600; }
 .back:hover { text-decoration: underline; }
-.content { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
-            padding: 28px 36px; }
-h1 { font-size: 26px; color: #8a1538; margin-top: 20px; font-weight: 600; }
-h2 { font-size: 20px; color: #8a1538; margin-top: 30px; padding-bottom: 8px;
-     border-bottom: 2px solid #8a1538; font-weight: 600; }
-h3 { font-size: 16.5px; color: #444; margin-top: 22px; font-weight: 600; }
-h4 { font-size: 14.5px; color: #666; margin-top: 14px; font-weight: 600; }
-p { margin: 10px 0; }
-code { background: #f6f6f6; padding: 1px 5px; border-radius: 3px;
-        font-size: 13px; color: #555; font-family: 'SF Mono', Menlo, monospace; }
-pre { background: #f9f9f9; padding: 14px 18px; border-radius: 4px;
-       overflow-x: auto; font-size: 12.5px; line-height: 1.55;
-       border-left: 3px solid #8a1538; }
-pre code { background: none; padding: 0; }
-table { border-collapse: collapse; margin: 14px 0; font-size: 13.5px; width: 100%; }
-th { background: #f6f6f6; padding: 8px 12px; text-align: left;
-      border-bottom: 2px solid #ccc; font-weight: 600; }
-td { padding: 6px 12px; border-bottom: 1px solid #eee; }
-tr:nth-child(even) td { background: #fafafa; }
-ul, ol { margin: 8px 0; padding-left: 24px; }
-li { margin: 4px 0; }
-blockquote { border-left: 3px solid #ccc; margin: 12px 0; padding: 6px 16px;
-              color: #555; font-style: italic; background: #fafafa; }
-hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
-.txt-embed { background: #f9f9f9; padding: 18px 22px; border-radius: 4px;
-              font-family: 'SF Mono', Menlo, monospace; font-size: 13px;
-              line-height: 1.6; white-space: pre-wrap; overflow-x: auto;
-              border-left: 3px solid #8a1538; margin: 0; }
-.footer { margin-top: 30px; text-align: center; color: #888; font-size: 12.5px; }
+h1 { font-size: 28px; margin: 0 0 8px 0; color: #8a1538; font-weight: 600; }
+h2 { font-size: 22px; margin: 40px 0 10px 0; padding-bottom: 8px;
+      border-bottom: 2px solid #8a1538; font-weight: 600; }
+h3 { font-size: 17px; margin: 22px 0 8px 0; color: #444; font-weight: 600; }
+.sub { color: #555; font-size: 14px; margin: 0 0 24px 0; }
+.hero { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
+         color: white; padding: 24px 32px; border-radius: 10px; margin: 12px 0 28px 0; }
+.hero h1 { color: white; margin: 0 0 8px 0; font-size: 24px; }
+.hero p { font-size: 14.5px; opacity: 0.95; margin: 4px 0; }
+
+/* Bloques por tipo (plantilla v3) */
+.pregunta, .metodo, .dato, .resultado, .conclusion {
+  border-left: 4px solid; padding: 12px 18px; margin: 12px 0; border-radius: 3px;
+  font-size: 14px;
+}
+.pregunta { border-color: var(--neutro); background: #fafafa; color: #444; }
+.metodo { border-color: var(--metodo); background: #f9f4e8; color: #5a4a20; font-size: 13.5px; }
+.dato { border-color: var(--dato); background: #f1f8f2; }
+.resultado { border-color: var(--result); background: #eef4fb; }
+.conclusion { border-color: #8a1538; background: #faf0f3; font-weight: 500; }
+.etiqueta { display: inline-block; font-size: 11px; text-transform: uppercase;
+             letter-spacing: 0.5px; color: #666; margin-bottom: 6px; font-weight: 700;
+             margin-right: 8px; }
+.dato .etiqueta { color: var(--dato); }
+.resultado .etiqueta { color: var(--result); }
+.conclusion .etiqueta { color: #8a1538; }
+.metodo .etiqueta { color: var(--metodo); }
+.pregunta .etiqueta { color: var(--neutro); }
+
+/* Tablas */
+.tabla { border-collapse: collapse; width: 100%; font-size: 13.5px; margin: 12px 0 18px 0; }
+.tabla th { background: #f6f6f6; text-align: left; padding: 8px 12px;
+             border-bottom: 2px solid #ccc; font-weight: 600; }
+.tabla td { padding: 7px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+.tabla tr:nth-child(even) td { background: #fafafa; }
+
+/* Grid de cards comparativas (NS vs SC) */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+@media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+.brazo-card { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+               padding: 18px 22px; }
+.brazo-card.ns { border-top: 4px solid var(--ns); }
+.brazo-card.sc { border-top: 4px solid var(--sc); }
+.brazo-card h3 { margin-top: 0; font-size: 16px; }
+.brazo-card.ns h3 { color: var(--ns); }
+.brazo-card.sc h3 { color: var(--sc); }
+.brazo-card ul { margin: 8px 0 0 0; padding-left: 20px; font-size: 13.5px; }
+.brazo-card li { margin: 5px 0; }
+
+/* Tags de estado */
+.tag-ok { background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 3px;
+           font-size: 11.5px; font-weight: 600; }
+.tag-warn { background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 3px;
+             font-size: 11.5px; font-weight: 600; }
+.tag-alta { background: #f8d7da; color: #721c24; padding: 2px 8px; border-radius: 3px;
+             font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.tag-media { background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 3px;
+              font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.tag-baja { background: #d1ecf1; color: #0c5460; padding: 2px 8px; border-radius: 3px;
+             font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+/* Cascada de validación */
+.cascada { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.cascada .nivel { background: white; border: 1px solid #e0e0e0; border-radius: 8px;
+                    padding: 16px 20px; position: relative; }
+.cascada .nivel h3 { margin: 0 0 6px 0; }
+.cascada .nivel.n3 { border-left: 4px solid #6b1030; }
+.cascada .nivel.n2 { border-left: 4px solid #8a1538; }
+.cascada .nivel.n1 { border-left: 4px solid var(--result); }
+.cascada .flecha { text-align: center; color: #8a1538; font-size: 22px; margin: -4px 0; }
+.cascada .nivel-num { display: inline-block; background: #8a1538; color: white;
+                        padding: 2px 8px; border-radius: 3px; font-size: 11px;
+                        font-weight: 700; margin-right: 8px; }
+
+/* Cards de pregunta de investigación */
+.qcard { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+          margin: 14px 0; overflow: hidden; }
+.qcard-header { padding: 12px 18px; background: #fafafa; border-bottom: 1px solid #eee;
+                 display: flex; align-items: center; gap: 10px; }
+.qcard-header .num { background: #8a1538; color: white; padding: 3px 10px;
+                       border-radius: 4px; font-size: 12px; font-weight: 700; }
+.qcard-header .titulo { flex: 1; font-weight: 600; font-size: 14.5px; }
+.qcard-body { padding: 14px 18px; }
+.qcard-body h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+                   color: #666; margin: 10px 0 4px 0; }
+.qcard-body p { margin: 4px 0; font-size: 13.5px; }
+.qcard-body ul { margin: 4px 0; padding-left: 20px; font-size: 13.5px; }
+
+/* Tema (agrupador de qcards) */
+.tema { margin: 30px 0 20px 0; }
+.tema h2 { display: inline-block; padding: 8px 14px; background: #8a1538;
+            color: white; border-radius: 6px; border: none; margin: 0 0 10px 0;
+            font-size: 15px; }
+
+/* Filas de gastos por perfil */
+.recodif-tabla { font-family: 'SF Mono', Menlo, monospace; font-size: 12.5px; }
+
+.footer { margin-top: 44px; padding-top: 14px; border-top: 1px solid #e0e0e0;
+           color: #666; font-size: 12px; text-align: center; }
+code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
 </style>
 </head><body>
-
 <a class="back" href="index.html">← Volver al portal</a>
 
-<div class="header">
-  <span class="badge">📋 Proceso</span>
-  <h1>Proceso del estudio</h1>
+<div class="hero">
+  <h1>Cómo se construyó el estudio</h1>
+  <p>Investigación cuantitativa sobre 610 fans de anime en Lima, en 2 brazos paralelos con instrumentos distintos por diseño.</p>
+  <p><b>155 No Socios</b> (fans que no van a Cineplanet) + <b>455 Socios activos</b> = <b>610 respondentes totales</b>.</p>
 </div>
 
-<div class="content">
-<pre class="txt-embed">PROCESO — Estudio Comunidad Anime × Cineplanet
-================================================
-
-Fecha snapshot: 2026-07-21
-Total de fans encuestados: 610 (155 No Socios + 455 Socios)
-
-
-1. UNIVERSO Y RECLUTAMIENTO
----------------------------
-Dos brazos paralelos con universos distintos.
-
-Brazo A — No Socios (n=155):
-  Fans de anime en Lima que NO visitaron Cineplanet en los últimos 6 meses
-  (o nunca). Reclutados por LVL a través de canales digitales.
-  Instrumento: R Shiny custom (surveylvl.shinyapps.io).
-
-Brazo B — Socios (n=455):
-  Socios activos de Cineplanet fans de anime en Lima. Reclutados por CP
-  desde su base de socios.
-  Instrumento: 10 encuestas paralelas en SurveyMonkey con diseño BIBD
-  (Balanced Incomplete Block Design), asignación aleatoria por reclutador.
-
-
-2. FILTROS APLICADOS
---------------------
-No Socios:
-  - Estado terminal = "complete"
-  - qualified_fan = TRUE (freq >= 3-4/sem OR horas >= 1h/sem)
-  - S2 (última visita CP) = "Más de 6 meses" / "Nunca" / "No recuerdo"
-  - 100% de preguntas obligatorias respondidas
-
-Socios:
-  - response_status = "completed"
-  - Fan filter idéntico al de No Socios
-  - 100% de preguntas obligatorias respondidas (incluye best AND worst en
-    las 12 tareas MaxDiff)
-  - Camino de reducción: 789 crudos → 675 completed → 610 fan → 455 completos
-
-
-3. INSTRUMENTO
---------------
-No Socios (120 columnas):
-  - Screener + demografía (edad, género, zona)
-  - Hogar (pareja, hijos, educación, vivienda, situación laboral, ingreso)
-  - Escalas Reysen Fanship + FANDOM Community (6 items Likert 1-7)
-  - Historia con el anime (nostalgia)
-  - Consumo (plataformas de streaming, cine principal)
-  - 8 categorías de gasto mensual en rangos (S/0 a Más de S/100)
-  - 12 tareas MaxDiff × 4 items sobre 16 conceptos (30 bloques pre-computados,
-    balance perfecto: cada concepto aparece 3 veces por bloque)
-  - Bloque de ANCLA: marcar cuáles de los 16 conceptos le interesarían
-  - Deep-dive del top-3 personal: por cada concepto, 6 preguntas (Juster,
-    con quién iría, tamaño de grupo, incrementalidad, credibilidad,
-    competitive set)
-  - Cierre: opt-in al diario pagado
-
-Socios (24 columnas de análisis + 12 tareas MaxDiff):
-  - Screener + demografía reducida (sin género, sin edad, sin ingreso mensual)
-  - Escalas Reysen Fanship + FANDOM Community (6 items Likert 1-7)
-  - Nostalgia
-  - Consumo (última visita CP, frecuencia y horas de anime, zona)
-  - 8 categorías de gasto mensual (mismas que No Socios)
-  - 12 tareas MaxDiff × 4 items sobre 16 conceptos (BIBD: 10 bloques × 12 tareas)
-  - Hogar (con quiénes vive, edad de hijos)
-  - NO tiene bloque de ancla ni deep-dive del top-3
-
-
-4. RECODIFICACIONES (para análisis, no aplicadas al raw)
---------------------------------------------------------
-Gastos: rango a punto medio
-  S/0 = 0, S/1-25 = 12.5, S/26-50 = 37.5, S/51-75 = 62.5,
-  S/76-100 = 87.5, Más de S/100 = 130 (baseline; sensibilidad probada con
-  100, 125, 130 y rank ordinal — ranking robusto en los 4 escenarios)
-
-Frecuencia anime:
-  Menos 1/sem = 0.5, 1-2/sem = 1.5, 3-4/sem = 3.5, 5-6/sem = 5.5,
-  Todos los días = 7
-
-Horas anime/semana:
-  Menos 1h = 0.5, 1-5h = 3, 5-10h = 7.5, Más de 10h = 12
-
-Nostalgia (era en que se enganchó):
-  infancia = 4, adolescencia = 3, adulto_prepandemia = 2, pandemia = 1
-
-Juster (No Socios): calibración clásica 1966
-  1 → 0.02, 2 → 0.15, 3 → 0.40, 4 → 0.65, 5 → 0.85
-
-
-5. MODELO MAXDIFF (HIERARCHICAL BAYES)
---------------------------------------
-Software: ChoiceModelR 1.3.1 en R
-Especificación: Best + Worst como 2 MNL separados por tarea (X invertida
-                en worst, mismos betas). Prior single-normal.
-MCMC: R = 20000 iteraciones, use = 10000 (burn-in), keep = 10 → 1000 draws
-      efectivos por respondente.
-
-Diferencia clave entre brazos:
-  No Socios incluye el bloque de ancla como 16 pseudo-tareas binarias
-  (concepto vs NONE) con NONE = utilidad 0. Esto ancla la escala al umbral
-  personal: utilidad > 0 = concepto arriba del umbral (le vale la pena al
-  fan). Métrica principal reportada: "% de fans que lo quiere" = fracción
-  con utilidad > 0.
-
-  Socios NO tiene ancla. Las utilidades son relativas. Métrica principal
-  reportada: share of preference = exp(util) / Σ exp(util). Los shares
-  suman 100% entre los 16 conceptos.
-
-Los rankings de conceptos SÍ son comparables ordinalmente entre brazos.
-Las magnitudes NO son directamente comparables.
-
-Validación (idéntica en ambos brazos):
-  - Rankings HB vs conteo bruto best-worst: r = 0.994 (No Socios),
-    r = 0.998 (Socios)
-  - Correlación con % marcados en ancla: r = 0.960 (No Socios; no aplica
-    a Socios)
-  - Reproducibilidad con otra seed: Pearson 0.9997 (No Socios)
-  - Sensitivity dropping RLH < 0.4 (n=145): Pearson 0.9990 (No Socios)
-  - RLH mediana: 0.60 (No Socios), 0.625 (Socios). Random baseline con
-    p = 4: 0.25.
-  - Acceptance rate MCMC: 0.30 (ideal, ambos brazos)
-
-
-6. SEGMENTACIÓN K=4
--------------------
-Metodología idéntica en ambos brazos:
-  K-means K = 4 sobre los promedios de 6 items Reysen/FANDOM (Likert 1-7,
-  sin escalar).
-  seed = 2026, nstart = 50.
-  Ordenamiento de clusters por media global de X (para que 1 = Aislado,
-  4 = Core).
-
-Etiquetas: Fan Aislado / Fan Casual / Fan Intermedio / Fan Core
-
-Distribución No Socios (n=155):
-  Fan Aislado: 8 (5.2%)
-  Fan Casual: 29 (18.7%)
-  Fan Intermedio: 56 (36.1%)
-  Fan Core: 62 (40.0%)
-  Silhouette medio: 0.53
-
-Distribución Socios (n=455):
-  Fan Aislado: 75 (16.5%)
-  Fan Casual: 121 (26.6%)
-  Fan Intermedio: 98 (21.5%)
-  Fan Core: 161 (35.4%)
-  Silhouette medio: 0.46
-
-
-7. ARCHIVOS EN ESTA CARPETA
----------------------------
-
-REPORTES HTML (abrir en el navegador; comienza por index.html):
-
-index.html
-  Portal de reportes. Muestra 3 cards clickeables para No Socios, Socios
-  y Consolidado. Además incluye un selector interactivo del scatter Reysen
-  × FANDOM con 3 vistas (solo No Socios, solo Socios, ambos brazos
-  superpuestos con distinto shape por brazo y mismo color por perfil).
-
-reporte_no_socios.html
-  Resultados No Socios (n=155). 7 secciones: segmentación K=4, gastos,
-  perfil demográfico + validación externa, ranking MaxDiff, cruce por
-  segmento y demografía, deep-dive del top-3 con calculadora Juster
-  interactiva (input N_UNIVERSO + presets 10k/50k/100k/200k), tabla
-  resumen de 16 conceptos.
-
-reporte_socios.html
-  Resultados Socios (n=455). 6 secciones: segmentación K=4, gastos con
-  Kruskal-Wallis, ranking MaxDiff (share of preference), cruce por
-  segmento, caracterización demográfica y validación externa, tabla
-  resumen. Nota metodológica sobre sensibilidad al tope S/130 colapsada.
-
-reporte_consolidado.html
-  Vista comparativa lado a lado. Cruce MaxDiff × tipos de fan con
-  heatmaps de ambos brazos, ranking comparado, gastos con η² por brazo,
-  concordancia entre brazos por concepto.
-
-
-CSVs DE DATOS (encoding UTF-8, separador coma):
-
-conceptos_16.csv (16 × 2)
-  Catálogo de los 16 conceptos con nombre completo.
-
-no_socios_base.csv (155 × 120)
-  Base cruda completa de No Socios: metadata, screener, hogar, Reysen,
-  gastos, MaxDiff 12 tareas × (shown/best/worst), ancla, top-3, deep-dive,
-  cierre diario.
-
-no_socios_utilidades_hb.csv (155 × 17)
-  Utilidades individuales HB. Columnas: respondent_id + C01..C18.
-  Utilidad ANCLADA al umbral personal: utilidad > 0 = concepto arriba
-  del umbral.
-
-no_socios_segmentos.csv (155 × 11)
-  Segmentos K=4 (columna c4: C4_1..C4_4) más variables derivadas
-  (score_reysen, score_fandom, freq_num, horas_num, gasto_total,
-  nostalgia_num).
-
-socios_base.csv (455 × 35)
-  Covariables + metadata SM (first_name, email, custom_value, timestamps,
-  IP, collector_id, response_status). Sin ancla ni deep-dive (por diseño
-  del instrumento SM).
-
-socios_maxdiff_long.csv (5460 × 6)
-  Choice data long-format = 455 × 12 tareas. Columnas: respondent_id,
-  bloque, task, shown, best, worst.
-
-socios_utilidades_hb.csv (455 × 17)
-  Utilidades individuales HB. Columnas: respondent_id + C01..C18.
-  Utilidad RELATIVA (sin ancla). Interpretar solo ordinalmente o vía
-  share of preference.
-
-socios_segmentos.csv (455 × 6)
-  Segmentos K=4 con etiquetas Fan Aislado/Casual/Intermedio/Core.
-
-
-8. LLAVES PARA UNIR CSVs
-------------------------
-No Socios:
-  Entre no_socios_base y no_socios_utilidades_hb: respondent_id (UUID Shiny).
-  Entre no_socios_base y no_socios_segmentos: dni (normalizado con
-  strip leading zeros porque los CSVs lo leen como número).
-
-Socios:
-  Entre todos los CSVs de Socios: respondent_id (12+ dígitos SM).
-</pre>
+<h2>1. Universo y reclutamiento</h2>
+<p class="sub">Dos brazos paralelos con universos distintos y plataformas de encuesta diferentes.</p>
+<div class="grid-2">
+  <div class="brazo-card ns">
+    <h3>Brazo A — No Socios (n=155)</h3>
+    <ul>
+      <li><b>Universo</b>: fans de anime en Lima que NO visitaron Cineplanet en los últimos 6 meses (o nunca)</li>
+      <li><b>Reclutamiento</b>: canales digitales LVL</li>
+      <li><b>Plataforma</b>: R Shiny custom (surveylvl.shinyapps.io)</li>
+      <li><b>Diseño</b>: 30 bloques MaxDiff pre-computados, asignación aleatoria</li>
+    </ul>
+  </div>
+  <div class="brazo-card sc">
+    <h3>Brazo B — Socios (n=455)</h3>
+    <ul>
+      <li><b>Universo</b>: socios activos de Cineplanet fans de anime en Lima</li>
+      <li><b>Reclutamiento</b>: base de socios CP</li>
+      <li><b>Plataforma</b>: SurveyMonkey (10 encuestas paralelas)</li>
+      <li><b>Diseño</b>: BIBD, 10 bloques × 12 tareas × 4 items</li>
+    </ul>
+  </div>
 </div>
 
-<div class="footer">
-  Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a>
+<h2>2. Filtros aplicados</h2>
+<div class="grid-2">
+  <div class="brazo-card ns">
+    <h3>No Socios</h3>
+    <ul>
+      <li>Estado terminal = "complete"</li>
+      <li>qualified_fan = TRUE (freq ≥ 3-4/sem OR horas ≥ 1h/sem)</li>
+      <li>S2 (última visita CP) = "Más de 6 meses" / "Nunca" / "No recuerdo"</li>
+      <li>100% de preguntas obligatorias respondidas</li>
+    </ul>
+  </div>
+  <div class="brazo-card sc">
+    <h3>Socios</h3>
+    <ul>
+      <li>response_status = "completed"</li>
+      <li>Fan filter idéntico al de No Socios</li>
+      <li>100% de preguntas obligatorias (incluye best AND worst en las 12 tareas MaxDiff)</li>
+      <li>Camino: 789 crudos → 675 completed → 610 fan → 455 completos</li>
+    </ul>
+  </div>
 </div>
 
+<h2>3. Instrumento</h2>
+<div class="grid-2">
+  <div class="brazo-card ns">
+    <h3>No Socios (120 columnas)</h3>
+    <ul>
+      <li>Screener + demografía (edad, género, zona)</li>
+      <li>Hogar (pareja, hijos, educación, vivienda, situación laboral, ingreso)</li>
+      <li>Escalas Reysen Fanship + FANDOM Community (6 items Likert 1-7)</li>
+      <li>Historia con el anime (nostalgia)</li>
+      <li>Consumo (plataformas streaming, cine principal)</li>
+      <li>8 categorías de gasto mensual en rangos</li>
+      <li>12 tareas MaxDiff × 4 items sobre 16 conceptos</li>
+      <li><b>Bloque de ancla</b>: marcar cuáles conceptos le interesarían</li>
+      <li><b>Deep-dive del top-3</b>: por concepto, 6 preguntas (Juster, con quién, tamaño, incrementalidad, credibilidad, competitive set)</li>
+      <li>Cierre: opt-in al diario pagado</li>
+    </ul>
+  </div>
+  <div class="brazo-card sc">
+    <h3>Socios (24 columnas + 12 tareas)</h3>
+    <ul>
+      <li>Screener + demografía reducida (sin género, sin edad, sin ingreso mensual)</li>
+      <li>Escalas Reysen + FANDOM (6 items Likert 1-7)</li>
+      <li>Nostalgia</li>
+      <li>Consumo (última visita CP, frecuencia, horas, zona)</li>
+      <li>8 categorías de gasto mensual (mismas que NS)</li>
+      <li>12 tareas MaxDiff (BIBD)</li>
+      <li>Hogar (con quiénes vive, edad de hijos)</li>
+      <li><b>NO tiene ancla ni deep-dive</b></li>
+    </ul>
+  </div>
+</div>
+
+<h2>4. Recodificaciones para análisis</h2>
+<p class="sub">Aplicadas al análisis, no al raw. Los CSVs contienen los rangos originales.</p>
+
+<h3>Gastos — rango a punto medio</h3>
+<table class="tabla recodif-tabla">
+  <thead><tr><th>Rango</th><th>Valor numérico</th></tr></thead>
+  <tbody>
+    <tr><td>S/0</td><td>0</td></tr>
+    <tr><td>S/1-25</td><td>12.5</td></tr>
+    <tr><td>S/26-50</td><td>37.5</td></tr>
+    <tr><td>S/51-75</td><td>62.5</td></tr>
+    <tr><td>S/76-100</td><td>87.5</td></tr>
+    <tr><td>Más de S/100</td><td>130 (baseline; sensibilidad con 100/125/130/rank ordinal → ranking robusto)</td></tr>
+  </tbody>
+</table>
+
+<h3>Frecuencia y horas de anime</h3>
+<div class="grid-2">
+  <div>
+    <table class="tabla">
+      <thead><tr><th>Frecuencia</th><th>Num</th></tr></thead>
+      <tbody>
+        <tr><td>Menos de 1/sem</td><td>0.5</td></tr>
+        <tr><td>1-2/sem</td><td>1.5</td></tr>
+        <tr><td>3-4/sem</td><td>3.5</td></tr>
+        <tr><td>5-6/sem</td><td>5.5</td></tr>
+        <tr><td>Todos los días</td><td>7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <table class="tabla">
+      <thead><tr><th>Horas/semana</th><th>Num</th></tr></thead>
+      <tbody>
+        <tr><td>Menos 1h</td><td>0.5</td></tr>
+        <tr><td>1-5h</td><td>3</td></tr>
+        <tr><td>5-10h</td><td>7.5</td></tr>
+        <tr><td>Más 10h</td><td>12</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h3>Juster (solo No Socios) — calibración clásica 1966</h3>
+<table class="tabla">
+  <thead><tr><th>Escala verbal</th><th>Prob. calibrada</th></tr></thead>
+  <tbody>
+    <tr><td>1 (No lo haría)</td><td>0.02</td></tr>
+    <tr><td>2 (Baja chance)</td><td>0.15</td></tr>
+    <tr><td>3 (Buena chance)</td><td>0.40</td></tr>
+    <tr><td>4 (Muy probable)</td><td>0.65</td></tr>
+    <tr><td>5 (Definitivamente)</td><td>0.85</td></tr>
+  </tbody>
+</table>
+
+<h2>5. Modelo MaxDiff (Hierarchical Bayes)</h2>
+<div class="metodo"><span class="etiqueta">Especificación técnica</span><b>Software</b>: ChoiceModelR 1.3.1 en R. <br><b>Best + Worst como 2 MNL separados por tarea</b> (X invertida en worst, mismos betas). <br><b>Prior</b>: single-normal. <br><b>MCMC</b>: R = 20000 iteraciones, use = 10000 (burn-in), keep = 10 → 1000 draws efectivos por respondente.</div>
+
+<div class="resultado"><span class="etiqueta">Diferencia clave entre brazos</span><b>No Socios</b> incluye el bloque de ancla como 16 pseudo-tareas binarias (concepto vs NONE) con NONE = utilidad 0. Esto ancla la escala al umbral personal: utilidad &gt; 0 = concepto arriba del umbral (le vale la pena al fan). Métrica principal reportada: <b>% de fans que lo quiere</b> = fracción con utilidad &gt; 0. <br><br><b>Socios</b> NO tiene ancla. Las utilidades son <b>relativas</b>. Métrica principal reportada: <b>share of preference</b> = exp(util) / Σ exp(util). Los shares suman 100% entre los 16 conceptos. <br><br>Los rankings de conceptos SÍ son comparables ordinalmente entre brazos. Las magnitudes NO son directamente comparables.</div>
+
+<div class="resultado"><span class="etiqueta">Validación (idéntica en ambos brazos)</span><ul style='margin:6px 0;'><li>Rankings HB vs conteo bruto best-worst: <b>r = 0.994</b> (No Socios), <b>r = 0.998</b> (Socios)</li><li>Correlación con % marcados en ancla: r = 0.960 (No Socios; no aplica a Socios)</li><li>Reproducibilidad con otra seed: Pearson 0.9997 (No Socios)</li><li>Sensitivity dropping RLH &lt; 0.4 (n=145): Pearson 0.9990 (No Socios)</li><li>RLH mediana: <b>0.60</b> (No Socios), <b>0.625</b> (Socios). Baseline random con p=4: 0.25.</li><li>Acceptance rate MCMC: 0.30 (ideal en ambos brazos)</li></ul></div>
+
+<h2>6. Segmentación K-means K=4</h2>
+<div class="metodo"><span class="etiqueta">Metodología idéntica en ambos brazos</span>K-means K=4 sobre los promedios de 6 items Reysen/FANDOM (Likert 1-7, <b>sin escalar</b>). <br>Seed = 2026, nstart = 50. <br>Ordenamiento de clusters por media global de X (para que 1 = Aislado, 4 = Core). <br>Etiquetas: Fan Aislado / Fan Casual / Fan Intermedio / Fan Core</div>
+
+<div class="grid-2">
+  <div class="brazo-card ns">
+    <h3>Distribución No Socios (n=155)</h3>
+    <table class="tabla">
+      <tbody>
+        <tr><td>Fan Aislado</td><td>8 (5.2%)</td></tr>
+        <tr><td>Fan Casual</td><td>29 (18.7%)</td></tr>
+        <tr><td>Fan Intermedio</td><td>56 (36.1%)</td></tr>
+        <tr><td>Fan Core</td><td>62 (40.0%)</td></tr>
+      </tbody>
+    </table>
+    <p><b>Silhouette medio: 0.53</b></p>
+  </div>
+  <div class="brazo-card sc">
+    <h3>Distribución Socios (n=455)</h3>
+    <table class="tabla">
+      <tbody>
+        <tr><td>Fan Aislado</td><td>75 (16.5%)</td></tr>
+        <tr><td>Fan Casual</td><td>121 (26.6%)</td></tr>
+        <tr><td>Fan Intermedio</td><td>98 (21.5%)</td></tr>
+        <tr><td>Fan Core</td><td>161 (35.4%)</td></tr>
+      </tbody>
+    </table>
+    <p><b>Silhouette medio: 0.46</b></p>
+  </div>
+</div>
+
+<h2>7. Datos disponibles</h2>
+<div class="dato"><span class="etiqueta">CSVs y llaves para unir</span>Los datos crudos están en <code>bases_finales/</code>. Los CSVs son planos, encoding UTF-8, separador coma.<ul style='margin:8px 0;'><li><code>no_socios_base.csv</code> (155 × 120) — base completa</li><li><code>no_socios_utilidades_hb.csv</code> (155 × 17) — utilidades individuales</li><li><code>no_socios_segmentos.csv</code> (155 × 11) — segmentos K=4 + scores</li><li><code>socios_base.csv</code> (455 × 35) — covariables + metadata SM</li><li><code>socios_maxdiff_long.csv</code> (5460 × 6) — choice data long-format</li><li><code>socios_utilidades_hb.csv</code> (455 × 17) — utilidades individuales</li><li><code>socios_segmentos.csv</code> (455 × 6) — segmentos K=4</li><li><code>conceptos_16.csv</code> (16 × 2) — catálogo</li></ul><b>Llaves para join</b>: <code>respondent_id</code> dentro de cada brazo. En No Socios, para unir base con segmentos usar <code>dni</code> normalizado (strip leading zeros).</div>
+
+<div class="footer">Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a></div>
 </body></html>

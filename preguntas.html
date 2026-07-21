@@ -3,320 +3,545 @@
 <meta charset="UTF-8">
 <title>Preguntas de investigación (cuanti → cuali) — Comunidad Anime × Cineplanet</title>
 <style>
-:root { --pri: #8a1538; }
+:root { --pri: #8a1538; --dato: #2e7d32; --result: #1565c0; --metodo: #b08d3a;
+         --neutro: #999; --ns: #8a1538; --sc: #4a9b9b; }
 body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-        max-width: 980px; margin: 32px auto; padding: 0 24px;
-        color: #222; line-height: 1.65; font-size: 15px; background: #fafbfc; }
-.header { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
-          color: white; padding: 20px 28px; border-radius: 10px; margin-bottom: 24px;
-          display: flex; align-items: center; gap: 16px; }
-.header .badge { background: white; color: #8a1538; padding: 6px 14px;
-                  border-radius: 6px; font-weight: 700; font-size: 13px;
-                  text-transform: uppercase; letter-spacing: 0.5px; }
-.header h1 { margin: 0; font-size: 22px; font-weight: 600; color: white; flex: 1; }
+        max-width: 1080px; margin: 0 auto; padding: 24px;
+        color: #222; line-height: 1.55; font-size: 15px; background: #fafbfc; }
 .back { display: inline-block; margin-bottom: 14px; color: #8a1538;
          text-decoration: none; font-size: 13.5px; font-weight: 600; }
 .back:hover { text-decoration: underline; }
-.content { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
-            padding: 28px 36px; }
-h1 { font-size: 26px; color: #8a1538; margin-top: 20px; font-weight: 600; }
-h2 { font-size: 20px; color: #8a1538; margin-top: 30px; padding-bottom: 8px;
-     border-bottom: 2px solid #8a1538; font-weight: 600; }
-h3 { font-size: 16.5px; color: #444; margin-top: 22px; font-weight: 600; }
-h4 { font-size: 14.5px; color: #666; margin-top: 14px; font-weight: 600; }
-p { margin: 10px 0; }
-code { background: #f6f6f6; padding: 1px 5px; border-radius: 3px;
-        font-size: 13px; color: #555; font-family: 'SF Mono', Menlo, monospace; }
-pre { background: #f9f9f9; padding: 14px 18px; border-radius: 4px;
-       overflow-x: auto; font-size: 12.5px; line-height: 1.55;
-       border-left: 3px solid #8a1538; }
-pre code { background: none; padding: 0; }
-table { border-collapse: collapse; margin: 14px 0; font-size: 13.5px; width: 100%; }
-th { background: #f6f6f6; padding: 8px 12px; text-align: left;
-      border-bottom: 2px solid #ccc; font-weight: 600; }
-td { padding: 6px 12px; border-bottom: 1px solid #eee; }
-tr:nth-child(even) td { background: #fafafa; }
-ul, ol { margin: 8px 0; padding-left: 24px; }
-li { margin: 4px 0; }
-blockquote { border-left: 3px solid #ccc; margin: 12px 0; padding: 6px 16px;
-              color: #555; font-style: italic; background: #fafafa; }
-hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
-.txt-embed { background: #f9f9f9; padding: 18px 22px; border-radius: 4px;
-              font-family: 'SF Mono', Menlo, monospace; font-size: 13px;
-              line-height: 1.6; white-space: pre-wrap; overflow-x: auto;
-              border-left: 3px solid #8a1538; margin: 0; }
-.footer { margin-top: 30px; text-align: center; color: #888; font-size: 12.5px; }
+h1 { font-size: 28px; margin: 0 0 8px 0; color: #8a1538; font-weight: 600; }
+h2 { font-size: 22px; margin: 40px 0 10px 0; padding-bottom: 8px;
+      border-bottom: 2px solid #8a1538; font-weight: 600; }
+h3 { font-size: 17px; margin: 22px 0 8px 0; color: #444; font-weight: 600; }
+.sub { color: #555; font-size: 14px; margin: 0 0 24px 0; }
+.hero { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
+         color: white; padding: 24px 32px; border-radius: 10px; margin: 12px 0 28px 0; }
+.hero h1 { color: white; margin: 0 0 8px 0; font-size: 24px; }
+.hero p { font-size: 14.5px; opacity: 0.95; margin: 4px 0; }
+
+/* Bloques por tipo (plantilla v3) */
+.pregunta, .metodo, .dato, .resultado, .conclusion {
+  border-left: 4px solid; padding: 12px 18px; margin: 12px 0; border-radius: 3px;
+  font-size: 14px;
+}
+.pregunta { border-color: var(--neutro); background: #fafafa; color: #444; }
+.metodo { border-color: var(--metodo); background: #f9f4e8; color: #5a4a20; font-size: 13.5px; }
+.dato { border-color: var(--dato); background: #f1f8f2; }
+.resultado { border-color: var(--result); background: #eef4fb; }
+.conclusion { border-color: #8a1538; background: #faf0f3; font-weight: 500; }
+.etiqueta { display: inline-block; font-size: 11px; text-transform: uppercase;
+             letter-spacing: 0.5px; color: #666; margin-bottom: 6px; font-weight: 700;
+             margin-right: 8px; }
+.dato .etiqueta { color: var(--dato); }
+.resultado .etiqueta { color: var(--result); }
+.conclusion .etiqueta { color: #8a1538; }
+.metodo .etiqueta { color: var(--metodo); }
+.pregunta .etiqueta { color: var(--neutro); }
+
+/* Tablas */
+.tabla { border-collapse: collapse; width: 100%; font-size: 13.5px; margin: 12px 0 18px 0; }
+.tabla th { background: #f6f6f6; text-align: left; padding: 8px 12px;
+             border-bottom: 2px solid #ccc; font-weight: 600; }
+.tabla td { padding: 7px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+.tabla tr:nth-child(even) td { background: #fafafa; }
+
+/* Grid de cards comparativas (NS vs SC) */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+@media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+.brazo-card { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+               padding: 18px 22px; }
+.brazo-card.ns { border-top: 4px solid var(--ns); }
+.brazo-card.sc { border-top: 4px solid var(--sc); }
+.brazo-card h3 { margin-top: 0; font-size: 16px; }
+.brazo-card.ns h3 { color: var(--ns); }
+.brazo-card.sc h3 { color: var(--sc); }
+.brazo-card ul { margin: 8px 0 0 0; padding-left: 20px; font-size: 13.5px; }
+.brazo-card li { margin: 5px 0; }
+
+/* Tags de estado */
+.tag-ok { background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 3px;
+           font-size: 11.5px; font-weight: 600; }
+.tag-warn { background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 3px;
+             font-size: 11.5px; font-weight: 600; }
+.tag-alta { background: #f8d7da; color: #721c24; padding: 2px 8px; border-radius: 3px;
+             font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.tag-media { background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 3px;
+              font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.tag-baja { background: #d1ecf1; color: #0c5460; padding: 2px 8px; border-radius: 3px;
+             font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+/* Cascada de validación */
+.cascada { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.cascada .nivel { background: white; border: 1px solid #e0e0e0; border-radius: 8px;
+                    padding: 16px 20px; position: relative; }
+.cascada .nivel h3 { margin: 0 0 6px 0; }
+.cascada .nivel.n3 { border-left: 4px solid #6b1030; }
+.cascada .nivel.n2 { border-left: 4px solid #8a1538; }
+.cascada .nivel.n1 { border-left: 4px solid var(--result); }
+.cascada .flecha { text-align: center; color: #8a1538; font-size: 22px; margin: -4px 0; }
+.cascada .nivel-num { display: inline-block; background: #8a1538; color: white;
+                        padding: 2px 8px; border-radius: 3px; font-size: 11px;
+                        font-weight: 700; margin-right: 8px; }
+
+/* Cards de pregunta de investigación */
+.qcard { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+          margin: 14px 0; overflow: hidden; }
+.qcard-header { padding: 12px 18px; background: #fafafa; border-bottom: 1px solid #eee;
+                 display: flex; align-items: center; gap: 10px; }
+.qcard-header .num { background: #8a1538; color: white; padding: 3px 10px;
+                       border-radius: 4px; font-size: 12px; font-weight: 700; }
+.qcard-header .titulo { flex: 1; font-weight: 600; font-size: 14.5px; }
+.qcard-body { padding: 14px 18px; }
+.qcard-body h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+                   color: #666; margin: 10px 0 4px 0; }
+.qcard-body p { margin: 4px 0; font-size: 13.5px; }
+.qcard-body ul { margin: 4px 0; padding-left: 20px; font-size: 13.5px; }
+
+/* Tema (agrupador de qcards) */
+.tema { margin: 30px 0 20px 0; }
+.tema h2 { display: inline-block; padding: 8px 14px; background: #8a1538;
+            color: white; border-radius: 6px; border: none; margin: 0 0 10px 0;
+            font-size: 15px; }
+
+/* Filas de gastos por perfil */
+.recodif-tabla { font-family: 'SF Mono', Menlo, monospace; font-size: 12.5px; }
+
+.footer { margin-top: 44px; padding-top: 14px; border-top: 1px solid #e0e0e0;
+           color: #666; font-size: 12px; text-align: center; }
+code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
 </style>
 </head><body>
-
 <a class="back" href="index.html">← Volver al portal</a>
 
-<div class="header">
-  <span class="badge">🔬 Cuanti → Cuali</span>
-  <h1>Preguntas de investigación (cuanti → cuali)</h1>
+<div class="hero">
+  <h1>Del cuanti al cuali: 18 preguntas de investigación</h1>
+  <p>Los hallazgos cuantitativos son descriptivos (los datos dicen 'esto pasa'). El diario cualitativo puede responder los explicativos (por qué pasa, qué lo motiva).</p>
+  <p><b>Fuente cuali</b>: diario WhatsApp, 32 participantes, 5 días, cohorte activa (arrancó 2026-07-11).</p>
 </div>
 
-<div class="content">
-<h1>Del cuanti al cuali: preguntas de investigación derivadas de los hallazgos</h1>
-<p><strong>Fecha</strong>: 2026-07-21
-<strong>Fuente cuanti</strong>: 610 fans encuestados (155 No Socios + 455 Socios), reportes en <code>bases_finales/</code>
-<strong>Fuente cuali</strong>: diario WhatsApp, 32 participantes, 5 días, arrancó 2026-07-11 (cohorte activa)</p>
-<hr />
 <h2>Cómo leer este documento</h2>
-<p>Los hallazgos cuantitativos son <strong>descriptivos</strong> (los datos dicen "esto pasa"). El diario cualitativo puede responder <strong>explicativos</strong> (por qué pasa, qué lo motiva). Este documento sistematiza esa transición.</p>
-<p>Cada bloque tiene:</p>
-<ul>
-<li><strong>Dato</strong>: el número que sale de la cuanti</li>
-<li><strong>Fuente</strong>: dónde verlo en los reportes</li>
-<li><strong>Lo que no explica</strong>: qué queda abierto</li>
-<li><strong>Preguntas de investigación</strong>: qué explorar cualitativamente</li>
-<li><strong>En el diario</strong>: cómo aparece o puede aparecer en los datos que estamos recolectando</li>
-<li><strong>Prioridad</strong>: alta / media / baja</li>
-</ul>
-<hr />
-<h2>Tema A — La decisión de asistir al cine anime</h2>
-<h3>1. Cine anime es la única categoría de gasto que NO discrimina tipos de fan (base compartida)</h3>
-<ul>
-<li><strong>Dato</strong>: en ambos brazos, cine anime no significativo (η²=0.023 No Socios / 0.013 Socios; p&gt;0.05). Todos los tipos gastan lo mismo aquí (~S/60-80/mes), aun cuando difieren en TODAS las otras categorías (eventos, merch, streaming, etc.).</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 2, Reporte Socios Sec 2, Consolidado Sec 3.</li>
-<li><strong>Lo que no explica</strong>: si todos gastan igual, ¿qué determina cuánto van al cine anime?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Cuál es la fricción principal para ir al cine anime (oferta escasa, precio, horarios, acompañantes)?</li>
-<li>¿Son "consumers pasivos" (van si hay algo) o "buscadores activos" (revisan cartelera)?</li>
-<li>¿La decisión de ir es individual o depende de disponibilidad de acompañantes?</li>
-<li><strong>En el diario</strong>: los participantes registran durante 5 días cada oportunidad "posible visita al cine" descartada y por qué. Cada uno genera ~3-5 puntos de decisión, con contexto rico.</li>
-<li><strong>Prioridad</strong>: 🔴 alta</li>
-</ul>
-<h3>2. Top-1 conceptual cambia radicalmente entre brazos</h3>
-<ul>
-<li><strong>Dato</strong>: en No Socios lidera <strong>Viajes y experiencias VIP como premio</strong> (61% arriba del umbral). En Socios lidera <strong>Clásicos anime en pantalla grande</strong> (22% share). Viajes VIP baja al #3 en Socios.</li>
-<li><strong>Fuente</strong>: Consolidado Sec 4, Reporte No Socios Sec 4, Reporte Socios Sec 3.</li>
-<li><strong>Lo que no explica</strong>: ¿por qué el no-socio busca "premio extraordinario" mientras el socio busca "formato tradicional bien ejecutado"?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>Para el no-socio, ¿el atractivo de "viaje VIP" es aspiracional o transaccional (querer ganar algo caro sin pagarlo)?</li>
-<li>Para el socio, ¿"Clásicos" es nostalgia, ritual del cine, o mejor calidad de proyección?</li>
-<li>¿El socio ya viene por el cine y valora lo que funciona; el no-socio necesita un disparador excepcional para venir?</li>
-<li><strong>En el diario</strong>: pregunta del día 3 en el guion actual explora "qué tendría que pasar para que fueras al cine". Comparar respuestas de socios vs no-socios en la cohorte.</li>
-<li><strong>Prioridad</strong>: 🔴 alta</li>
-</ul>
-<hr />
-<h2>Tema B — Perfiles atípicos</h2>
-<h3>3. Fan Aislado es 3× más grande en Socios (16.5%) que en No Socios (5.2%)</h3>
-<ul>
-<li><strong>Dato</strong>: hay una masa de socios de CP fans de anime que <strong>no se identifican fuertemente como fans</strong> (Reysen 3.97) y <strong>no participan de la comunidad</strong> (FANDOM 2.20).</li>
-<li><strong>Fuente</strong>: Consolidado Sec 2, Reporte Socios Sec 1.</li>
-<li><strong>Lo que no explica</strong>: ¿por qué compraron la membresía si no son fans intensos? ¿son "socios por conveniencia" que casualmente consumen anime?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Cuál es la ruta de entrada al fandom del Fan Aislado (pareja fan, amigos, algoritmo de streaming)?</li>
-<li>¿Ver anime les parece "guilty pleasure", consumo normal sin identificación, o compañía de otro fan?</li>
-<li>¿La membresía CP la usan para anime, para otras películas, o para socializar?</li>
-<li>¿Qué diferencia a un Fan Aislado No Socio (5%) de uno Socio (16.5%) más allá de la membresía?</li>
-<li><strong>En el diario</strong>: identificar en la cohorte a participantes con perfil Fan Aislado (Reysen bajo + FANDOM bajo + freq/horas altas). Codificar sus 5 días buscando patrones: "¿con quién ve anime?", "¿cuándo dice 'soy fan'?".</li>
-<li><strong>Prioridad</strong>: 🔴 alta</li>
-</ul>
-<h3>4. Fan Intermedio Socios es "solitario" (Reysen 6.61 / FANDOM 3.79)</h3>
-<ul>
-<li><strong>Dato</strong>: en Socios aparece un perfil con <strong>identidad como fan muy alta pero baja participación comunitaria</strong>. En No Socios el mismo perfil es balanceado (6.30 / 5.74).</li>
-<li><strong>Fuente</strong>: Consolidado Sec 2, Reporte Socios Sec 1.</li>
-<li><strong>Lo que no explica</strong>: ¿por qué un fan intenso individualmente no conecta con la comunidad?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Es un fan intenso "por dentro" (consumo alto, colección) pero no participa por elección o por falta de acceso?</li>
-<li>¿Le atrae contenido más solitario (streaming) o le atraería conectarse si hubiera oportunidad?</li>
-<li>¿Existe estigma social (edad, entorno laboral) que lo hace no querer identificarse como parte de la comunidad?</li>
-<li><strong>En el diario</strong>: mapear el consumo solitario vs social. Preguntar en día 4: "¿con quién compartes que te gusta el anime?" y observar quiénes responden "nadie" o "solo online".</li>
-<li><strong>Prioridad</strong>: 🟡 media</li>
-</ul>
-<h3>5. Silhouette Socios más bajo (0.46 vs 0.53 No Socios)</h3>
-<ul>
-<li><strong>Dato</strong>: en Socios los 4 tipos de fan tienen <strong>fronteras más difusas</strong>. La solución de segmentación es menos limpia.</li>
-<li><strong>Fuente</strong>: Consolidado Sec 2 conclusión, Reporte Socios Sec 1.</li>
-<li><strong>Lo que no explica</strong>: ¿por qué en Socios hay más ambigüedad? ¿existen sub-perfiles no capturados?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Hay perfiles intermedios (fan-consumidor, fan-coleccionista, fan-social) que la K-means aplasta en 4 categorías?</li>
-<li>¿La membresía CP atrae un abanico de motivaciones que no calzan con las 4 categorías clásicas?</li>
-<li><strong>En el diario</strong>: análisis inductivo desde las respuestas cuali para identificar posibles sub-perfiles emergentes.</li>
-<li><strong>Prioridad</strong>: 🟢 baja</li>
-</ul>
-<hr />
-<h2>Tema C — Conceptos con lecturas específicas</h2>
-<h3>6. Festival Cineplanet × Crunchyroll es el único top-2 sin ambigüedad de universo</h3>
-<ul>
-<li><strong>Dato</strong>: #2 en No Socios (48% arriba del umbral) y #2 en Socios (18% share). Único concepto con consenso amplio en ambos brazos.</li>
-<li><strong>Fuente</strong>: Consolidado Sec 4.</li>
-<li><strong>Lo que no explica</strong>: ¿qué le gusta específicamente al fan del concepto "festival"? ¿la marca Crunchyroll, la palabra "festival", la promesa de comunidad?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Qué imagina el fan cuando piensa en "Festival CP × Crunchyroll"? (paneles, proyecciones, cosplay, merch, todo)</li>
-<li>¿Iría como consumidor pasivo (a ver) o activo (a participar, cosplay, competencias)?</li>
-<li>¿La alianza CP × Crunchyroll suma credibilidad o es indiferente?</li>
-<li><strong>En el diario</strong>: pregunta abierta día 4 sobre "eventos anime a los que has ido o quisieras ir". Codificar menciones a marca vs formato.</li>
-<li><strong>Prioridad</strong>: 🟡 media</li>
-</ul>
-<h3>7. Viajes VIP: 55% de los evaluadores lo verían como visita "nueva" al cine</h3>
-<ul>
-<li><strong>Dato</strong>: en el deep-dive de No Socios, Viajes VIP tiene 54% de "incremental" declarado (visita nueva, no sustitución). El % más alto del top-5.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 6 (deep-dive).</li>
-<li><strong>Lo que no explica</strong>: ¿por qué es "más incremental" que otros conceptos? ¿es porque es aspiracional y no compite con "ir al cine este sábado"?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿El fan concibe "Viajes VIP" como una compra distinta a "ir al cine" (más cerca de un sorteo o programa de lealtad)?</li>
-<li>Si Cineplanet ofreciera un "Viaje VIP" para el próximo mes, ¿cómo lo tratarían en su presupuesto?</li>
-<li><strong>En el diario</strong>: preguntar por productos de fidelización/premios en general y observar si los tratan como "visita al cine" o categoría separada.</li>
-<li><strong>Prioridad</strong>: 🟢 baja</li>
-</ul>
-<h3>8. Membresía Socio Anime CP pierde relevancia en Socios (10.9% share vs 41% en NS)</h3>
-<ul>
-<li><strong>Dato</strong>: la "membresía anime" atrae al no-socio (que buscaría entrar a un programa exclusivo) pero interesa mucho menos al que ya es socio general (10.9% share, top #4).</li>
-<li><strong>Fuente</strong>: Consolidado Sec 4, Reporte Socios Sec 3.</li>
-<li><strong>Lo que no explica</strong>: ¿por qué el socio actual no valora una segunda membresía específica de anime?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿El socio percibe la membresía CP como "suficiente" para su interés anime?</li>
-<li>¿Prefiere beneficios anime dentro de la membresía existente en vez de una separada?</li>
-<li>Para el no-socio, ¿la "Membresía Anime" es una puerta de entrada más suave que la membresía general?</li>
-<li><strong>En el diario</strong>: preguntar por membresías/programas de lealtad activos y cuáles usan efectivamente.</li>
-<li><strong>Prioridad</strong>: 🟡 media</li>
-</ul>
-<h3>9. Conciertos anime tienen credibilidad más alta (89% top-2 box) pero solo #5 en demanda</h3>
-<ul>
-<li><strong>Dato</strong>: en el deep-dive de No Socios, "Conciertos de música anime en vivo" es el concepto que más fans creen que "puede existir en Lima 2026" (89% dijo 4-5 en credibilidad). Sin embargo solo el 36% lo quiere.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 6.</li>
-<li><strong>Lo que no explica</strong>: si es creíble, ¿por qué no genera demanda?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿La barrera es precio (concierto es caro), formato (no lo asocian a cine) o audiencia (es para hardcore)?</li>
-<li>¿El fan asocia "conciertos" a mercado japonés (Vocaloid, JAM Project) o a covers locales?</li>
-<li><strong>En el diario</strong>: preguntar por experiencias de conciertos anime asistidos o considerados.</li>
-<li><strong>Prioridad</strong>: 🟢 baja</li>
-</ul>
-<h3>10. Playlist y Charlas: no funcionan en NINGÚN brazo</h3>
-<ul>
-<li><strong>Dato</strong>: Playlist anime en el cine y Charlas y paneles del anime quedan en el bottom-3 en ambos brazos.</li>
-<li><strong>Fuente</strong>: Consolidado Sec 4.</li>
-<li><strong>Lo que no explica</strong>: ¿por qué no atraen? ¿es el concepto (no lo entienden) o la ejecución imaginada (no le ven valor)?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿"Playlist" se percibe como fondo ambiental (poco valor) vs. experiencia distintiva?</li>
-<li>¿"Charlas y paneles" se asocia a fandom académico/hardcore (excluyente)?</li>
-<li><strong>En el diario</strong>: pregunta día 5 sobre "qué haría un cine anime especial además de proyectar películas". Ver si estos formatos aparecen espontáneamente.</li>
-<li><strong>Prioridad</strong>: 🟢 baja</li>
-</ul>
-<hr />
-<h2>Tema D — Sustitución y volumen</h2>
-<h3>11. Sustitución cruzada no está capturada en el %incremental del Juster</h3>
-<ul>
-<li><strong>Dato</strong>: el %incremental del deep-dive captura "sí, iría adicionalmente vs sustituiría mi visita a Cineplanet". Pero NO distingue si el fan estaría sustituyendo una visita a <strong>otro cine</strong> (Cinépolis, Cinemark) — que también es ganancia para CP.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 6, disclaimer explícito en la calculadora Juster.</li>
-<li><strong>Lo que no explica</strong>: si Cineplanet ofrece un concepto anime único, ¿cuántos fans lo tratarían como "cine específico CP" vs "cualquier cine"?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿El fan tiene lealtad a Cineplanet como marca o va al cine más cercano/barato?</li>
-<li>Si el concepto atractivo estuviera solo en otro cine, ¿el fan cambiaría de marca?</li>
-<li><strong>En el diario</strong>: preguntar por la última visita al cine y por qué eligió ese cine (marca vs. ubicación vs. cartelera).</li>
-<li><strong>Prioridad</strong>: 🔴 alta (para la interpretación de volumen)</li>
-</ul>
-<h3>12. Volumen incremental depende de tamaño de grupo (autoreportado)</h3>
-<ul>
-<li><strong>Dato</strong>: la fórmula del volumen incluye <code>group_size</code> (autoreportado, media 3-5 personas por concepto). Este multiplicador es sensible a extremos.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 6 método.</li>
-<li><strong>Lo que no explica</strong>: ¿el fan realmente asistiría con 4-5 personas, o dice eso pensando en el ideal social?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿La decisión de ir al cine anime la toma el fan solo o con acompañantes?</li>
-<li>¿Qué fricciones aparecen para coordinar visitas grupales?</li>
-<li><strong>En el diario</strong>: registrar visitas reales al cine durante los 5 días y con quién fueron efectivamente.</li>
-<li><strong>Prioridad</strong>: 🟡 media</li>
-</ul>
-<hr />
-<h2>Tema E — Contexto social del fandom</h2>
-<h3>13. "Con quién iría" varía mucho por concepto (deep-dive NS)</h3>
-<ul>
-<li><strong>Dato</strong>: para Festival CP × Crunchy, 56% marca "amigos anime" y 31% "pareja". Para Charlas y paneles (n=3), 100% marca "pareja". Los patrones son muy distintos entre conceptos.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 6.</li>
-<li><strong>Lo que no explica</strong>: ¿el fan tiene círculos sociales separados (amigos anime vs pareja) que activa según contexto?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Hay conceptos "de citas" vs "de comunidad" claramente diferenciados?</li>
-<li>¿Los amigos anime son físicos o mayoritariamente online?</li>
-<li><strong>En el diario</strong>: pregunta día 2 sobre círculos sociales activos alrededor del anime.</li>
-<li><strong>Prioridad</strong>: 🟡 media</li>
-</ul>
-<h3>14. Zona Lima: Callao valora más "Museo temático" (η² pequeño pero significativo)</h3>
-<ul>
-<li><strong>Dato</strong>: en el cruce demográfico de No Socios, Callao aparece como zona con mayor demanda por Museo temático.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 5 cruces demográficos.</li>
-<li><strong>Lo que no explica</strong>: ¿Callao tiene menor oferta de experiencias culturales/museos que otras zonas?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿La zona geográfica influye por acceso a alternativas o por perfil socioeconómico?</li>
-<li><strong>En el diario</strong>: no directamente. Analizar post-hoc si algún participante de Callao aporta contexto.</li>
-<li><strong>Prioridad</strong>: 🟢 baja</li>
-</ul>
-<h3>15. Género: mujeres valoran más Viajes VIP y Conciertos (Consolidado / NS)</h3>
-<ul>
-<li><strong>Dato</strong>: en No Socios, Conciertos difiere por género (η²=0.09, p&lt;0.001). Mujeres 45.2% arriba del umbral vs hombres 25.4%.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 5 cruces demográficos.</li>
-<li><strong>Lo que no explica</strong>: ¿es artefacto del fandom (Vocaloid/K-Pop más femenino) o preferencia genuina por experiencia musical?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Las mujeres del fandom anime tienen preferencias distintas por tipo de experiencia (más social/musical) vs hombres (más coleccionismo/técnica)?</li>
-<li><strong>En el diario</strong>: si la cohorte tiene balance de género, comparar respuestas cualitativas.</li>
-<li><strong>Prioridad</strong>: 🟡 media</li>
-</ul>
-<hr />
-<h2>Tema F — Plataformas y comportamiento de consumo</h2>
-<h3>16. Usuarios de Crunchyroll valoran mucho más el Festival CP × Crunchy</h3>
-<ul>
-<li><strong>Dato</strong>: en No Socios, los usuarios de Crunchyroll son 24 pp más propensos a querer el Festival CP × Crunchy que los no usuarios.</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 5, Consolidado (implícito).</li>
-<li><strong>Lo que no explica</strong>: ¿es afinidad de marca real o simplemente el fan más comprometido con anime usa Crunchyroll Y quiere más experiencias?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿La marca Crunchyroll aporta valor al concepto o es proxy de "fan más intenso"?</li>
-<li><strong>En el diario</strong>: preguntar por marcas de streaming preferidas y por qué.</li>
-<li><strong>Prioridad</strong>: 🟢 baja</li>
-</ul>
-<h3>17. Fansubs son un canal declarado por ~26% de los No Socios</h3>
-<ul>
-<li><strong>Dato</strong>: 41/155 fans (26%) reportan ver anime en fansubs (piratería).</li>
-<li><strong>Fuente</strong>: Reporte No Socios Sec 5 distribución de plataformas.</li>
-<li><strong>Lo que no explica</strong>: ¿es tema de precio, disponibilidad, o hábito heredado?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Los fans de fansubs pagarían por experiencias premium en el cine si el streaming es gratis en fansubs?</li>
-<li>¿Es el fandom más hardcore (que Crunchyroll no basta) o el más económico?</li>
-<li><strong>En el diario</strong>: preguntar por relación con "pagar por anime" (streaming, cine, merch) y prioridades.</li>
-<li><strong>Prioridad</strong>: 🟡 media</li>
-</ul>
-<hr />
-<h2>Tema G — Validación externa (métodos)</h2>
-<h3>18. Frecuencia de anime es lo más asociado al tipo de fan en Socios (Cramer V = 0.22)</h3>
-<ul>
-<li><strong>Dato</strong>: aunque la segmentación se hizo sobre Reysen/FANDOM, la frecuencia de ver anime (variable externa) es la que más se asocia al perfil resultante.</li>
-<li><strong>Fuente</strong>: Reporte Socios Sec 5 (caracterización + validación externa).</li>
-<li><strong>Lo que no explica</strong>: si "cuánto ven" predice el perfil, ¿por qué no usar directamente frecuencia como criterio de segmentación operativa (más simple)?</li>
-<li><strong>Preguntas de investigación</strong>:</li>
-<li>¿Se puede predecir el tipo de fan solo con frecuencia + horas de anime, sin las 6 preguntas Reysen/FANDOM?</li>
-<li><strong>Diario</strong>: N/A (es tema metodológico, no cualitativo).</li>
-<li><strong>Prioridad</strong>: 🟢 baja (interna al análisis)</li>
-</ul>
-<hr />
-<h2>Priorización de exploración cualitativa</h2>
-<p>Para el análisis del diario ya en campo (cohorte 2026-07-11 a 2026-07-15):</p>
-<p><strong>Prioridad alta</strong> (impactan interpretación del cuanti y decisiones de negocio):
-- Hallazgo 1: fricciones para ir al cine anime (base compartida)
-- Hallazgo 2: por qué top-1 difiere entre brazos (motivación diferencial)
-- Hallazgo 3: qué es el Fan Aislado de Socios (perfil sorprendente)
-- Hallazgo 11: sustitución cruzada (cambia el business case)</p>
-<p><strong>Prioridad media</strong> (aportan matiz interpretativo):
-- Hallazgos 4, 6, 8, 12, 13, 15, 17</p>
-<p><strong>Prioridad baja</strong> (post-hoc si hay ancho de banda):
-- Hallazgos 5, 7, 9, 10, 14, 16, 18</p>
-<hr />
+<p class="sub">Los 18 hallazgos están organizados en 7 temáticas. Cada uno tiene: el dato cuanti, lo que no explica, las preguntas abiertas y cómo el diario puede responderlas. Filtrar mentalmente por prioridad para enfocar el análisis cuali.</p>
+
+<h3>Legenda</h3>
+<p>
+  <span class="tag-alta">alta</span> Impacta interpretación del cuanti y decisiones de negocio &nbsp;&nbsp;
+  <span class="tag-media">media</span> Aporta matiz interpretativo &nbsp;&nbsp;
+  <span class="tag-baja">baja</span> Post-hoc si hay ancho de banda
+</p>
+
+<div class="tema"><h2>🎬 Tema A — La decisión de asistir al cine anime</h2>
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H1</span>
+    <span class="titulo">Cine anime = base compartida (no discrimina tipos de fan)</span>
+    <span class="tag-alta">alta</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>En ambos brazos: gasto_cine η²≈0.023 (NS) y 0.013 (SC), p&gt;0.05. Todos gastan lo mismo (~S/60-80/mes).</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 2, Reporte SC Sec 2, Consolidado Sec 3</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>Si todos gastan igual, ¿qué determina cuánto van al cine anime?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Cuál es la fricción principal (oferta escasa, precio, horarios, acompañantes)?</li><li>¿Son consumers pasivos o buscadores activos?</li><li>¿La decisión de ir es individual o depende de acompañantes?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>El diario ya registra por 5 días cada oportunidad 'posible visita al cine' descartada y por qué.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H2</span>
+    <span class="titulo">Top-1 conceptual cambia radicalmente entre brazos</span>
+    <span class="tag-alta">alta</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>NS: Viajes y experiencias VIP como premio (61% arriba del umbral). SC: Clásicos anime en pantalla grande (22% share). Viajes VIP baja al #3 en SC.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Consolidado Sec 4, Reporte NS Sec 4, Reporte SC Sec 3</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Por qué el no-socio busca 'premio extraordinario' y el socio busca 'formato tradicional bien ejecutado'?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>Para NS: ¿'viaje VIP' es aspiracional o transaccional?</li><li>Para SC: ¿'Clásicos' es nostalgia, ritual del cine, o mejor calidad de proyección?</li><li>¿El socio ya viene por el cine y valora lo que funciona; el no-socio necesita disparador excepcional?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Comparar respuestas de socios vs no-socios en la pregunta del día 3 sobre 'qué tendría que pasar para ir al cine este fin de semana'.</p>
+  </div>
+</div>
+</div><div class="tema"><h2>👥 Tema B — Perfiles atípicos</h2>
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H3</span>
+    <span class="titulo">Fan Aislado 3× más grande en Socios (16.5% vs 5.2%)</span>
+    <span class="tag-alta">alta</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>Socios: 75/455 = 16.5%. No Socios: 8/155 = 5.2% (IC95% [2.7%, 10.0%]).</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Consolidado Sec 2, Reporte SC Sec 1</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Por qué compraron la membresía si no son fans intensos?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Cuál es la ruta de entrada al fandom (pareja fan, amigos, algoritmo)?</li><li>¿Ver anime les parece 'guilty pleasure' o consumo normal sin identificación?</li><li>¿La membresía CP la usan para anime, otras películas o socializar?</li><li>¿Qué diferencia a un Fan Aislado NS (5%) de uno Socio (16.5%) más allá de la membresía?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Identificar participantes con perfil Fan Aislado en la cohorte. Codificar 5 días buscando patrones.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H4</span>
+    <span class="titulo">Fan Intermedio Socios es 'solitario' (Reysen 6.61 / FANDOM 3.79)</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>En SC aparece un perfil con identidad como fan muy alta pero baja participación comunitaria. En NS el mismo perfil es balanceado (6.30 / 5.74).</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Consolidado Sec 2, Reporte SC Sec 1</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Por qué un fan intenso individualmente no conecta con la comunidad?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Es fan intenso por dentro pero no participa por elección o por falta de acceso?</li><li>¿Le atrae contenido solitario o le atraería conectarse si hubiera oportunidad?</li><li>¿Existe estigma social que lo hace no querer identificarse?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Mapear consumo solitario vs social. Preguntar día 4: '¿con quién compartes que te gusta el anime?'</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H5</span>
+    <span class="titulo">Silhouette Socios más bajo (0.46 vs 0.53 NS)</span>
+    <span class="tag-baja">baja</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>En SC los 4 tipos tienen fronteras más difusas. La solución de segmentación es menos limpia.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Consolidado Sec 2, Reporte SC Sec 1</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Existen sub-perfiles no capturados?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Hay perfiles intermedios (fan-consumidor, fan-coleccionista, fan-social) que la K-means aplasta?</li><li>¿La membresía atrae un abanico de motivaciones que no calzan con las 4 categorías?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Análisis inductivo desde las respuestas cuali para identificar sub-perfiles emergentes.</p>
+  </div>
+</div>
+</div><div class="tema"><h2>🎯 Tema C — Conceptos con lecturas específicas</h2>
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H6</span>
+    <span class="titulo">Festival CP × Crunchyroll es top-2 en ambos brazos</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>NS: 48% arriba del umbral, #2. SC: 18% share, #2. Único concepto con consenso amplio.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Consolidado Sec 4</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Qué le gusta específicamente al fan del concepto 'festival'?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Qué imagina cuando piensa en 'Festival CP × Crunchy' (paneles, proyecciones, cosplay, merch)?</li><li>¿Iría como consumidor pasivo o activo (cosplay, competencias)?</li><li>¿La alianza suma credibilidad o es indiferente?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Pregunta abierta día 4 sobre 'eventos anime a los que has ido o quisieras ir'. Codificar menciones a marca vs formato.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H7</span>
+    <span class="titulo">Viajes VIP: 55% de evaluadores lo verían como visita nueva</span>
+    <span class="tag-baja">baja</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>En deep-dive NS, C08 tiene 54% de 'incremental' declarado. El % más alto del top-5.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 6 (deep-dive)</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Por qué es 'más incremental' que otros conceptos?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Es porque es aspiracional y no compite con 'ir al cine este sábado'?</li><li>¿El fan lo concibe como compra distinta (más cerca de sorteo o programa de lealtad)?</li><li>Si CP ofreciera un 'Viaje VIP' el próximo mes, ¿cómo lo tratarían en su presupuesto?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Preguntar por productos de fidelización/premios y observar si los tratan como visita al cine.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H8</span>
+    <span class="titulo">Membresía Socio Anime CP pierde relevancia en Socios (10.9% vs 41%)</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>SC: 10.9% share (top #4). NS: 41% arriba del umbral (top #4).</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Consolidado Sec 4, Reporte SC Sec 3</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Por qué el socio actual no valora una segunda membresía específica de anime?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿El socio percibe la membresía general como 'suficiente' para su interés anime?</li><li>¿Prefiere beneficios anime dentro de la membresía existente vs una separada?</li><li>Para NS: ¿la 'Membresía Anime' es puerta de entrada más suave que la general?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Preguntar por membresías/programas de lealtad activos y cuáles usan.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H9</span>
+    <span class="titulo">Conciertos anime: 89% credibilidad pero solo #5 en demanda (NS)</span>
+    <span class="tag-baja">baja</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>En deep-dive NS: 89% believ_top2 (más alto del top-3). Pero solo 36% arriba del umbral.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 6</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>Si es creíble, ¿por qué no genera demanda?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿La barrera es precio (concierto es caro), formato (no lo asocian a cine) o audiencia (hardcore)?</li><li>¿El fan asocia 'conciertos' a mercado japonés o covers locales?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Preguntar por experiencias de conciertos anime asistidos o considerados.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H10</span>
+    <span class="titulo">Playlist y Charlas: no funcionan en NINGÚN brazo</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>Playlist anime en cine y Charlas y paneles quedan en bottom-3 en ambos brazos.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Consolidado Sec 4</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Por qué no atraen? ¿es el concepto o la ejecución imaginada?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿'Playlist' se percibe como fondo ambiental (poco valor) vs experiencia distintiva?</li><li>¿'Charlas y paneles' se asocia a fandom académico/hardcore (excluyente)?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Pregunta día 5 sobre 'qué haría un cine anime especial'. Ver si estos formatos aparecen espontáneamente.</p>
+  </div>
+</div>
+</div><div class="tema"><h2>💰 Tema D — Sustitución y volumen</h2>
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H11</span>
+    <span class="titulo">Sustitución cruzada NO capturada por el %incremental del Juster</span>
+    <span class="tag-alta">alta</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>El %incremental distingue 'incremental vs substitute_cine vs substitute_other vs no_impact'. Pero 'incremental' agrupa (a) visita 100% nueva y (b) sustitución de otro cine.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 6, calculadora Juster (disclaimer)</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>Si CP ofrece un concepto único, ¿cuántos fans lo tratarían como 'cine específico CP' vs 'cualquier cine'?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿El fan tiene lealtad a Cineplanet o va al cine más cercano/barato?</li><li>Si el concepto atractivo estuviera solo en otro cine, ¿el fan cambiaría de marca?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Preguntar por la última visita al cine y por qué eligió ese cine (marca vs ubicación vs cartelera).</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H12</span>
+    <span class="titulo">Volumen depende de group_size autoreportado (media 3-5)</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>Media global 4.12 personas por concepto (rango 3.14 a 5.39). Multiplicador sensible a extremos.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 6</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿El fan realmente asistiría con 4-5 personas, o dice eso pensando en el ideal social?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿La decisión de ir al cine anime la toma solo o con acompañantes?</li><li>¿Qué fricciones aparecen para coordinar visitas grupales?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Registrar visitas reales al cine durante 5 días y con quién fueron efectivamente.</p>
+  </div>
+</div>
+</div><div class="tema"><h2>👫 Tema E — Contexto social del fandom</h2>
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H13</span>
+    <span class="titulo">'Con quién iría' varía mucho por concepto en deep-dive NS</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>Festival CP × Crunchy: 56% amigos anime, 31% pareja. Charlas y paneles (n=3): 100% pareja (⚠️ n chico).</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 6</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿El fan tiene círculos sociales separados que activa según contexto?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Hay conceptos 'de citas' vs 'de comunidad' claramente diferenciados?</li><li>¿Los amigos anime son físicos o mayoritariamente online?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Pregunta día 2 sobre círculos sociales activos alrededor del anime.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H14</span>
+    <span class="titulo">Callao valora Museo temático más que otras zonas</span>
+    <span class="tag-baja">baja</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>Media utilidad C06 más alta en Callao (informativo, n=20 en zona).</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 5 cruces demográficos</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Callao tiene menor oferta de experiencias culturales/museos?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿La zona influye por acceso a alternativas o por perfil socioeconómico?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Analizar post-hoc si algún participante de Callao aporta contexto en el diario.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H15</span>
+    <span class="titulo">Mujeres valoran más Conciertos anime (η²=0.085)</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>En NS: Mujeres 46.1% arriba del umbral en C18 vs Hombres 25.4%. p=0.0002.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 5 cruces demográficos</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Es artefacto del fandom (Vocaloid/K-Pop más femenino) o preferencia genuina?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Las mujeres del fandom tienen preferencias por experiencia social/musical vs hombres (coleccionismo)?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Comparar respuestas cualitativas por género en la cohorte.</p>
+  </div>
+</div>
+</div><div class="tema"><h2>📺 Tema F — Plataformas y comportamiento de consumo</h2>
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H16</span>
+    <span class="titulo">Usuarios de Crunchyroll: +24 pp en Festival CP × Crunchy</span>
+    <span class="tag-baja">baja</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>Usan Crunchyroll: 57.8% arriba del umbral en C13. No usan: 33.8%. Diferencia +24 pp.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 5</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Es afinidad de marca real o proxy de 'fan más intenso'?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿La marca Crunchyroll aporta valor al concepto o es proxy de fan comprometido?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Preguntar por marcas de streaming preferidas y por qué.</p>
+  </div>
+</div>
+
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H17</span>
+    <span class="titulo">26% de No Socios usan fansubs (piratería)</span>
+    <span class="tag-media">media</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>41/155 fans reportan fansubs como plataforma. Puede tener sesgo de deseabilidad social.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte NS Sec 5</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>¿Los fans de fansubs pagarían por experiencias premium en el cine si el streaming es gratis en fansubs?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Es fandom más hardcore (Crunchyroll no basta) o más económico?</li><li>¿Cuál es la relación con 'pagar por anime' (streaming, cine, merch)?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>Preguntar por prioridades de gasto anime y qué está dispuesto a pagar.</p>
+  </div>
+</div>
+</div><div class="tema"><h2>🔬 Tema G — Validación externa (métodos)</h2>
+<div class="qcard">
+  <div class="qcard-header">
+    <span class="num">H18</span>
+    <span class="titulo">Frecuencia de anime es lo más asociado al perfil en Socios (V=0.22)</span>
+    <span class="tag-baja">baja</span>
+  </div>
+  <div class="qcard-body">
+    <h4>El dato</h4>
+    <p>Cramer V (perfil × freq_anime) = 0.215 en SC. Mayor entre las variables externas al clustering.</p>
+    <p style="font-size:12px;color:#888;"><i>Fuente: Reporte SC Sec 5 (caracterización + validación externa)</i></p>
+
+    <h4>Lo que no explica</h4>
+    <p>Si 'cuánto ven' predice el perfil, ¿por qué no usar directamente como criterio de segmentación operativa (más simple)?</p>
+
+    <h4>Preguntas de investigación abiertas</h4>
+    <ul><li>¿Se puede predecir el tipo de fan solo con freq + horas, sin las 6 preguntas Reysen/FANDOM?</li></ul>
+
+    <h4>Cómo el diario lo aborda</h4>
+    <p>N/A (es tema metodológico, no cualitativo).</p>
+  </div>
+</div>
+</div>
+
 <h2>Sugerencia de agenda para el análisis del diario</h2>
-<p><strong>Fase 1 — Codificación abierta</strong> (semana 1 post-cierre del diario):
-Leer todos los mensajes buscando patrones emergentes SIN filtros previos, para no forzar interpretaciones. Identificar temas nuevos.</p>
-<p><strong>Fase 2 — Codificación cerrada</strong> (semana 2):
-Con la lista de 18 preguntas de este documento, ir hallazgo por hallazgo verificando qué evidencia aporta el diario.</p>
-<p><strong>Fase 3 — Triangulación</strong> (semana 2-3):
-Cruzar cada hallazgo cuanti con la evidencia cuali:
-- Consistente: ambos apuntan al mismo mecanismo → conclusión robusta
-- Discordante: la cuali dice algo distinto → hallazgo revisado
-- Silente: el diario no aporta evidencia → pendiente investigar</p>
-<p><strong>Fase 4 — Documento integrado</strong> (semana 3-4):
-Reporte final con hallazgos cuanti + interpretación cuali por tema. Formato: 10-15 slides o memo largo, según cliente.</p>
-</div>
 
-<div class="footer">
-  Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a>
-</div>
+<h3>Fase 1 — Codificación abierta (semana 1 post-cierre)</h3>
+<div class="metodo"><span class="etiqueta">Approach</span>Leer todos los mensajes buscando patrones emergentes SIN filtros previos, para no forzar interpretaciones. Identificar temas nuevos.</div>
 
+<h3>Fase 2 — Codificación cerrada (semana 2)</h3>
+<div class="metodo"><span class="etiqueta">Approach</span>Con la lista de 18 preguntas de este documento, ir hallazgo por hallazgo verificando qué evidencia aporta el diario.</div>
+
+<h3>Fase 3 — Triangulación (semana 2-3)</h3>
+<div class="resultado"><span class="etiqueta">Cruces cuanti-cuali</span>Cruzar cada hallazgo cuanti con la evidencia cuali:<ul style='margin:6px 0;'><li><b>Consistente</b>: ambos apuntan al mismo mecanismo → conclusión robusta</li><li><b>Discordante</b>: la cuali dice algo distinto → hallazgo revisado</li><li><b>Silente</b>: el diario no aporta evidencia → pendiente investigar</li></ul></div>
+
+<h3>Fase 4 — Documento integrado (semana 3-4)</h3>
+<div class="conclusion"><span class="etiqueta">Entregable final</span>Reporte final con hallazgos cuanti + interpretación cuali por tema. Formato: 10-15 slides o memo largo, según cliente.</div>
+
+<div class="footer">Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a></div>
 </body></html>

@@ -3,370 +3,332 @@
 <meta charset="UTF-8">
 <title>Framework de validación — Comunidad Anime × Cineplanet</title>
 <style>
-:root { --pri: #8a1538; }
+:root { --pri: #8a1538; --dato: #2e7d32; --result: #1565c0; --metodo: #b08d3a;
+         --neutro: #999; --ns: #8a1538; --sc: #4a9b9b; }
 body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-        max-width: 980px; margin: 32px auto; padding: 0 24px;
-        color: #222; line-height: 1.65; font-size: 15px; background: #fafbfc; }
-.header { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
-          color: white; padding: 20px 28px; border-radius: 10px; margin-bottom: 24px;
-          display: flex; align-items: center; gap: 16px; }
-.header .badge { background: white; color: #8a1538; padding: 6px 14px;
-                  border-radius: 6px; font-weight: 700; font-size: 13px;
-                  text-transform: uppercase; letter-spacing: 0.5px; }
-.header h1 { margin: 0; font-size: 22px; font-weight: 600; color: white; flex: 1; }
+        max-width: 1080px; margin: 0 auto; padding: 24px;
+        color: #222; line-height: 1.55; font-size: 15px; background: #fafbfc; }
 .back { display: inline-block; margin-bottom: 14px; color: #8a1538;
          text-decoration: none; font-size: 13.5px; font-weight: 600; }
 .back:hover { text-decoration: underline; }
-.content { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
-            padding: 28px 36px; }
-h1 { font-size: 26px; color: #8a1538; margin-top: 20px; font-weight: 600; }
-h2 { font-size: 20px; color: #8a1538; margin-top: 30px; padding-bottom: 8px;
-     border-bottom: 2px solid #8a1538; font-weight: 600; }
-h3 { font-size: 16.5px; color: #444; margin-top: 22px; font-weight: 600; }
-h4 { font-size: 14.5px; color: #666; margin-top: 14px; font-weight: 600; }
-p { margin: 10px 0; }
-code { background: #f6f6f6; padding: 1px 5px; border-radius: 3px;
-        font-size: 13px; color: #555; font-family: 'SF Mono', Menlo, monospace; }
-pre { background: #f9f9f9; padding: 14px 18px; border-radius: 4px;
-       overflow-x: auto; font-size: 12.5px; line-height: 1.55;
-       border-left: 3px solid #8a1538; }
-pre code { background: none; padding: 0; }
-table { border-collapse: collapse; margin: 14px 0; font-size: 13.5px; width: 100%; }
-th { background: #f6f6f6; padding: 8px 12px; text-align: left;
-      border-bottom: 2px solid #ccc; font-weight: 600; }
-td { padding: 6px 12px; border-bottom: 1px solid #eee; }
-tr:nth-child(even) td { background: #fafafa; }
-ul, ol { margin: 8px 0; padding-left: 24px; }
-li { margin: 4px 0; }
-blockquote { border-left: 3px solid #ccc; margin: 12px 0; padding: 6px 16px;
-              color: #555; font-style: italic; background: #fafafa; }
-hr { border: none; border-top: 1px solid #eee; margin: 24px 0; }
-.txt-embed { background: #f9f9f9; padding: 18px 22px; border-radius: 4px;
-              font-family: 'SF Mono', Menlo, monospace; font-size: 13px;
-              line-height: 1.6; white-space: pre-wrap; overflow-x: auto;
-              border-left: 3px solid #8a1538; margin: 0; }
-.footer { margin-top: 30px; text-align: center; color: #888; font-size: 12.5px; }
+h1 { font-size: 28px; margin: 0 0 8px 0; color: #8a1538; font-weight: 600; }
+h2 { font-size: 22px; margin: 40px 0 10px 0; padding-bottom: 8px;
+      border-bottom: 2px solid #8a1538; font-weight: 600; }
+h3 { font-size: 17px; margin: 22px 0 8px 0; color: #444; font-weight: 600; }
+.sub { color: #555; font-size: 14px; margin: 0 0 24px 0; }
+.hero { background: linear-gradient(135deg, #8a1538 0%, #6b1030 100%);
+         color: white; padding: 24px 32px; border-radius: 10px; margin: 12px 0 28px 0; }
+.hero h1 { color: white; margin: 0 0 8px 0; font-size: 24px; }
+.hero p { font-size: 14.5px; opacity: 0.95; margin: 4px 0; }
+
+/* Bloques por tipo (plantilla v3) */
+.pregunta, .metodo, .dato, .resultado, .conclusion {
+  border-left: 4px solid; padding: 12px 18px; margin: 12px 0; border-radius: 3px;
+  font-size: 14px;
+}
+.pregunta { border-color: var(--neutro); background: #fafafa; color: #444; }
+.metodo { border-color: var(--metodo); background: #f9f4e8; color: #5a4a20; font-size: 13.5px; }
+.dato { border-color: var(--dato); background: #f1f8f2; }
+.resultado { border-color: var(--result); background: #eef4fb; }
+.conclusion { border-color: #8a1538; background: #faf0f3; font-weight: 500; }
+.etiqueta { display: inline-block; font-size: 11px; text-transform: uppercase;
+             letter-spacing: 0.5px; color: #666; margin-bottom: 6px; font-weight: 700;
+             margin-right: 8px; }
+.dato .etiqueta { color: var(--dato); }
+.resultado .etiqueta { color: var(--result); }
+.conclusion .etiqueta { color: #8a1538; }
+.metodo .etiqueta { color: var(--metodo); }
+.pregunta .etiqueta { color: var(--neutro); }
+
+/* Tablas */
+.tabla { border-collapse: collapse; width: 100%; font-size: 13.5px; margin: 12px 0 18px 0; }
+.tabla th { background: #f6f6f6; text-align: left; padding: 8px 12px;
+             border-bottom: 2px solid #ccc; font-weight: 600; }
+.tabla td { padding: 7px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+.tabla tr:nth-child(even) td { background: #fafafa; }
+
+/* Grid de cards comparativas (NS vs SC) */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+@media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+.brazo-card { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+               padding: 18px 22px; }
+.brazo-card.ns { border-top: 4px solid var(--ns); }
+.brazo-card.sc { border-top: 4px solid var(--sc); }
+.brazo-card h3 { margin-top: 0; font-size: 16px; }
+.brazo-card.ns h3 { color: var(--ns); }
+.brazo-card.sc h3 { color: var(--sc); }
+.brazo-card ul { margin: 8px 0 0 0; padding-left: 20px; font-size: 13.5px; }
+.brazo-card li { margin: 5px 0; }
+
+/* Tags de estado */
+.tag-ok { background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 3px;
+           font-size: 11.5px; font-weight: 600; }
+.tag-warn { background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 3px;
+             font-size: 11.5px; font-weight: 600; }
+.tag-alta { background: #f8d7da; color: #721c24; padding: 2px 8px; border-radius: 3px;
+             font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.tag-media { background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 3px;
+              font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.tag-baja { background: #d1ecf1; color: #0c5460; padding: 2px 8px; border-radius: 3px;
+             font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+/* Cascada de validación */
+.cascada { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.cascada .nivel { background: white; border: 1px solid #e0e0e0; border-radius: 8px;
+                    padding: 16px 20px; position: relative; }
+.cascada .nivel h3 { margin: 0 0 6px 0; }
+.cascada .nivel.n3 { border-left: 4px solid #6b1030; }
+.cascada .nivel.n2 { border-left: 4px solid #8a1538; }
+.cascada .nivel.n1 { border-left: 4px solid var(--result); }
+.cascada .flecha { text-align: center; color: #8a1538; font-size: 22px; margin: -4px 0; }
+.cascada .nivel-num { display: inline-block; background: #8a1538; color: white;
+                        padding: 2px 8px; border-radius: 3px; font-size: 11px;
+                        font-weight: 700; margin-right: 8px; }
+
+/* Cards de pregunta de investigación */
+.qcard { background: white; border: 1px solid #e0e0e0; border-radius: 10px;
+          margin: 14px 0; overflow: hidden; }
+.qcard-header { padding: 12px 18px; background: #fafafa; border-bottom: 1px solid #eee;
+                 display: flex; align-items: center; gap: 10px; }
+.qcard-header .num { background: #8a1538; color: white; padding: 3px 10px;
+                       border-radius: 4px; font-size: 12px; font-weight: 700; }
+.qcard-header .titulo { flex: 1; font-weight: 600; font-size: 14.5px; }
+.qcard-body { padding: 14px 18px; }
+.qcard-body h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+                   color: #666; margin: 10px 0 4px 0; }
+.qcard-body p { margin: 4px 0; font-size: 13.5px; }
+.qcard-body ul { margin: 4px 0; padding-left: 20px; font-size: 13.5px; }
+
+/* Tema (agrupador de qcards) */
+.tema { margin: 30px 0 20px 0; }
+.tema h2 { display: inline-block; padding: 8px 14px; background: #8a1538;
+            color: white; border-radius: 6px; border: none; margin: 0 0 10px 0;
+            font-size: 15px; }
+
+/* Filas de gastos por perfil */
+.recodif-tabla { font-family: 'SF Mono', Menlo, monospace; font-size: 12.5px; }
+
+.footer { margin-top: 44px; padding-top: 14px; border-top: 1px solid #e0e0e0;
+           color: #666; font-size: 12px; text-align: center; }
+code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
 </style>
 </head><body>
-
 <a class="back" href="index.html">← Volver al portal</a>
 
-<div class="header">
-  <span class="badge">✅ Validación</span>
+<div class="hero">
   <h1>Framework de validación</h1>
+  <p>Cómo garantizamos que los hallazgos son consistentes con los datos. Sistema en 3 niveles en cascada, con auditoría automatizada.</p>
+  <p><b>Estado actual</b>: 19/19 hallazgos verificados OK contra los CSVs fuente.</p>
 </div>
 
-<div class="content">
-<h1>Framework de validación: resultados → hallazgos → preguntas</h1>
-<p><strong>Fecha</strong>: 2026-07-21
-<strong>Alcance</strong>: 19 hallazgos cuantitativos derivados de los 4 reportes
-<strong>Estado global</strong>: 19/19 hallazgos verificados OK contra los CSVs fuente</p>
-<hr />
-<h2>El problema</h2>
-<p>Un estudio cuantitativo produce 3 capas de output que se pueden mezclar:</p>
-<ul>
-<li><strong>Resultados</strong>: los números crudos que salen de las estimaciones (61.3%, η²=0.132, r=0.994).</li>
-<li><strong>Hallazgos</strong>: la lectura interpretativa que hacemos de esos números ("Viajes VIP es el top-1 en No Socios").</li>
-<li><strong>Preguntas de investigación</strong>: los "por qué" que quedan abiertos y motivan investigación adicional (cuali, deep-dive, etc.).</li>
-</ul>
-<p>Sin un framework de validación, es fácil que un hallazgo "circule" en el equipo sin que nadie recuerde exactamente qué número lo sostiene, y las preguntas de investigación se conviertan en intuiciones no aterrizadas en la data.</p>
-<hr />
+<h2>El problema que resuelve</h2>
+<div class="pregunta"><span class="etiqueta">Contexto</span>Un estudio cuantitativo produce 3 capas de output que se pueden mezclar: los <b>resultados</b> (los números), los <b>hallazgos</b> (la lectura interpretativa) y las <b>preguntas de investigación</b> (los 'por qué' que quedan abiertos). Sin un framework de validación, es fácil que un hallazgo 'circule' en el equipo sin que nadie recuerde exactamente qué número lo sostiene.</div>
+
 <h2>Framework en cascada — 3 niveles</h2>
-<pre><code>Nivel 3: PREGUNTAS DE INVESTIGACIÓN
-  ↑ deben derivar verificablemente de →
-Nivel 2: HALLAZGOS (interpretaciones)
-  ↑ deben derivar verificablemente de →
-Nivel 1: RESULTADOS (los números)
-</code></pre>
-<p>Cada nivel se valida contra el anterior. Si un hallazgo tiene pregunta pero no resultado, la pregunta es especulación. Si un resultado no está bien estimado, todo lo que se apoya en él es inseguro.</p>
-<hr />
-<h2>Nivel 1 — Validez de resultados</h2>
-<h3>Criterios</h3>
-<table>
-<thead>
-<tr>
-<th>Chequeo</th>
-<th>Cómo se verifica</th>
-<th>Estado en este estudio</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Convergencia MCMC</td>
-<td>Acceptance rate ~0.30; RLH mediana &gt; baseline random</td>
-<td>✅ 0.30 / 0.60 vs 0.31 random (NS), 0.625 vs 0.25 (SC)</td>
-</tr>
-<tr>
-<td>Reproducibilidad</td>
-<td>Correr con seed distinto y comparar</td>
-<td>✅ Pearson 0.9997 (NS), verificado en <code>14_validar_reproducibilidad_hb_v2.R</code></td>
-</tr>
-<tr>
-<td>Cross-check contra métrica cruda</td>
-<td>HB vs conteo bruto best-worst</td>
-<td>✅ r=0.994 (NS), r=0.998 (SC)</td>
-</tr>
-<tr>
-<td>Sensibilidad a supuestos arbitrarios</td>
-<td>4 escenarios de tope S/130</td>
-<td>✅ Ranking idéntico, ninguna variable cambia categoría</td>
-</tr>
-<tr>
-<td>Auditoría de números en outputs</td>
-<td>Recomputo manual vs CSVs</td>
-<td>✅ 14/14 números clave verificados (<code>26_auditar_numeros_html.R</code>)</td>
-</tr>
-<tr>
-<td>Umbrales estadísticos convencionales</td>
-<td>η² Cohen, Cramer V Cohen</td>
-<td>✅ 0.01/0.06/0.14 y 0.1/0.3/0.5</td>
-</tr>
-</tbody>
+
+<div class="cascada">
+  <div class="nivel n3">
+    <h3><span class="nivel-num">Nivel 3</span>Preguntas de investigación</h3>
+    <p style="margin:4px 0;font-size:13.5px;color:#555;">Los "por qué" que quedan abiertos y motivan investigación adicional (cuali, próximos estudios).</p>
+  </div>
+  <div class="flecha">↑ deben derivar verificablemente de ↑</div>
+  <div class="nivel n2">
+    <h3><span class="nivel-num">Nivel 2</span>Hallazgos (interpretaciones)</h3>
+    <p style="margin:4px 0;font-size:13.5px;color:#555;">Lo que interpretamos de los números: "Viajes VIP es el top-1 en No Socios".</p>
+  </div>
+  <div class="flecha">↑ deben derivar verificablemente de ↑</div>
+  <div class="nivel n1">
+    <h3><span class="nivel-num">Nivel 1</span>Resultados (los números)</h3>
+    <p style="margin:4px 0;font-size:13.5px;color:#555;">Los outputs directos del análisis estadístico: 61.3%, η²=0.132, r=0.994.</p>
+  </div>
+</div>
+
+<h2>Nivel 1 — Validez de los resultados</h2>
+<h3>Chequeos implementados</h3>
+<table class="tabla">
+  <thead><tr><th>Chequeo</th><th>Cómo se verifica</th><th>Estado</th></tr></thead>
+  <tbody>
+    <tr><td>Convergencia MCMC</td><td>Acceptance ~0.30; RLH mediana &gt; baseline random</td><td><span class="tag-ok">✓ 0.30 / 0.60 vs 0.31 random (NS), 0.625 vs 0.25 (SC)</span></td></tr>
+    <tr><td>Reproducibilidad</td><td>Correr con seed distinto y comparar</td><td><span class="tag-ok">✓ Pearson 0.9997 (NS)</span></td></tr>
+    <tr><td>Cross-check vs métrica cruda</td><td>HB vs conteo bruto best-worst</td><td><span class="tag-ok">✓ r=0.994 (NS), r=0.998 (SC)</span></td></tr>
+    <tr><td>Sensibilidad a supuestos</td><td>4 escenarios de tope S/130</td><td><span class="tag-ok">✓ Ranking idéntico, ninguna variable cambia categoría</span></td></tr>
+    <tr><td>Auditoría números vs CSVs</td><td>Recomputo manual</td><td><span class="tag-ok">✓ 14/14 números clave verificados</span></td></tr>
+    <tr><td>Umbrales convencionales</td><td>η² Cohen, Cramer V Cohen</td><td><span class="tag-ok">✓ 0.01/0.06/0.14 y 0.1/0.3/0.5</span></td></tr>
+  </tbody>
 </table>
+
 <h3>Riesgos identificados que quedan</h3>
+<div class="resultado"><span class="etiqueta">Documentados y flaggeados</span><ul style='margin:6px 0;'><li><b>Bases chicas</b>: Fan Aislado n=8, Charlas n=3, Playlist n=7 — marcados explícitamente en cada aparición</li><li><b>Métricas distintas por brazo</b>: %umbral (NS, con ancla) vs share (Socios, sin ancla). Comparables ordinalmente, NO en magnitud</li><li><b>Sustitución cruzada Juster</b>: el %incremental no distingue 'visita nueva pura' de 'sustitución de otro cine'. Documentado en el reporte No Socios</li><li><b>Muestras no aleatorias</b>: los dos brazos son de conveniencia. Los IC y tests son referenciales de la muestra, no del universo Lima</li></ul></div>
+
+<h2>Nivel 2 — Validez de los hallazgos</h2>
+
+<h3>Criterios que debe cumplir un hallazgo</h3>
+<div class="metodo"><span class="etiqueta">Checklist</span><ol style='margin:6px 0;'><li><b>Trazabilidad exacta</b>: cada número mencionado tiene fuente en un CSV/tabla del reporte</li><li><b>Consistencia</b>: el mismo número no aparece con valores distintos en distintos archivos</li><li><b>Base suficiente</b>: n adecuado; base chica flaggeada</li><li><b>Sin sobre-generalización</b>: la afirmación no extiende más allá del universo/muestra</li><li><b>Sin editorial</b>: solo lo que el dato sostiene</li><li><b>Robusto a supuestos alternos</b>: si el hallazgo cambia con supuestos plausibles distintos, marcarlo como frágil</li></ol></div>
+
+<h3>Auditoría automatizada</h3>
+<p>El script <code>36_auditar_hallazgos.R</code> (en el repo):</p>
 <ul>
-<li><strong>Bases chicas</strong>: Fan Aislado n=8, Charlas n=3, Playlist n=7 — marcados explícitamente en cada aparición.</li>
-<li><strong>Métricas distintas por brazo</strong>: %umbral (No Socios, con ancla) vs share (Socios, sin ancla). Comparables ordinalmente, NO en magnitud.</li>
-<li><strong>Sustitución cruzada Juster</strong>: el %incremental no distingue "visita 100% nueva" de "sustitución de otro cine". Documentado en el reporte No Socios.</li>
-<li><strong>Muestras no aleatorias</strong>: los dos brazos son de conveniencia (reclutados por canales digitales / desde base CP). Los IC y tests deben interpretarse como referenciales de la muestra, no del universo Lima.</li>
+  <li>Carga los CSVs de <code>bases_finales/</code> (fuente única de verdad)</li>
+  <li>Para cada hallazgo, RECOMPUTA el número que lo sostiene</li>
+  <li>Compara contra el número afirmado</li>
+  <li>Marca <span class="tag-ok">✓ OK</span> / <span class="tag-warn">REVISAR</span> / <b>FAIL</b></li>
 </ul>
-<hr />
-<h2>Nivel 2 — Validez de hallazgos</h2>
-<h3>Criterios</h3>
-<p>Para que una afirmación sea "hallazgo válido" (no "opinión con datos"):</p>
-<ol>
-<li><strong>Trazabilidad exacta</strong>: cada número mencionado tiene fuente en un CSV/tabla del reporte</li>
-<li><strong>Consistencia</strong>: el mismo número no aparece con valores distintos en distintos archivos</li>
-<li><strong>Base suficiente</strong>: n adecuado para la afirmación; base chica flaggeada</li>
-<li><strong>Sin sobre-generalización</strong>: la afirmación no extiende más allá del universo/muestra</li>
-<li><strong>Sin editorial</strong>: solo lo que el dato sostiene, sin agregar interpretación causal no probada</li>
-<li><strong>Robusto a supuestos alternos</strong>: si el hallazgo cambia con supuestos plausibles distintos, marcarlo como frágil</li>
-</ol>
-<h3>Cómo aplicamos la validación (auditoría automatizada)</h3>
-<p>El script <code>36_auditar_hallazgos.R</code> en <code>04_analisis/</code>:</p>
-<ul>
-<li>Carga los CSVs de <code>bases_finales/</code> (fuente única de verdad)</li>
-<li>Para cada hallazgo, RECOMPUTA el número que lo sostiene</li>
-<li>Compara contra el número afirmado en el hallazgo</li>
-<li>Marca <code>OK</code> / <code>REVISAR</code> / <code>FAIL</code></li>
-<li>Genera <code>VALIDACION_HALLAZGOS.csv</code> con la tabla de trazabilidad</li>
-</ul>
-<p><strong>Resultado actual</strong>: 19/19 hallazgos OK.</p>
-<h3>Tabla resumen de trazabilidad</h3>
-<table>
-<thead>
+
+<h3>Tabla de trazabilidad — 19 hallazgos verificados</h3>
+<table class="tabla">
+  <thead>
+    <tr><th>ID</th><th>Hallazgo</th><th>Prioridad</th><th>Estado</th><th>Verificación</th></tr>
+  </thead>
+  <tbody>
 <tr>
-<th>ID</th>
-<th>Hallazgo</th>
-<th>Prioridad</th>
-<th>Chequeo</th>
-<th>Estado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>H1_NS</td>
-<td>Cine anime no discrimina en No Socios</td>
-<td>alta</td>
-<td>η² &lt; 0.03 &amp; p &gt; 0.05</td>
-<td>✅</td>
+  <td><code>H1_NS</code></td>
+  <td>En No Socios, gasto_cine no discrimina entre tipos de fan (η² < 0.03, p>0.05)</td>
+  <td><span class="tag-alta">alta</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>η²=0.023, p=0.316</small></td>
 </tr>
 <tr>
-<td>H1_SC</td>
-<td>Cine anime no discrimina en Socios</td>
-<td>alta</td>
-<td>η² &lt; 0.03 &amp; p &gt; 0.05</td>
-<td>✅</td>
+  <td><code>H1_SC</code></td>
+  <td>En Socios, gasto_cine no discrimina entre tipos de fan</td>
+  <td><span class="tag-alta">alta</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>η²=0.013, p=0.115</small></td>
 </tr>
 <tr>
-<td>H2</td>
-<td>Top-1 conceptual difiere: Viajes VIP (NS) vs Clásicos (SC)</td>
-<td>alta</td>
-<td>C08=61% NS, C03=22.2% SC</td>
-<td>✅</td>
+  <td><code>H2</code></td>
+  <td>En No Socios lidera C08 (61% arriba del umbral); en Socios lidera C03 (22% share)</td>
+  <td><span class="tag-alta">alta</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>NS: C08=61%; SC: C03=22.2%</small></td>
 </tr>
 <tr>
-<td>H3</td>
-<td>Fan Aislado 3× más grande en SC (16.5% vs 5.2%)</td>
-<td>alta</td>
-<td>Conteos + IC Wilson NS</td>
-<td>✅</td>
+  <td><code>H3</code></td>
+  <td>Fan Aislado: 8/155=5.2% (NS) vs 75/455=16.5% (SC), ratio ~3x</td>
+  <td><span class="tag-alta">alta</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>NS: 8/155 (5.2%); SC: 75/455 (16.5%); ratio 3.19x | IC95 NS: [2.6, 9.9]</small></td>
 </tr>
 <tr>
-<td>H4</td>
-<td>Fan Intermedio SC solitario (R=6.61, F=3.79)</td>
-<td>media</td>
-<td>Medias por perfil</td>
-<td>✅</td>
+  <td><code>H4</code></td>
+  <td>En Socios, Fan Intermedio tiene Reysen 6.61 / FANDOM 3.79 (perfil solitario)</td>
+  <td><span class="tag-media">media</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>SC: R=6.61 F=3.79 (gap=2.82) | NS: R=6.30 F=5.74 (gap=0.56)</small></td>
 </tr>
 <tr>
-<td>H5</td>
-<td>Silhouette 0.53 (NS) vs 0.46 (SC)</td>
-<td>baja</td>
-<td>K-means recomputado</td>
-<td>✅</td>
+  <td><code>H5</code></td>
+  <td>Silhouette medio: 0.53 (NS) vs 0.46 (SC) — SC más difuso</td>
+  <td><span class="tag-baja">baja</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>NS=0.533; SC=0.462</small></td>
 </tr>
 <tr>
-<td>H6</td>
-<td>Festival CP×Crunchy #2 en ambos brazos</td>
-<td>alta</td>
-<td>Rankings</td>
-<td>✅</td>
+  <td><code>H6</code></td>
+  <td>C13 (Festival CP × Crunchy) es #2 en ambos brazos</td>
+  <td><span class="tag-alta">alta</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>NS rank C13=2 (47.7%); SC rank C13=2 (18.0%)</small></td>
 </tr>
 <tr>
-<td>H7</td>
-<td>Viajes VIP 54% incremental</td>
-<td>alta</td>
-<td>Deep-dive slots 1-3</td>
-<td>✅</td>
+  <td><code>H7</code></td>
+  <td>En deep-dive NS, C08 tiene %incremental ≈ 54%</td>
+  <td><span class="tag-alta">alta</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>53.7% (n_ev=67)</small></td>
 </tr>
 <tr>
-<td>H8</td>
-<td>Membresía Socio 10.9% share en SC (vs 41% umbral NS)</td>
-<td>media</td>
-<td>Share of preference vs %umbral</td>
-<td>✅</td>
+  <td><code>H8</code></td>
+  <td>C07 tiene 10.9% share en Socios (baja demanda vs 41% umbral en NS)</td>
+  <td><span class="tag-media">media</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>SC: 10.9%; NS: 41.3%</small></td>
 </tr>
 <tr>
-<td>H9</td>
-<td>Conciertos 89% credibilidad, solo #5 demanda</td>
-<td>baja</td>
-<td>believ_top2 + rank</td>
-<td>✅</td>
+  <td><code>H9</code></td>
+  <td>C18 tiene %believ_top2 ≈ 89% pero solo #5 en %umbral</td>
+  <td><span class="tag-baja">baja</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>believ_top2=89.3%; rank_umbral=5 (n_ev=28)</small></td>
 </tr>
 <tr>
-<td>H10</td>
-<td>Playlist y Charlas bottom en ambos brazos</td>
-<td>media</td>
-<td>Rankings bottom-3</td>
-<td>✅</td>
+  <td><code>H10</code></td>
+  <td>C15 y C04 en bottom-3 de ambos brazos</td>
+  <td><span class="tag-media">media</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>NS bot3=C04,C15,C05; SC bot3=C04,C16,C15</small></td>
 </tr>
 <tr>
-<td>H11</td>
-<td>Sustitución cruzada no capturada por Juster</td>
-<td>alta</td>
-<td>Limitación instrumento</td>
-<td>✅</td>
+  <td><code>H11</code></td>
+  <td>El %incremental del Juster NO distingue entre visita nueva pura y sustitución de otro cine</td>
+  <td><span class="tag-alta">alta</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>—</small></td>
 </tr>
 <tr>
-<td>H12</td>
-<td>group_size promedio 3-5</td>
-<td>media</td>
-<td>Media por concepto</td>
-<td>✅</td>
+  <td><code>H12</code></td>
+  <td>group_size promedio en deep-dive NS entre 3 y 5 por concepto</td>
+  <td><span class="tag-media">media</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>media_global=4.12, rango=[3.14, 5.39]</small></td>
 </tr>
 <tr>
-<td>H13</td>
-<td>Festival: 56% amigos anime; Charlas: 100% partner (n=3)</td>
-<td>media</td>
-<td>grepl multi-select</td>
-<td>✅</td>
+  <td><code>H13</code></td>
+  <td>En NS, Festival CP×Crunchy: ~56% anime_friends, ~31% partner; Charlas: 100% partner (n=3)</td>
+  <td><span class="tag-media">media</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>C13: af=55.6% pt=31.5% (n=54); C04: pt=100.0% (n=3)</small></td>
 </tr>
 <tr>
-<td>H14</td>
-<td>Callao valora Museo más</td>
-<td>baja</td>
-<td>Media util por zona</td>
-<td>✅</td>
+  <td><code>H14</code></td>
+  <td>En NS, C06 (Museo) tiene mayor share en Callao (informativo, base chica)</td>
+  <td><span class="tag-baja">baja</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>Top zona por util C06: callao (n=20, util media -0.24)</small></td>
 </tr>
 <tr>
-<td>H15</td>
-<td>Mujeres valoran más Conciertos (η²=0.085)</td>
-<td>media</td>
-<td>ANOVA por sexo</td>
-<td>✅</td>
+  <td><code>H15</code></td>
+  <td>En NS, mujeres tienen mayor %umbral en C18 vs hombres (η² > 0.05)</td>
+  <td><span class="tag-media">media</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>H=25.3%, M=46.1%; η²=0.085, p=0.0002</small></td>
 </tr>
 <tr>
-<td>H16</td>
-<td>Usuarios Crunchyroll: +24pp en Festival</td>
-<td>baja</td>
-<td>Multi-select platforms</td>
-<td>✅</td>
+  <td><code>H16</code></td>
+  <td>En NS, usuarios de Crunchyroll tienen mayor %umbral en C13</td>
+  <td><span class="tag-baja">baja</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>Usa: 57.8%, No usa: 33.8%, dif=23.9 pp</small></td>
 </tr>
 <tr>
-<td>H17</td>
-<td>26% de No Socios usan fansubs</td>
-<td>media</td>
-<td>41/155</td>
-<td>✅</td>
+  <td><code>H17</code></td>
+  <td>En NS, 26% (41/155) usan fansubs</td>
+  <td><span class="tag-media">media</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>41/155 (26.5%)</small></td>
 </tr>
 <tr>
-<td>H18</td>
-<td>Frecuencia anime: Cramer V=0.22 en SC</td>
-<td>baja</td>
-<td>Chi²</td>
-<td>✅</td>
-</tr>
-</tbody>
+  <td><code>H18</code></td>
+  <td>En Socios, Cramer V(perfil × freq_anime) ≈ 0.22 (mayor entre externas)</td>
+  <td><span class="tag-baja">baja</span></td>
+  <td><span class="tag-ok">✓ OK</span></td>
+  <td><small>V=0.215 (χ²=62.93, p=0.0000)</small></td>
+</tr></tbody>
 </table>
-<h3>Cómo interpretar el "OK"</h3>
-<p><code>OK</code> significa: el número afirmado coincide (con tolerancia) con el recomputo desde el CSV fuente. <strong>NO significa</strong>:</p>
-<ul>
-<li>Que el hallazgo sea "verdad definitiva" (los riesgos siguen aplicando).</li>
-<li>Que la interpretación causal sea correcta (correlación ≠ causalidad).</li>
-<li>Que se generalice al universo Lima (muestras no aleatorias).</li>
-</ul>
-<p><code>REVISAR</code> significa: el número difiere. Puede ser por redondeo distinto, cambio de metodología, o error real. Requiere revisión manual.</p>
-<p><code>FAIL</code> significa: el chequeo no pudo ejecutarse (error de código, columna faltante). Requiere debug.</p>
-<hr />
-<h2>Nivel 3 — Validez de preguntas de investigación</h2>
-<h3>Criterios</h3>
-<p>Para que una pregunta de investigación sea "válida" (no "curiosidad al aire"):</p>
-<ol>
-<li><strong>Deriva verificable de un hallazgo con estado OK</strong> — no de intuición externa.</li>
-<li><strong>Es abordable con el instrumento cualitativo actual</strong> — el diario WhatsApp de 5 días con 32 participantes puede aportar evidencia.</li>
-<li><strong>Genera decisión</strong> — la respuesta afecta una acción concreta (targeting, priorización de concepto, etc.).</li>
-<li><strong>Está bien scoped</strong> — específica, no una "gran pregunta abstracta" que no puede responderse.</li>
-</ol>
+
+<h2>Nivel 3 — Validez de las preguntas de investigación</h2>
+<h3>Criterios que debe cumplir una pregunta</h3>
+<div class="metodo"><span class="etiqueta">Checklist</span><ol style='margin:6px 0;'><li><b>Deriva verificable de un hallazgo OK</b> — no de intuición externa</li><li><b>Abordable con el instrumento cualitativo actual</b> (diario WhatsApp 5 días, 32 participantes)</li><li><b>Genera decisión</b> — la respuesta afecta una acción concreta</li><li><b>Bien scoped</b> — específica, no una 'gran pregunta abstracta'</li></ol></div>
+
 <h3>Ejemplo aplicado</h3>
-<pre><code>Hallazgo (Nivel 2): H3 — Fan Aislado es 3× más grande en Socios (16.5% vs 5.2%)
-  Nivel 1 (resultado): 8/155 vs 75/455; IC 95% NS = [2.7%, 10.0%]
-  Riesgos: base chica NS, muestras no aleatorias
+<div class="dato"><span class="etiqueta">Hallazgo H3 (Nivel 2)</span>'Fan Aislado es 3× más grande en Socios (16.5% vs 5.2%)' <br><b>Nivel 1</b>: 8/155 vs 75/455; IC 95% NS = [2.7%, 10.0%] <br><b>Riesgos</b>: base chica NS, muestras no aleatorias</div>
 
-Pregunta de investigación derivada (Nivel 3):
-  &quot;¿Qué caracteriza al socio de Cineplanet fan de anime que no se identifica
-   como fan intenso?&quot;
+<div class="resultado"><span class="etiqueta">Pregunta derivada (Nivel 3)</span>'¿Qué caracteriza al socio de Cineplanet fan de anime que no se identifica como fan intenso?' <br><br><b>Validez de la pregunta</b>: <br>✅ Deriva de H3 (que está OK) <br>✅ Abordable con el diario: perfil identificable ex-ante (Reysen bajo + FANDOM bajo + freq/horas altas) <br>✅ Genera decisión: afecta targeting de comunicación de Membresía Anime <br>✅ Scoped: pregunta sobre un perfil específico, no 'todo el anime'</div>
 
-Validez de la pregunta:
-  ✅ Deriva de H3 (que está OK)
-  ✅ Abordable con el diario: los participantes tienen perfil identificable ex-ante
-     (Reysen bajo + FANDOM bajo + freq/horas altas)
-  ✅ Genera decisión: afecta targeting de comunicación de Membresía Anime,
-     mensaje de &quot;socio anime&quot; vs &quot;socio general&quot;, diseño de contenido
-  ✅ Scoped: pregunta sobre un perfil específico, no &quot;todo el anime&quot;
-</code></pre>
-<p>Documento completo con las 18 preguntas: <code>PREGUNTAS_INVESTIGACION_DIARIO.md</code>.</p>
-<hr />
 <h2>Cómo re-correr la validación</h2>
-<p>Cada vez que se agregue un hallazgo nuevo o cambie un número en los reportes:</p>
-<pre><code class="language-bash">Rscript /Users/jose/Library/CloudStorage/Dropbox/LVL/Anime/04_analisis/36_auditar_hallazgos.R
-</code></pre>
-<p>Genera:
-- Reporte en consola con <code>OK / REVISAR / FAIL</code> por hallazgo
-- <code>VALIDACION_HALLAZGOS.csv</code> con la tabla detallada (id, hallazgo, prioridad, estado, número esperado, número calculado, detalle, riesgos)</p>
-<p>Para agregar un hallazgo nuevo al chequeo: seguir el patrón de <code>reg("HN", "texto", function() { ... })</code> en el script.</p>
-<hr />
-<h2>Nota metodológica: qué NO valida este framework</h2>
-<ul>
-<li><strong>Validez externa</strong>: si los hallazgos se generalizan al universo Lima. Requiere un estudio con muestreo probabilístico.</li>
-<li><strong>Causalidad</strong>: los hallazgos son asociaciones, no relaciones causales.</li>
-<li><strong>Interpretación cualitativa</strong>: qué significa cada patrón. Eso lo hace el investigador con soporte del diario cuali.</li>
-<li><strong>Business case</strong>: si un hallazgo justifica una decisión de negocio. Eso requiere costos, riesgos y contexto competitivo que no están en el estudio.</li>
-</ul>
-<p>Este framework valida <strong>consistencia interna</strong>: que lo que decimos que los datos dicen es efectivamente lo que los datos dicen. Es el mínimo indispensable para tener una conversación de negocio honesta.</p>
-<hr />
-<h2>Archivos relacionados</h2>
-<ul>
-<li><code>04_analisis/36_auditar_hallazgos.R</code> — script de auditoría automatizada</li>
-<li><code>04_analisis/VALIDACION_HALLAZGOS.csv</code> — tabla de trazabilidad</li>
-<li><code>04_analisis/PREGUNTAS_INVESTIGACION_DIARIO.md</code> — 18 preguntas derivadas</li>
-<li><code>04_analisis/bases_finales/</code> — CSVs fuente de verdad + HTMLs + PROCESO.txt</li>
-<li><code>04_analisis/bases_finales/PROCESO.txt</code> — proceso completo del estudio</li>
-</ul>
-</div>
+<div class="metodo"><span class="etiqueta">Comando reproducible</span><code>Rscript 36_auditar_hallazgos.R</code> <br><br>Genera: <br>- Reporte en consola con OK / REVISAR / FAIL por hallazgo <br>- <code>VALIDACION_HALLAZGOS.csv</code> con la tabla detallada</div>
 
-<div class="footer">
-  Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a>
-</div>
+<h2>Qué NO valida este framework</h2>
+<div class="pregunta"><span class="etiqueta">Fuera de alcance (honestidad metodológica)</span><ul style='margin:6px 0;'><li><b>Validez externa</b>: si los hallazgos se generalizan al universo Lima. Requiere muestreo probabilístico.</li><li><b>Causalidad</b>: los hallazgos son asociaciones, no relaciones causales.</li><li><b>Interpretación cualitativa</b>: qué significa cada patrón. Eso lo hace el investigador con soporte del diario.</li><li><b>Business case</b>: si un hallazgo justifica una decisión de negocio. Requiere costos, riesgos y contexto competitivo que no están en el estudio.</li></ul>Este framework valida <b>consistencia interna</b>: que lo que decimos que los datos dicen es efectivamente lo que los datos dicen.</div>
 
+<div class="footer">Comunidad Anime × Cineplanet · LVL 2026 · <a href="index.html">Portal</a></div>
 </body></html>
