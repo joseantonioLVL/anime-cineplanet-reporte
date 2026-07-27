@@ -1,0 +1,556 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9754,
+          -12.0862
+        ]
+      },
+      "properties": {
+        "id": "O01",
+        "brand": "Cinemark",
+        "sala": "Jockey Plaza",
+        "name": "Cinemark Jockey Plaza",
+        "distrito": "Santiago de Surco",
+        "source": "nominatim",
+        "id_all": "X028"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0631,
+          -11.9946
+        ]
+      },
+      "properties": {
+        "id": "O02",
+        "brand": "Cinemark",
+        "sala": "MegaPlaza",
+        "name": "Cinemark MegaPlaza",
+        "distrito": "Independencia",
+        "source": "nominatim",
+        "id_all": "X029"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0118,
+          -12.1115
+        ]
+      },
+      "properties": {
+        "id": "O03",
+        "brand": "Cinemark",
+        "sala": "Mallplaza Angamos",
+        "name": "Cinemark Mallplaza Angamos",
+        "distrito": "Surquillo",
+        "source": "nominatim",
+        "id_all": "X030"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.013,
+          -12.1729
+        ]
+      },
+      "properties": {
+        "id": "O04",
+        "brand": "Cinemark",
+        "sala": "Plaza Lima Sur",
+        "name": "Cinemark Plaza Lima Sur",
+        "distrito": "Chorrillos",
+        "source": "nominatim",
+        "id_all": "X031"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0827,
+          -12.0769
+        ]
+      },
+      "properties": {
+        "id": "O05",
+        "brand": "Cinemark",
+        "sala": "San Miguel",
+        "name": "Cinemark San Miguel",
+        "distrito": "San Miguel",
+        "source": "nominatim",
+        "id_all": "X032"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0655,
+          -11.9363
+        ]
+      },
+      "properties": {
+        "id": "O06",
+        "brand": "Cinemark",
+        "sala": "Mallplaza Comas",
+        "name": "Cinemark Mallplaza Comas",
+        "distrito": "Comas",
+        "source": "nominatim",
+        "id_all": "X033"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0125,
+          -12.0709
+        ]
+      },
+      "properties": {
+        "id": "O07",
+        "brand": "Cinemark",
+        "sala": "Gamarra",
+        "name": "Cinemark Gamarra",
+        "distrito": "La Victoria",
+        "source": "nominatim",
+        "id_all": "X034"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0588,
+          -12.0062
+        ]
+      },
+      "properties": {
+        "id": "O08",
+        "brand": "Cinépolis",
+        "sala": "Plaza Norte",
+        "name": "Cinépolis Plaza Norte",
+        "distrito": "Independencia",
+        "source": "nominatim",
+        "id_all": "X035"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9711,
+          -12.0563
+        ]
+      },
+      "properties": {
+        "id": "O09",
+        "brand": "Cinépolis",
+        "sala": "Santa Anita",
+        "name": "Cinépolis Santa Anita",
+        "distrito": "Santa Anita",
+        "source": "nominatim",
+        "id_all": "X036"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0302,
+          -12.1322
+        ]
+      },
+      "properties": {
+        "id": "O10",
+        "brand": "Cinépolis",
+        "sala": "Larcomar",
+        "name": "Cinépolis Larcomar",
+        "distrito": "Miraflores",
+        "source": "nominatim",
+        "id_all": "X037"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0048,
+          -12.0061
+        ]
+      },
+      "properties": {
+        "id": "O11",
+        "brand": "Cinestar",
+        "sala": "SJL",
+        "name": "Cinestar SJL",
+        "distrito": "San Juan de Lurigancho",
+        "source": "nominatim",
+        "id_all": "X038"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0516,
+          -12.0125
+        ]
+      },
+      "properties": {
+        "id": "O12",
+        "brand": "Cinestar",
+        "sala": "UNI",
+        "name": "Cinestar UNI",
+        "distrito": "Rímac",
+        "source": "nominatim",
+        "id_all": "X039"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9769,
+          -12.1524
+        ]
+      },
+      "properties": {
+        "id": "O13",
+        "brand": "Cinestar",
+        "sala": "Sur",
+        "name": "Cinestar Sur",
+        "distrito": "San Juan de Miraflores",
+        "source": "nominatim",
+        "id_all": "X040"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.012,
+          -12.1967
+        ]
+      },
+      "properties": {
+        "id": "O14",
+        "brand": "MovieTime",
+        "sala": "Chorrillos",
+        "name": "MovieTime Chorrillos",
+        "distrito": "Chorrillos",
+        "source": "nominatim",
+        "id_all": "X041"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9639,
+          -12.2013
+        ]
+      },
+      "properties": {
+        "id": "O15",
+        "brand": "MovieTime",
+        "sala": "VES Unicachi",
+        "name": "MovieTime VES Unicachi",
+        "distrito": "Villa El Salvador",
+        "source": "nominatim",
+        "id_all": "X042"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9641,
+          -12.1974
+        ]
+      },
+      "properties": {
+        "id": "O16",
+        "brand": "MovieTime",
+        "sala": "VES1",
+        "name": "MovieTime VES1",
+        "distrito": "Villa El Salvador",
+        "source": "nominatim",
+        "id_all": "X043"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0382,
+          -12.094
+        ]
+      },
+      "properties": {
+        "id": "O17",
+        "brand": "MovieTime",
+        "sala": "Premium Basadre",
+        "name": "MovieTime Premium Basadre",
+        "distrito": "San Isidro",
+        "source": "nominatim",
+        "id_all": "X044"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0031,
+          -12.0408
+        ]
+      },
+      "properties": {
+        "id": "O18",
+        "brand": "UVK",
+        "sala": "El Agustino",
+        "name": "UVK El Agustino",
+        "distrito": "El Agustino",
+        "source": "nominatim",
+        "id_all": "X045"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0039,
+          -12.0846
+        ]
+      },
+      "properties": {
+        "id": "O19",
+        "brand": "Cinestar",
+        "sala": "Aviación",
+        "name": "Cinestar Aviación",
+        "distrito": "San Borja",
+        "source": "nominatim",
+        "id_all": "X046"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9783,
+          -12.1312
+        ]
+      },
+      "properties": {
+        "id": "O20",
+        "brand": "Cinestar",
+        "sala": "Benavides",
+        "name": "Cinestar Benavides",
+        "distrito": "Santiago de Surco",
+        "source": "nominatim",
+        "id_all": "X047"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.034,
+          -12.0497
+        ]
+      },
+      "properties": {
+        "id": "O21",
+        "brand": "Cinestar",
+        "sala": "Excelsior",
+        "name": "Cinestar Excelsior",
+        "distrito": "Lima",
+        "source": "nominatim",
+        "id_all": "X048"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0501,
+          -12.0552
+        ]
+      },
+      "properties": {
+        "id": "O22",
+        "brand": "Cinestar",
+        "sala": "Breña",
+        "name": "Cinestar Breña",
+        "distrito": "Breña",
+        "source": "nominatim",
+        "id_all": "X049"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0371,
+          -12.0495
+        ]
+      },
+      "properties": {
+        "id": "O23",
+        "brand": "UVK",
+        "sala": "San Martín",
+        "name": "UVK San Martín",
+        "distrito": "Lima",
+        "source": "nominatim",
+        "id_all": "X050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0625,
+          -11.942
+        ]
+      },
+      "properties": {
+        "id": "O24",
+        "brand": "Cinestar",
+        "sala": "Comas",
+        "name": "Cinestar Comas",
+        "distrito": "Comas",
+        "source": "manual",
+        "id_all": "X051"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0035,
+          -12.1729
+        ]
+      },
+      "properties": {
+        "id": "O25",
+        "brand": "Cinestar",
+        "sala": "Chorrillos SP",
+        "name": "Cinestar Chorrillos SP",
+        "distrito": "Chorrillos",
+        "source": "manual",
+        "id_all": "X052"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0355,
+          -12.0862
+        ]
+      },
+      "properties": {
+        "id": "O26",
+        "brand": "Cinestar",
+        "sala": "Arenales",
+        "name": "Cinestar Arenales",
+        "distrito": "Lince",
+        "source": "manual",
+        "id_all": "X053"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.702,
+          -11.935
+        ]
+      },
+      "properties": {
+        "id": "O27",
+        "brand": "Cinestar",
+        "sala": "Chosica",
+        "name": "Cinestar Chosica",
+        "distrito": "Lurigancho-Chosica",
+        "source": "manual",
+        "id_all": "X054"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9902,
+          -12.1524
+        ]
+      },
+      "properties": {
+        "id": "O28",
+        "brand": "UVK",
+        "sala": "Platino Panorama",
+        "name": "UVK Platino Panorama",
+        "distrito": "Santiago de Surco",
+        "source": "manual",
+        "id_all": "X055"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0299,
+          -12.121
+        ]
+      },
+      "properties": {
+        "id": "O29",
+        "brand": "Cinerama",
+        "sala": "Pacífico",
+        "name": "Cinerama Pacífico",
+        "distrito": "Miraflores",
+        "source": "manual",
+        "id_all": "X056"
+      }
+    }
+  ]
+}

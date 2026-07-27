@@ -1,0 +1,541 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.1266752,
+          -11.8728179
+        ]
+      },
+      "properties": {
+        "id": "CP01",
+        "name": "Cineplanet",
+        "distrito": "Ventanilla",
+        "provincia": "Callao",
+        "region": "Callao",
+        "display_name": "Cineplanet, Avenida Pedro Beltrán, Ventanilla, Callao, Lima Metropolitana, Callao, 07051, Perú",
+        "osm_id": 4224813391,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.04528,
+          -11.9334414
+        ]
+      },
+      "properties": {
+        "id": "CP02",
+        "name": "Cineplanet",
+        "distrito": "Comas",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, 3840, Avenida Túpac Amaru, Marginal Carmen Bajo, El Carmen, Comas, Lima, Lima Metropolitana, Lima, 15326, Perú",
+        "osm_id": 4683702534,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0699658,
+          -11.9399954
+        ]
+      },
+      "properties": {
+        "id": "CP03",
+        "name": "Cineplanet Pro",
+        "distrito": "Comas",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet Pro, 7026, Avenida Alfredo Mendiola, Urbanización Infantas, Comas, Lima, Lima Metropolitana, Lima, 15314, Perú",
+        "osm_id": 4077576786,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.998,
+          -11.972
+        ]
+      },
+      "properties": {
+        "id": "CP04",
+        "name": "Cineplanet Canto Grande",
+        "distrito": "San Juan de Lurigancho",
+        "provincia": "Lima",
+        "region": "Lima",
+        "display_name": "Real Plaza Canto Grande, Av. Fernando Wiesse cdra 21, SJL",
+        "source": "manual:mirandolacartelera"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0625031,
+          -11.9907465
+        ]
+      },
+      "properties": {
+        "id": "CP05",
+        "name": "Cineplanet",
+        "distrito": "Independencia",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, 287, Avenida Carlos Alberto Izaguirre, Independencia, Lima, Lima Metropolitana, Lima, 15028, Perú",
+        "osm_id": 1918035983,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.8853548,
+          -12.0152114
+        ]
+      },
+      "properties": {
+        "id": "CP06",
+        "name": "Cineplanet",
+        "distrito": "Santa Clara",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, La Estrella, Santa Clara, Ate, Lima, Lima Metropolitana, Lima, 15487, Perú",
+        "osm_id": 4044617059,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9996365,
+          -12.0162723
+        ]
+      },
+      "properties": {
+        "id": "CP07",
+        "name": "Cineplanet",
+        "distrito": "San Juan de Lurigancho",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, 997, Avenida Lurigancho, El Pueblito, Zárate, San Juan de Lurigancho, Lima, Lima Metropolitana, Lima, 15427, Perú",
+        "osm_id": 11390927532,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9315679,
+          -12.0403125
+        ]
+      },
+      "properties": {
+        "id": "CP08",
+        "name": "Cineplanet",
+        "distrito": "Ate",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Vista Alegre, Micaela Bastidas 1, Santa Ana, Ate, Lima, Lima Metropolitana, Lima, 15498, Perú",
+        "osm_id": 1204035457,
+        "osm_type": "way"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0341316,
+          -12.0501632
+        ]
+      },
+      "properties": {
+        "id": "CP09",
+        "name": "Cineplanet",
+        "distrito": "Lima",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Jirón de la Unión, Urbanización Cercado de Lima, Lima, Lima Metropolitana, Lima, 15001, Perú",
+        "osm_id": 3542426248,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0375397,
+          -12.056303
+        ]
+      },
+      "properties": {
+        "id": "CP10",
+        "name": "Cineplanet",
+        "distrito": "Lima",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, 1337, Avenida Garcilaso de la Vega, Urbanización Cercado de Lima, Lima, Lima Metropolitana, Lima, 15001, Perú",
+        "osm_id": 4042685268,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0471823,
+          -12.0660762
+        ]
+      },
+      "properties": {
+        "id": "CP11",
+        "name": "Cineplanet",
+        "distrito": "Breña",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Jirón Restauración, Nosiglia Etapa Dos, Azcona, Breña, Lima, Lima Metropolitana, Lima, 15083, Perú",
+        "osm_id": 4042632156,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0836475,
+          -12.0758244
+        ]
+      },
+      "properties": {
+        "id": "CP12",
+        "name": "Cineplanet",
+        "distrito": "San Miguel",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, 356, Boulevard Mantaro, San Miguel, Lima, Lima Metropolitana, Lima, 15088, Perú",
+        "osm_id": 225365962,
+        "osm_type": "way"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9358183,
+          -12.0763431
+        ]
+      },
+      "properties": {
+        "id": "CP13",
+        "name": "Cineplanet",
+        "distrito": "La Molina",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Avenida La Molina, Haras de la Molina, La Molina, Lima, Lima Metropolitana, Lima, 15012, Perú",
+        "osm_id": 13516185397,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0347646,
+          -12.0867333
+        ]
+      },
+      "properties": {
+        "id": "CP14",
+        "name": "Cineplanet Risso",
+        "distrito": "Lince",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet Risso, Jirón Tomás Guido, Lince, Lima, Lima Metropolitana, Lima, 15046, Perú",
+        "osm_id": 2646253200,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0202365,
+          -12.0892615
+        ]
+      },
+      "properties": {
+        "id": "CP15",
+        "name": "Cineplanet Plaza Santa Catalina",
+        "distrito": "La Victoria",
+        "provincia": "Lima",
+        "region": "Lima",
+        "display_name": "Plaza Santa Catalina, Calle Carlos Villarán 500, La Victoria",
+        "source": "nominatim:Plaza Santa Catalina"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0051117,
+          -12.0895305
+        ]
+      },
+      "properties": {
+        "id": "CP16",
+        "name": "Cineplanet",
+        "distrito": "San Borja",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Jirón Paolo Ucello, San Juan Macías, San Borja, Lima, Lima Metropolitana, Lima, 15036, Perú",
+        "osm_id": 4022695558,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0527159,
+          -12.0898845
+        ]
+      },
+      "properties": {
+        "id": "CP17",
+        "name": "Cineplanet Salaverry",
+        "distrito": "Jesús María",
+        "provincia": "Lima",
+        "region": "Lima",
+        "display_name": "Real Plaza Salaverry, Av General Salaverry 2370, Jesús María",
+        "source": "nominatim:Real Plaza Salaverry"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9510975,
+          -12.0916815
+        ]
+      },
+      "properties": {
+        "id": "CP18",
+        "name": "Cineplanet",
+        "distrito": "La Molina",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, 1355, Avenida Raúl Ferrero, Sirius 1 Etapa, La Molina, Lima, Lima Metropolitana, Lima, 15024, Perú",
+        "osm_id": 14001783500,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9709242,
+          -12.1013806
+        ]
+      },
+      "properties": {
+        "id": "CP19",
+        "name": "Cineplanet El Polo",
+        "distrito": "Santiago de Surco",
+        "provincia": "Lima",
+        "region": "Lima",
+        "display_name": "Centro Comercial El Polo, Av El Polo 670-740, Surco",
+        "source": "nominatim:CC El Polo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0022332,
+          -12.1108068
+        ]
+      },
+      "properties": {
+        "id": "CP20",
+        "name": "Cineplanet Primavera",
+        "distrito": "San Borja",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet Primavera, Avenida Primavera, El Bosque Etapa Dos, San Borja, Lima, Lima Metropolitana, Lima, 15038, Perú",
+        "osm_id": 4042592130,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9917122,
+          -12.1134172
+        ]
+      },
+      "properties": {
+        "id": "CP21",
+        "name": "Cineplanet",
+        "distrito": "Santiago de Surco",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Jirón Monterrey, Urb. Tambo de Monterrico, Urb. Chacarilla del Estanque (Surco), Santiago de Surco, Lima, Lima Metropolitana, Lima, 15038, Perú",
+        "osm_id": 4170786687,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0431597,
+          -12.1191513
+        ]
+      },
+      "properties": {
+        "id": "CP22",
+        "name": "Cineplanet",
+        "distrito": "Miraflores",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, 814, Avenida Santa Cruz, Santa Cruz, Miraflores, Lima, Lima Metropolitana, Lima, 15073, Perú",
+        "osm_id": 6358013986,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9814573,
+          -12.1556503
+        ]
+      },
+      "properties": {
+        "id": "CP23",
+        "name": "Cineplanet",
+        "distrito": "San Juan de Miraflores",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Calle Las Camelias, Entel, San Juan de Miraflores, Lima, Lima Metropolitana, Lima, 15029, Perú",
+        "osm_id": 4040883415,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9928444,
+          -12.1728852
+        ]
+      },
+      "properties": {
+        "id": "CP24",
+        "name": "Cineplanet",
+        "distrito": "Chorrillos",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Avenida Guardia Civil Sur, Chorrillos, Lima, Lima Metropolitana, Lima, 15054, Perú",
+        "osm_id": 4102779690,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9423176,
+          -12.179993
+        ]
+      },
+      "properties": {
+        "id": "CP25",
+        "name": "Cineplanet",
+        "distrito": "Villa María del Triunfo",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Avenida Pachacútec, Comité Vecinal 15A, Villa María del Triunfo, Lima, Lima Metropolitana, Lima, 15809, Perú",
+        "osm_id": 4548634815,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.9328151,
+          -12.2031455
+        ]
+      },
+      "properties": {
+        "id": "CP26",
+        "name": "Cineplanet",
+        "distrito": "Villa El Salvador",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Calle Los Artesanos, Parque Industrial, Villa El Salvador, Lima, Lima Metropolitana, Lima, 15816, Perú",
+        "osm_id": 4969442396,
+        "osm_type": "node"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.873948,
+          -12.2745186
+        ]
+      },
+      "properties": {
+        "id": "CP27",
+        "name": "Cineplanet",
+        "distrito": "Lurín",
+        "provincia": "",
+        "region": "Lima",
+        "display_name": "Cineplanet, Avenida San Pedro, Huerta Centinela, Lurín, Lima, Lima Metropolitana, Lima, 15823, Perú",
+        "osm_id": 5800218999,
+        "osm_type": "node"
+      }
+    }
+  ]
+}
