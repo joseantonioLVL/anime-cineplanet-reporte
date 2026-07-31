@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Documento de trabajo — Estudio anime CP</title>
+<style>
+:root {
+  --azul: #1f4e79;
+  --acento: #8a1538;
+  --gris: #f4f4f4;
+  --gris-med: #d9d9d9;
+  --naranja: #ef6c00;
+  --verde: #2e7d32;
+  --texto: #212121;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  color: var(--texto);
+  line-height: 1.55;
+  background: #fafafa;
+}
+h1 { color: var(--azul); border-bottom: 3px solid var(--azul); padding-bottom: 8px; }
+h2 { color: var(--azul); margin-top: 44px; border-bottom: 1px solid var(--gris-med); padding-bottom: 6px; }
+h3 { color: var(--acento); margin-top: 28px; }
+p.sub { color: #666; font-size: 0.92em; margin-top: -4px; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0;
+  background: white;
+  font-size: 0.94em;
+}
+th, td {
+  border: 1px solid var(--gris-med);
+  padding: 7px 10px;
+  text-align: left;
+}
+th { background: var(--azul); color: white; font-weight: 600; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:nth-child(even) td { background: #fafafa; }
+tr.total td { background: #eee; font-weight: 600; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.82em;
+  font-weight: 600;
+}
+.badge.casi { background: #e0e0e0; color: #555; }
+.badge.chica { background: #fff3e0; color: #b8892f; }
+.badge.notable { background: #ffe0b2; color: #b25400; }
+.nota {
+  background: #fff8e1;
+  border-left: 4px solid var(--naranja);
+  padding: 10px 14px;
+  margin: 12px 0;
+  border-radius: 3px;
+  font-size: 0.93em;
+}
+.nota.info { background: #e3f2fd; border-left-color: var(--azul); }
+.nota.warn { background: #ffebee; border-left-color: var(--acento); }
+.nota.ok   { background: #e8f5e9; border-left-color: var(--verde); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.card {
+  background: white;
+  border: 1px solid var(--gris-med);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+.card h4 { margin: 0 0 8px 0; color: var(--azul); font-size: 1em; }
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: var(--gris);
+  font-size: 0.85em;
+  color: #555;
+  margin-right: 6px;
+}
+.pill.sc { background: #e3f2fd; color: var(--azul); }
+.pill.ns { background: #fff3e0; color: #b25400; }
+.pill.combo { background: #f3e5f5; color: #6a1b9a; }
+
+/* Interactivo */
+.control-panel {
+  background: white;
+  border: 2px solid var(--azul);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+.control-panel h4 { margin: 0 0 12px 0; color: var(--azul); }
+.tasa-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 60px;
+  gap: 12px;
+  align-items: center;
+  margin: 6px 0;
+  font-size: 0.94em;
+}
+.tasa-row label { font-weight: 500; }
+.tasa-row input[type=range] { width: 100%; }
+.tasa-row .val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--acento);
+}
+.presets { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--gris-med); }
+.presets button {
+  padding: 6px 14px;
+  margin-right: 8px;
+  background: var(--gris);
+  border: 1px solid var(--gris-med);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.presets button:hover { background: #e0e0e0; }
+.presets button.active { background: var(--azul); color: white; border-color: var(--azul); }
+</style>
+</head>
+<body>
+
+<p style="margin:0 0 12px 0;font-size:0.9em;">
+  <a href="index.html" style="color:#1f4e79;text-decoration:none;">← Volver al portal</a>
+</p>
+
+<div style="display:inline-block;padding:4px 12px;background:#fff3e0;color:#b25400;border:1px solid #ef6c00;border-radius:12px;font-size:0.82em;font-weight:600;margin-bottom:10px;">
+  Documento de trabajo · No es reporte final
+</div>
+
+<h1>Billetera capturable + volumen de conceptos priorizados</h1>
+<p class="sub">Anexo metodológico al portal. Generado 2026-07-31. Números verificados contra CSVs fuente.</p>
+
+<div style="background:#e3f2fd;border-left:4px solid #1f4e79;padding:10px 14px;margin:14px 0;border-radius:3px;font-size:0.93em;">
+  <strong>Cómo leer este documento.</strong> Es un anexo exploratorio de dos temas complementarios al portal principal:
+  <ul style="margin:6px 0;">
+    <li><strong>Billetera capturable</strong> (secciones 1-3): cómo se distribuye entre los 4 perfiles la billetera de fandom que Cineplanet podría canalizar. Tres vistas (NS solo, SC solo, combinada) y un simulador para ajustar tasas de captura por categoría.</li>
+    <li><strong>Volumen deep-dive</strong> (sección 4): cálculo paso a paso del volumen incremental para 4 conceptos priorizados (Clásicos, Membresía, Festival Crunchyroll, Conciertos), con simulador de N_universo y group_size.</li>
+  </ul>
+  Este documento contiene <strong>supuestos ilustrativos no calibrados con datos internos de CP</strong>. Los sliders permiten cambiar los supuestos y ver el efecto. Ver la sección 5 (Observaciones metodológicas) al final.
+</div>
+
+<!-- =========================================================== -->
+<h2>1. Distribución de perfiles por encuesta</h2>
+<p class="sub">Segmentación K-means K=4 sobre Reysen Fanship + FANDOM Community.</p>
+
+<table>
+<thead>
+  <tr>
+    <th>Perfil</th>
+    <th class="num">No Socios (n=155)</th>
+    <th class="num">Socios (n=455)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td>Fan Aislado</td>    <td class="num">8 · 5.2%</td>   <td class="num">75 · 16.5%</td></tr>
+  <tr><td>Fan Casual</td>     <td class="num">29 · 18.7%</td> <td class="num">121 · 26.6%</td></tr>
+  <tr><td>Fan Intermedio</td> <td class="num">56 · 36.1%</td> <td class="num">98 · 21.5%</td></tr>
+  <tr><td>Fan Core</td>       <td class="num">62 · 40.0%</td> <td class="num">161 · 35.4%</td></tr>
+  <tr class="total"><td>Total</td> <td class="num">155 · 100%</td> <td class="num">455 · 100%</td></tr>
+</tbody>
+</table>
+
+<div class="nota info">
+<strong>Nota de interpretación.</strong> Los porcentajes por segmento dentro de cada encuesta no son necesariamente comparables entre sí. No Socios y Socios son dos muestras de universos distintos, con criterios de reclutamiento diferentes, por lo que el peso relativo de cada perfil refleja el diseño de cada estudio y no una comparación directa de composición.
+</div>
+
+<!-- =========================================================== -->
+<h2>2. Gastos mensuales por categoría (8 tests)</h2>
+<p class="sub">Comparación distribución completa con Mann-Whitney U (variables ordinales). El valor S/ mostrado es el punto medio del rango (S/1-25 → 12.5; S/26-50 → 37.5; etc.).</p>
+
+<table>
+<thead>
+  <tr>
+    <th>Categoría</th>
+    <th class="num">Mediana No Socios</th>
+    <th class="num">Mediana Socios</th>
+    <th class="num">Media No Socios</th>
+    <th class="num">Media Socios</th>
+    <th class="num">Δ media</th>
+    <th>Magnitud</th>
+    <th class="num">p</th>
+    <th class="num">% billetera No Socios</th>
+    <th class="num">% billetera Socios</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td>Merch</td>                  <td class="num">62.5</td><td class="num">62.5</td><td class="num">71.5</td><td class="num">69.2</td><td class="num">+2.4</td>  <td><span class="badge casi">casi iguales</span></td><td class="num">0.529</td>   <td class="num">15.0%</td><td class="num">16.4%</td></tr>
+  <tr><td>Manga</td>                  <td class="num">37.5</td><td class="num">37.5</td><td class="num">50.4</td><td class="num">46.2</td><td class="num">+4.2</td>  <td><span class="badge casi">casi iguales</span></td><td class="num">0.093</td>   <td class="num">10.5%</td><td class="num">10.8%</td></tr>
+  <tr><td>Streaming</td>              <td class="num">62.5</td><td class="num">37.5</td><td class="num">60.3</td><td class="num">51.6</td><td class="num">+8.7</td>  <td><span class="badge chica">chica</span></td>       <td class="num">0.003</td>   <td class="num">12.6%</td><td class="num">12.4%</td></tr>
+  <tr><td>Cine</td>                   <td class="num">62.5</td><td class="num">62.5</td><td class="num">53.1</td><td class="num">71.7</td><td class="num">−18.6</td> <td><span class="badge notable">notable</span></td>   <td class="num">&lt;0.001</td><td class="num">11.0%</td><td class="num">17.5%</td></tr>
+  <tr><td>Cartas coleccionables</td>  <td class="num">37.5</td><td class="num">0.0</td> <td class="num">45.1</td><td class="num">28.2</td><td class="num">+16.8</td> <td><span class="badge notable">notable</span></td>   <td class="num">&lt;0.001</td><td class="num">9.3%</td> <td class="num">6.7%</td></tr>
+  <tr><td>Comida temática</td>        <td class="num">87.5</td><td class="num">62.5</td><td class="num">80.3</td><td class="num">58.1</td><td class="num">+22.1</td> <td><span class="badge notable">notable</span></td>   <td class="num">&lt;0.001</td><td class="num">16.7%</td><td class="num">14.1%</td></tr>
+  <tr><td>Eventos / convenciones</td> <td class="num">62.5</td><td class="num">37.5</td><td class="num">65.9</td><td class="num">43.4</td><td class="num">+22.5</td> <td><span class="badge notable">notable</span></td>   <td class="num">&lt;0.001</td><td class="num">13.5%</td><td class="num">10.4%</td></tr>
+  <tr><td>Videojuegos anime</td>      <td class="num">62.5</td><td class="num">37.5</td><td class="num">56.0</td><td class="num">49.0</td><td class="num">+7.0</td>  <td><span class="badge chica">chica</span></td>       <td class="num">0.026</td>   <td class="num">11.4%</td><td class="num">11.8%</td></tr>
+</tbody>
+</table>
+
+<div class="nota">
+<strong>Diferencias entre brazos.</strong> Hay diferencias significativas en 6 de las 8 categorías. Los No Socios gastan más en categorías de fandom activo (comida temática +22.1, eventos +22.5, cartas coleccionables +16.8), mientras que los Socios gastan más en cine (+18.6, por definición del brazo). Merch y manga son estadísticamente iguales entre brazos. Streaming y videojuegos anime muestran diferencia chica pero significativa.
+</div>
+
+<h3>Lectura del "% de billetera"</h3>
+<p>Es la proporción del gasto total del brazo destinada a cada categoría. En No Socios, comida temática (16.7%) y merch (15.0%) concentran casi un tercio; en Socios, cine (17.5%) y merch (16.4%) son las dos categorías dominantes.</p>
+
+<!-- =========================================================== -->
+<h2>3a. Billetera capturable (versión binaria, la de la foto)</h2>
+<p class="sub">Toma 4 categorías "adentro" al 100% (eventos + cartas + merch + comida) y descarta las otras 4 al 0%. Es la definición usada en la comunicación original.</p>
+
+<div class="grid-3">
+  <div class="card">
+    <h4>Solo No Socios <span class="pill ns">n=155</span></h4>
+    <table>
+      <thead><tr><th>Perfil</th><th class="num">Prom S/</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Aislado</td>    <td class="num">S/242</td><td class="num">4.7%</td></tr>
+        <tr><td>Casual</td>     <td class="num">S/171</td><td class="num">12.2%</td></tr>
+        <tr><td>Intermedio</td> <td class="num">S/238</td><td class="num">32.7%</td></tr>
+        <tr><td>Core</td>       <td class="num">S/332</td><td class="num">50.4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Solo Socios <span class="pill sc">n=455</span></h4>
+    <table>
+      <thead><tr><th>Perfil</th><th class="num">Prom S/</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Aislado</td>    <td class="num">S/142</td><td class="num">11.8%</td></tr>
+        <tr><td>Casual</td>     <td class="num">S/164</td><td class="num">22.0%</td></tr>
+        <tr><td>Intermedio</td> <td class="num">S/188</td><td class="num">20.4%</td></tr>
+        <tr><td>Core</td>       <td class="num">S/257</td><td class="num">45.8%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Combinado <span class="pill combo">n=610</span></h4>
+    <table>
+      <thead><tr><th>Perfil</th><th class="num">Prom S/</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Aislado</td>    <td class="num">S/152</td><td class="num">9.6%</td></tr>
+        <tr><td>Casual</td>     <td class="num">S/166</td><td class="num">18.9%</td></tr>
+        <tr><td>Intermedio</td> <td class="num">S/206</td><td class="num">24.2%</td></tr>
+        <tr><td>Core</td>       <td class="num">S/278</td><td class="num">47.2%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="nota warn">
+<strong>Limitación de esta versión.</strong> Asume que las 4 categorías incluidas son 100% canalizables a la experiencia CP y las otras 4 son 0%. En la realidad hay tasas parciales: CP puede capturar parte del merch pero no todo, parte de los eventos pero no las convenciones grandes, etc. La versión ajustada abajo permite modelar esas tasas.
+</div>
+
+<div class="nota info">
+<strong>Diferencia frente a los números originales de la foto (S/147, S/163, S/200, S/274 y 9/19/24/48%).</strong> Los números de esta tabla son ligeramente distintos (S/152, S/166, S/206, S/278 y 9.6/18.9/24.2/47.2%) porque corrigen un sesgo del cálculo original: las respuestas "Prefiero no responder" (12-19 casos por categoría en SC) se estaban tratando como si gastaran S/0, lo cual subestimaba los promedios. Al excluirlas del cálculo (lo correcto), los promedios suben ligeramente y los % relativos se ajustan. La estructura del hallazgo no cambia (Core sigue siendo casi la mitad), pero las cifras exactas sí.
+</div>
+
+<!-- =========================================================== -->
+<h2>3b. Billetera capturable (versión interactiva con reemplazabilidad)</h2>
+<p class="sub">Asigna una tasa de captura por categoría (qué % de esa billetera CP puede realmente canalizar a su experiencia). Ajusta los sliders y las 3 vistas se recalculan en vivo.</p>
+
+<div class="control-panel">
+  <h4>Tasas de captura por categoría (% de reemplazabilidad)</h4>
+  <div class="tasa-row"><label>Cine</label>                <input type="range" class="tasa-input" data-cat="cine" min="0" max="100" step="5" value="100"><span class="val" id="val-cine">100%</span></div>
+  <div class="tasa-row"><label>Comida temática</label>     <input type="range" class="tasa-input" data-cat="comida" min="0" max="100" step="5" value="50"><span class="val" id="val-comida">50%</span></div>
+  <div class="tasa-row"><label>Merch</label>               <input type="range" class="tasa-input" data-cat="merch" min="0" max="100" step="5" value="40"><span class="val" id="val-merch">40%</span></div>
+  <div class="tasa-row"><label>Eventos / convenciones</label> <input type="range" class="tasa-input" data-cat="eventos" min="0" max="100" step="5" value="30"><span class="val" id="val-eventos">30%</span></div>
+  <div class="tasa-row"><label>Cartas coleccionables</label>  <input type="range" class="tasa-input" data-cat="cartas" min="0" max="100" step="5" value="20"><span class="val" id="val-cartas">20%</span></div>
+  <div class="tasa-row"><label>Manga</label>               <input type="range" class="tasa-input" data-cat="manga" min="0" max="100" step="5" value="10"><span class="val" id="val-manga">10%</span></div>
+  <div class="tasa-row"><label>Streaming</label>           <input type="range" class="tasa-input" data-cat="streaming" min="0" max="100" step="5" value="0"><span class="val" id="val-streaming">0%</span></div>
+  <div class="tasa-row"><label>Videojuegos anime</label>   <input type="range" class="tasa-input" data-cat="videojuegos" min="0" max="100" step="5" value="0"><span class="val" id="val-videojuegos">0%</span></div>
+
+  <div class="presets">
+    <strong style="margin-right:10px;">Presets rápidos:</strong>
+    <button onclick="aplicarPreset('foto_original')">Foto original (4 adentro, 4 afuera)</button>
+    <button onclick="aplicarPreset('solo_cine')">Solo cine</button>
+  </div>
+  <p style="font-size:0.88em;color:#666;margin:10px 0 0 0;background:#fff3e0;border-left:3px solid #ef6c00;padding:8px 12px;border-radius:3px;">
+    <strong>Advertencia.</strong> Las tasas por categoría no están calibradas con datos reales de captura de Cineplanet. Ajusta los sliders según tu criterio o con datos internos de activaciones anime pasadas de CP.
+  </p>
+</div>
+
+<div class="grid-3">
+  <div class="card">
+    <h4>Solo No Socios <span class="pill ns">n=155</span></h4>
+    <table>
+      <thead><tr><th>Perfil</th><th class="num">Prom S/</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Aislado</td>    <td class="num" id="ns-FanAislado-prom">-</td>    <td class="num" id="ns-FanAislado-pct">-</td></tr>
+        <tr><td>Casual</td>     <td class="num" id="ns-FanCasual-prom">-</td>     <td class="num" id="ns-FanCasual-pct">-</td></tr>
+        <tr><td>Intermedio</td> <td class="num" id="ns-FanIntermedio-prom">-</td> <td class="num" id="ns-FanIntermedio-pct">-</td></tr>
+        <tr><td>Core</td>       <td class="num" id="ns-FanCore-prom">-</td>       <td class="num" id="ns-FanCore-pct">-</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Solo Socios <span class="pill sc">n=455</span></h4>
+    <table>
+      <thead><tr><th>Perfil</th><th class="num">Prom S/</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Aislado</td>    <td class="num" id="sc-FanAislado-prom">-</td>    <td class="num" id="sc-FanAislado-pct">-</td></tr>
+        <tr><td>Casual</td>     <td class="num" id="sc-FanCasual-prom">-</td>     <td class="num" id="sc-FanCasual-pct">-</td></tr>
+        <tr><td>Intermedio</td> <td class="num" id="sc-FanIntermedio-prom">-</td> <td class="num" id="sc-FanIntermedio-pct">-</td></tr>
+        <tr><td>Core</td>       <td class="num" id="sc-FanCore-prom">-</td>       <td class="num" id="sc-FanCore-pct">-</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Combinado <span class="pill combo">n=610</span></h4>
+    <table>
+      <thead><tr><th>Perfil</th><th class="num">Prom S/</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Aislado</td>    <td class="num" id="combo-FanAislado-prom">-</td>    <td class="num" id="combo-FanAislado-pct">-</td></tr>
+        <tr><td>Casual</td>     <td class="num" id="combo-FanCasual-prom">-</td>     <td class="num" id="combo-FanCasual-pct">-</td></tr>
+        <tr><td>Intermedio</td> <td class="num" id="combo-FanIntermedio-prom">-</td> <td class="num" id="combo-FanIntermedio-pct">-</td></tr>
+        <tr><td>Core</td>       <td class="num" id="combo-FanCore-prom">-</td>       <td class="num" id="combo-FanCore-pct">-</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h3>Cómo se lee cada tasa</h3>
+<table>
+  <thead><tr><th>Categoría</th><th class="num">Base propuesta</th><th>Racional</th></tr></thead>
+  <tbody>
+    <tr><td>Cine</td>                <td class="num">100%</td><td>Es lo que CP factura por definición.</td></tr>
+    <tr><td>Comida temática</td>     <td class="num">50%</td> <td>Dulcería CP + pop-ups gastro japoneses en mall. La otra mitad va a restaurantes anime independientes.</td></tr>
+    <tr><td>Merch</td>               <td class="num">40%</td> <td>Tienda física del cine + pop-ups. El grueso del merch pesado se compra online o en tiendas especializadas.</td></tr>
+    <tr><td>Eventos / convenciones</td> <td class="num">30%</td> <td>CP puede montar festivales tipo Crunchyroll, no puede reemplazar Otaku Fest completo.</td></tr>
+    <tr><td>Cartas coleccionables</td>  <td class="num">20%</td> <td>Activaciones puntuales (sobres exclusivos con función, torneos in-mall).</td></tr>
+    <tr><td>Manga</td>               <td class="num">10%</td> <td>Marginal: podría venderse en tienda del cine pero no es canal natural.</td></tr>
+    <tr><td>Streaming</td>           <td class="num">0%</td>  <td>No aplica salvo bundles cross-promocionales muy marginales.</td></tr>
+    <tr><td>Videojuegos anime</td>   <td class="num">0%</td>  <td>No aplica.</td></tr>
+  </tbody>
+</table>
+
+<!-- =========================================================== -->
+<h2>4. Deep-dive: volumen para 4 conceptos priorizados</h2>
+<p class="sub">Muestra <strong>No Socios (n=155)</strong>. Cada persona evaluó en profundidad sus 3 conceptos con mayor utilidad MaxDiff personal. Solo se incluyen los que evaluaron cada uno de los 4 conceptos priorizados: Clásicos, Membresía, Festival Crunchyroll, Conciertos.</p>
+
+<h3>4.1 Preguntas del deep-dive y sus opciones</h3>
+
+<div class="nota" style="background:white;border-left-color:#1f4e79;">
+  <strong>Q1. ¿Qué probabilidad hay de que asistas? (escala Juster)</strong>
+  <ul style="margin:6px 0;">
+    <li>Definitivamente iría</li>
+    <li>Probablemente iría</li>
+    <li>Podría ir</li>
+    <li>Poco probable</li>
+    <li>No iría</li>
+  </ul>
+</div>
+
+<div class="nota" style="background:white;border-left-color:#1f4e79;">
+  <strong>Q2. ¿Con cuántas personas irías?</strong>
+  <ul style="margin:6px 0;"><li>De 1 a 10+ personas (número entero, incluyéndose)</li></ul>
+</div>
+
+<div class="nota" style="background:white;border-left-color:#1f4e79;">
+  <strong>Q3. ¿Sumaría o reemplazaría?</strong>
+  <ul style="margin:6px 0;">
+    <li>"Además de las veces que ya voy" → etiqueta <em>incremental</em></li>
+    <li>"En vez de otras salidas al cine" → etiqueta <em>substitute_cine</em></li>
+    <li>"En vez de otros planes" → etiqueta <em>substitute_other</em></li>
+    <li>"No me haría ir más, pero lo aprovecharía si ya iba" → etiqueta <em>no_impact</em></li>
+  </ul>
+</div>
+
+<div class="nota" style="background:white;border-left-color:#1f4e79;">
+  <strong>Q4. ¿Qué tan creíble te parece que exista en Lima 2026?</strong>
+  <ul style="margin:6px 0;"><li>Escala 1-5 (1 = nada creíble, 5 = totalmente creíble)</li></ul>
+</div>
+
+<div class="nota" style="background:white;border-left-color:#1f4e79;">
+  <strong>Q5. ¿Hay algo parecido a esto hoy en Lima?</strong>
+  <ul style="margin:6px 0;">
+    <li>Sí, hay algo parecido</li>
+    <li>No, no hay nada así</li>
+    <li>No estoy seguro/a</li>
+  </ul>
+  <em style="font-size:0.88em;color:#666;">Nota: no entra al cálculo del volumen. Se usa como diagnóstico de diferenciación estratégica.</em>
+</div>
+
+<div class="nota" style="background:white;border-left-color:#1f4e79;">
+  <strong>Q6. ¿Con quién irías? (multi-select)</strong>
+  <ul style="margin:6px 0;"><li>Pareja / patas del fandom / patas no-fans / familia / hijos / solo / gente nueva</li></ul>
+</div>
+
+<h3>4.2 Fórmula del volumen</h3>
+<p><strong>Volumen tickets/año = N_universo × share MaxDiff × prob_use × group_size × pct_incremental</strong></p>
+
+<h3>4.3 Resultados por concepto (calculadora)</h3>
+
+<div class="control-panel">
+  <h4>Universo a proyectar</h4>
+  <div class="tasa-row" style="grid-template-columns:180px 200px 1fr;">
+    <label>N_universo</label>
+    <input type="number" id="n-universo-dd" min="1" step="1" value="100"
+           style="padding:8px 10px;font-size:1em;border:1px solid #d9d9d9;border-radius:4px;font-variant-numeric:tabular-nums;">
+    <span style="text-align:left;color:#666;font-weight:400;font-size:0.9em;">Default = 100 (normalización). Los tickets resultantes se leen como "por cada 100 fans del universo".</span>
+  </div>
+  <div class="presets">
+    <strong style="margin-right:10px;">Presets N:</strong>
+    <button onclick="setUniverso(100)">100 (normalizado)</button>
+    <button onclick="setUniverso(155)">Muestra (155)</button>
+    <button onclick="setUniverso(10000)">10k</button>
+    <button onclick="setUniverso(50000)">50k</button>
+    <button onclick="setUniverso(100000)">100k</button>
+    <button onclick="setUniverso(200000)">200k</button>
+    <button onclick="setUniverso(500000)">500k</button>
+  </div>
+
+  <div class="tasa-row" style="grid-template-columns:180px 200px 1fr;margin-top:14px;">
+    <label>Group size</label>
+    <input type="number" id="group-val-dd" min="0" max="10" step="1" placeholder="auto"
+           style="padding:8px 10px;font-size:1em;border:1px solid #d9d9d9;border-radius:4px;font-variant-numeric:tabular-nums;">
+    <span style="font-size:0.9em;color:#666;">
+      Déjalo vacío para usar el promedio observado por concepto. Si pones un número, se aplica ese valor a los 4 conceptos.
+    </span>
+  </div>
+  <div class="presets">
+    <strong style="margin-right:10px;">Presets:</strong>
+    <button onclick="setGroupVal('')">Auto (observado)</button>
+    <button onclick="setGroupVal(2)">2 (pareja)</button>
+    <button onclick="setGroupVal(3)">3</button>
+    <button onclick="setGroupVal(4)">4</button>
+    <button onclick="setGroupVal(5)">5</button>
+  </div>
+</div>
+
+<div id="dd-conceptos"></div>
+
+<h3>4.4 Ranking resumen</h3>
+<table id="dd-ranking">
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th class="num">n_eval</th>
+      <th class="num">share MaxDiff</th>
+      <th class="num">prob_use</th>
+      <th class="num">group_size</th>
+      <th class="num">pct_incremental</th>
+      <th class="num">Tickets TOTAL</th>
+      <th class="num">Tickets NUEVOS</th>
+    </tr>
+  </thead>
+  <tbody id="dd-ranking-body"></tbody>
+</table>
+<p class="sub" id="dd-ranking-note">Base 155 fans muestrales.</p>
+
+<h3>4.5 Diagnóstico complementario (preguntas del deep-dive que NO entran al cálculo del volumen)</h3>
+<p class="sub">Q4 creíbilidad, Q5 competencia percibida y Q6 con quién iría. Sirven para leer el contexto estratégico, no para dimensionar tráfico.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th class="num">n_eval</th>
+      <th class="num">Q4 · % creíble top-2 (4 o 5)</th>
+      <th class="num">Q5 · % dice "ya existe algo similar"</th>
+      <th>Q6 · Con quién iría (top 3)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C13 Festival Cineplanet x Crunchyroll</td>
+      <td class="num">54</td>
+      <td class="num">77.8%</td>
+      <td class="num">24.1%</td>
+      <td>anime_friends (56%) · partner (32%) · other_friends (24%)</td>
+    </tr>
+    <tr>
+      <td>C03 Clásicos del anime en pantalla grande</td>
+      <td class="num">38</td>
+      <td class="num">73.7%</td>
+      <td class="num">21.1%</td>
+      <td>partner (50%) · anime_friends (40%) · other_friends (34%)</td>
+    </tr>
+    <tr>
+      <td>C18 Conciertos de música de anime en vivo</td>
+      <td class="num">28</td>
+      <td class="num"><strong>89.3%</strong></td>
+      <td class="num"><strong>35.7%</strong></td>
+      <td>partner (50%) · other_friends (36%) · anime_friends (25%)</td>
+    </tr>
+    <tr>
+      <td>C07 Membresía Socio Anime CP</td>
+      <td class="num">39</td>
+      <td class="num">71.8%</td>
+      <td class="num">15.4%</td>
+      <td>anime_friends (44%) · partner (36%) · other_friends (28%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="nota info">
+<strong>Lectura corta.</strong>
+<ul>
+  <li><strong>C18 Conciertos</strong>: la más creíble (89% top-2) pero también la que más percibe competencia (36% cree que ya existe). Concepto sólido en ejecución pero con menos white space.</li>
+  <li><strong>C07 Membresía</strong>: menor competencia percibida (15%). Territorio más fresco, pero es también la menos incremental (38%), lo cual limita su potencial en tráfico nuevo.</li>
+  <li><strong>Con quién</strong>: Festival y Membresía tienen "anime_friends" como principal (comunidad de fandom). Clásicos y Conciertos tienen "partner" como principal (ocasión más "date" o social amplia).</li>
+</ul>
+</div>
+
+<script>
+const CONCEPTOS_DD = [
+  {id:'C13', nombre:'Festival Cineplanet x Crunchyroll', n_eval:54, share:0.477, prob:0.796, group:5.02, pct_inc:0.463},
+  {id:'C03', nombre:'Clásicos del anime en pantalla grande', n_eval:38, share:0.406, prob:0.792, group:3.76, pct_inc:0.579},
+  {id:'C18', nombre:'Conciertos de música de anime en vivo', n_eval:28, share:0.355, prob:0.811, group:3.89, pct_inc:0.500},
+  {id:'C07', nombre:'Membresía Socio Anime CP', n_eval:39, share:0.413, prob:0.742, group:3.67, pct_inc:0.385},
+];
+
+function fmt(n){
+  if (n >= 1000) return Math.round(n).toLocaleString('es-PE');
+  return n.toFixed(1);
+}
+
+function setUniverso(n){
+  document.getElementById('n-universo-dd').value = n;
+  recalcularDD();
+}
+
+function setGroupVal(v){
+  document.getElementById('group-val-dd').value = v;
+  recalcularDD();
+}
+
+function recalcularDD(){
+  const N = parseFloat(document.getElementById('n-universo-dd').value) || 0;
+  const rawGroup = document.getElementById('group-val-dd').value.trim();
+  const groupOverride = rawGroup === '' ? null : parseFloat(rawGroup);
+  const usarObservado = groupOverride === null || isNaN(groupOverride) || groupOverride <= 0;
+
+  const gEf = (c) => usarObservado ? c.group : groupOverride;
+
+  const conceptosOrd = [...CONCEPTOS_DD].sort((a,b) =>
+    (N * b.share * b.prob * gEf(b) * b.pct_inc) - (N * a.share * a.prob * gEf(a) * a.pct_inc)
+  );
+
+  let html = '';
+  for (const c of conceptosOrd) {
+    const gEfectivo = gEf(c);
+    const ajustado = !usarObservado && gEfectivo !== c.group;
+    const step1 = N * c.share;
+    const step2 = step1 * c.prob;
+    const step3 = step2 * gEfectivo;
+    const step4 = step3 * c.pct_inc;
+    const etiquetaAjuste = ajustado
+      ? ` <span style="font-size:0.85em;color:#b8892f;">(override, observado era ${c.group.toFixed(2)})</span>`
+      : '';
+    html += `
+    <h4 style="color:#8a1538;">${c.id} · ${c.nombre} (n_eval = ${c.n_eval})</h4>
+    <div style="background:#fffbea;border:2px solid #e0c46b;border-radius:6px;padding:12px 16px;margin:10px 0;font-size:0.94em;">
+      <div style="padding:4px 0;"><span style="display:inline-block;min-width:220px;font-weight:600;color:#7a5c00;">N_universo</span>${N.toLocaleString('es-PE')}</div>
+      <div style="padding:4px 0;"><span style="display:inline-block;min-width:220px;font-weight:600;color:#7a5c00;">× share MaxDiff</span>× ${c.share.toFixed(3)} → <strong style="color:#8a1538;">${fmt(step1)}</strong></div>
+      <div style="padding:4px 0;"><span style="display:inline-block;min-width:220px;font-weight:600;color:#7a5c00;">× prob_use Juster</span>× ${c.prob.toFixed(3)} → <strong style="color:#8a1538;">${fmt(step2)} adopters</strong></div>
+      <div style="padding:4px 0;"><span style="display:inline-block;min-width:220px;font-weight:600;color:#7a5c00;">× group_size</span>× ${gEfectivo.toFixed(2)}${etiquetaAjuste} → <strong style="color:#8a1538;">${fmt(step3)} tickets TOTAL</strong></div>
+      <div style="padding:4px 0;"><span style="display:inline-block;min-width:220px;font-weight:600;color:#7a5c00;">× pct_incremental</span>× ${c.pct_inc.toFixed(3)} → <strong style="color:#8a1538;">${fmt(step4)} tickets NUEVOS</strong></div>
+      <div style="border-top:2px solid #d1b458;margin-top:6px;padding-top:8px;"><strong>~${fmt(step4)} tickets nuevos/año</strong>.</div>
+    </div>`;
+  }
+  document.getElementById('dd-conceptos').innerHTML = html;
+
+  let rows = '';
+  for (const c of conceptosOrd) {
+    const gEfectivo = gEf(c);
+    const total = N * c.share * c.prob * gEfectivo;
+    const nuevos = total * c.pct_inc;
+    rows += `<tr>
+      <td>${c.id} ${c.nombre}</td>
+      <td class="num">${c.n_eval}</td>
+      <td class="num">${(c.share*100).toFixed(1)}%</td>
+      <td class="num">${c.prob.toFixed(3)}</td>
+      <td class="num">${gEfectivo.toFixed(2)}${!usarObservado ? '*' : ''}</td>
+      <td class="num">${(c.pct_inc*100).toFixed(1)}%</td>
+      <td class="num"><strong>${fmt(total)}</strong></td>
+      <td class="num"><strong>${fmt(nuevos)}</strong></td>
+    </tr>`;
+  }
+  document.getElementById('dd-ranking-body').innerHTML = rows;
+
+  const notaGrupo = usarObservado
+    ? ' · group_size observado del deep-dive por concepto'
+    : ` · group_size fijado en ${groupOverride} para los 4 conceptos (marcado con *)`;
+  document.getElementById('dd-ranking-note').textContent =
+    `Base N_universo = ${N.toLocaleString('es-PE')}${notaGrupo}.`;
+}
+
+document.getElementById('n-universo-dd').addEventListener('input', recalcularDD);
+document.getElementById('group-val-dd').addEventListener('input', recalcularDD);
+recalcularDD();
+</script>
+
+<!-- =========================================================== -->
+<h2>5. Observaciones metodológicas</h2>
+
+<div class="nota warn">
+<strong>Ratio muestral NS/SC no refleja el universo Lima.</strong> La muestra combinada tiene 155 NS + 455 SC (ratio 25:75). Ese ratio viene del diseño muestral, no de la proporción real de fans anime en Lima que son socios vs no-socios. La vista combinada por tanto sesga hacia el peso de Socios. Para lectura estratégica, es preferible mirar cada brazo por separado.
+</div>
+
+<div class="nota warn">
+<strong>Tasas de captura no están calibradas con datos reales.</strong> Los escenarios ilustrativos A, B y C son valores propuestos como referencia, basados en cómo funciona el ecosistema de retail anime de Lima, pero no vienen de una medición empírica de captura de CP. Antes de tomar decisiones de negocio sobre este cálculo, las tasas deberían validarse con juicio experto de Cineplanet o con datos internos de activaciones anime pasadas (conversión merch post-función, share de dulcería temática vs regular, etc.).
+</div>
+
+<div class="nota">
+<strong>Puntos medios de rango.</strong> Los rangos de gasto se convierten con puntos medios (12.5, 37.5, 62.5, 87.5, 125). Para el último rango (Más de S/100) usar 125 es conservador; el valor real puede ser 150 o más. Impacto sobre el total: menor a 10%.
+</div>
+
+<div class="nota info">
+<strong>Autorreporte con posible sesgo de deseabilidad.</strong> El Fan Core puede sobredimensionar su gasto para reafirmar su identidad, y el Fan Aislado puede subreportar. La brecha real entre segmentos podría ser algo menor que la observada.
+</div>
+
+<script>
+const MATRIZ = {
+  ns: {
+    n: {"Fan Aislado": 8, "Fan Casual": 29, "Fan Intermedio": 56, "Fan Core": 62},
+    prom: {
+      "Fan Aislado":    {cine: 59.38, comida: 57.81, merch: 67.19, eventos: 51.56, cartas: 65.62, manga: 42.19, streaming: 45.31, videojuegos: 51.56},
+      "Fan Casual":     {cine: 41.81, comida: 70.26, merch: 49.14, eventos: 31.03, cartas: 20.69, manga: 29.74, streaming: 45.26, videojuegos: 30.60},
+      "Fan Intermedio": {cine: 52.78, comida: 75.23, merch: 66.52, eventos: 61.83, cartas: 34.55, manga: 48.44, streaming: 52.95, videojuegos: 51.85},
+      "Fan Core":       {cine: 57.86, comida: 92.34, merch: 87.10, eventos: 88.77, cartas: 63.75, manga: 63.11, streaming: 75.81, videojuegos: 72.50}
+    }
+  },
+  sc: {
+    n: {"Fan Aislado": 75, "Fan Casual": 121, "Fan Intermedio": 98, "Fan Core": 161},
+    prom: {
+      "Fan Aislado":    {cine: 70.50, comida: 47.47, merch: 49.65, eventos: 24.12, cartas: 20.77, manga: 25.38, streaming: 40.24, videojuegos: 32.68},
+      "Fan Casual":     {cine: 66.63, comida: 51.46, merch: 58.73, eventos: 32.04, cartas: 22.03, manga: 43.86, streaming: 49.47, videojuegos: 46.38},
+      "Fan Intermedio": {cine: 69.08, comida: 52.55, merch: 74.59, eventos: 35.64, cartas: 24.87, manga: 47.50, streaming: 54.08, videojuegos: 47.04},
+      "Fan Core":       {cine: 77.77, comida: 71.38, merch: 82.44, eventos: 65.02, cartas: 38.14, manga: 55.73, streaming: 56.92, videojuegos: 59.20}
+    }
+  },
+  combo: {
+    n: {"Fan Aislado": 83, "Fan Casual": 150, "Fan Intermedio": 154, "Fan Core": 223},
+    prom: {
+      "Fan Aislado":    {cine: 69.43, comida: 48.48, merch: 51.42, eventos: 26.90, cartas: 25.49, manga: 27.23, streaming: 40.74, videojuegos: 34.62},
+      "Fan Casual":     {cine: 61.83, comida: 55.12, merch: 56.81, eventos: 31.84, cartas: 21.77, manga: 41.07, streaming: 48.65, videojuegos: 43.33},
+      "Fan Intermedio": {cine: 63.17, comida: 60.98, merch: 71.54, eventos: 45.42, cartas: 28.46, manga: 47.86, streaming: 53.66, videojuegos: 48.81},
+      "Fan Core":       {cine: 72.16, comida: 77.26, merch: 83.75, eventos: 71.44, cartas: 45.22, manga: 57.80, streaming: 62.22, videojuegos: 62.84}
+    }
+  }
+};
+
+const PRESETS = {
+  foto_original: {cine:0, comida:100, merch:100, eventos:100, cartas:100, manga:0, streaming:0, videojuegos:0},
+  solo_cine:   {cine:100, comida:0, merch:0, eventos:0, cartas:0, manga:0, streaming:0, videojuegos:0}
+};
+
+function aplicarPreset(nombre) {
+  const p = PRESETS[nombre];
+  Object.entries(p).forEach(([cat, val]) => {
+    const el = document.querySelector(`.tasa-input[data-cat="${cat}"]`);
+    if (el) el.value = val;
+  });
+  document.querySelectorAll('.presets button').forEach(b => b.classList.remove('active'));
+  event && event.target.classList.add('active');
+  recalcular();
+}
+
+function recalcular() {
+  const tasas = {};
+  document.querySelectorAll('.tasa-input').forEach(el => {
+    const v = parseFloat(el.value);
+    tasas[el.dataset.cat] = v / 100;
+    document.getElementById('val-' + el.dataset.cat).textContent = v + '%';
+  });
+
+  for (const brazo of ['ns','sc','combo']) {
+    const m = MATRIZ[brazo];
+    const perfiles = ['Fan Aislado','Fan Casual','Fan Intermedio','Fan Core'];
+    let total_peso = 0;
+    const pesos = {};
+    const proms = {};
+    for (const p of perfiles) {
+      let cap = 0;
+      for (const cat in tasas) {
+        cap += (m.prom[p][cat] || 0) * tasas[cat];
+      }
+      proms[p] = cap;
+      pesos[p] = cap * m.n[p];
+      total_peso += pesos[p];
+    }
+    for (const p of perfiles) {
+      const pct = total_peso > 0 ? (pesos[p] / total_peso * 100) : 0;
+      const key = p.replace(' ', '');
+      document.getElementById(`${brazo}-${key}-prom`).textContent = 'S/' + proms[p].toFixed(0);
+      document.getElementById(`${brazo}-${key}-pct`).textContent = pct.toFixed(1) + '%';
+    }
+  }
+}
+
+document.querySelectorAll('.tasa-input').forEach(el => el.addEventListener('input', recalcular));
+recalcular();
+</script>
+
+</body>
+</html>
