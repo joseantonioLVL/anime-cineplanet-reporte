@@ -210,9 +210,70 @@ tr.total td { background: #eee; font-weight: 600; }
 <h3>Lectura del "% de billetera"</h3>
 <p>Es la proporción del gasto total del brazo destinada a cada categoría. En No Socios, comida temática (16.7%) y merch (15.0%) concentran casi un tercio; en Socios, cine (17.5%) y merch (16.4%) son las dos categorías dominantes.</p>
 
+<h3>Gastos por perfil dentro de cada brazo</h3>
+<p class="sub">Media de S/ por categoría por perfil, con Kruskal-Wallis para testear si hay diferencia significativa entre los 4 perfiles.</p>
+
+<h4 style="color:#8a1538;">No Socios (n=155) — media S/ por perfil</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Categoría</th>
+      <th class="num">Fan Aislado (n=8)</th>
+      <th class="num">Fan Casual (n=29)</th>
+      <th class="num">Fan Intermedio (n=56)</th>
+      <th class="num">Fan Core (n=62)</th>
+      <th class="num">Kruskal-Wallis p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Merch</td>                  <td class="num">67.2</td><td class="num">49.1</td><td class="num">66.5</td><td class="num"><strong>87.1</strong></td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Manga</td>                  <td class="num">42.2</td><td class="num">29.7</td><td class="num">48.4</td><td class="num"><strong>63.1</strong></td><td class="num">0.004</td></tr>
+    <tr><td>Streaming</td>              <td class="num">45.3</td><td class="num">45.3</td><td class="num">53.0</td><td class="num"><strong>75.8</strong></td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Cine</td>                   <td class="num"><strong>59.4</strong></td><td class="num">41.8</td><td class="num">52.8</td><td class="num">57.9</td><td class="num">0.291</td></tr>
+    <tr><td>Cartas coleccionables</td>  <td class="num"><strong>65.6</strong></td><td class="num">20.7</td><td class="num">34.5</td><td class="num">63.8</td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Comida temática</td>        <td class="num">57.8</td><td class="num">70.3</td><td class="num">75.2</td><td class="num"><strong>92.3</strong></td><td class="num">0.032</td></tr>
+    <tr><td>Eventos / convenciones</td> <td class="num">51.6</td><td class="num">31.0</td><td class="num">61.8</td><td class="num"><strong>88.8</strong></td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Videojuegos anime</td>      <td class="num">51.6</td><td class="num">30.6</td><td class="num">51.9</td><td class="num"><strong>72.5</strong></td><td class="num">&lt;0.001</td></tr>
+  </tbody>
+</table>
+<p class="sub">En negrita el máximo por fila. En NS, el <strong>Fan Core lidera 6 de las 8 categorías</strong>; Cine no diferencia entre perfiles (p=0.291); en cartas coleccionables el Fan Aislado empata con el Core (probable ruido por n=8).</p>
+
+<h4 style="color:#8a1538;">Socios (n=455) — media S/ por perfil</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Categoría</th>
+      <th class="num">Fan Aislado (n=75)</th>
+      <th class="num">Fan Casual (n=121)</th>
+      <th class="num">Fan Intermedio (n=98)</th>
+      <th class="num">Fan Core (n=161)</th>
+      <th class="num">Kruskal-Wallis p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Merch</td>                  <td class="num">49.6</td><td class="num">58.7</td><td class="num">74.6</td><td class="num"><strong>82.4</strong></td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Manga</td>                  <td class="num">25.4</td><td class="num">43.9</td><td class="num">47.5</td><td class="num"><strong>55.7</strong></td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Streaming</td>              <td class="num">40.2</td><td class="num">49.5</td><td class="num">54.1</td><td class="num"><strong>56.9</strong></td><td class="num">0.059</td></tr>
+    <tr><td>Cine</td>                   <td class="num">70.5</td><td class="num">66.6</td><td class="num">69.1</td><td class="num"><strong>77.8</strong></td><td class="num">0.081</td></tr>
+    <tr><td>Cartas coleccionables</td>  <td class="num">20.8</td><td class="num">22.0</td><td class="num">24.9</td><td class="num"><strong>38.1</strong></td><td class="num">0.002</td></tr>
+    <tr><td>Comida temática</td>        <td class="num">47.5</td><td class="num">51.5</td><td class="num">52.6</td><td class="num"><strong>71.4</strong></td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Eventos / convenciones</td> <td class="num">24.1</td><td class="num">32.0</td><td class="num">35.6</td><td class="num"><strong>65.0</strong></td><td class="num">&lt;0.001</td></tr>
+    <tr><td>Videojuegos anime</td>      <td class="num">32.7</td><td class="num">46.4</td><td class="num">47.0</td><td class="num"><strong>59.2</strong></td><td class="num">0.004</td></tr>
+  </tbody>
+</table>
+<p class="sub">En SC el <strong>Fan Core lidera las 8 categorías</strong> sin excepción, patrón más limpio que en NS. Streaming (p=0.059) y Cine (p=0.081) están al borde de la significancia: ahí los 4 perfiles gastan parecido.</p>
+
+<div class="nota info">
+<strong>Comparación entre brazos.</strong> El patrón "Fan Core gasta más" se cumple en ambos, pero en SC es más consistente (todas las categorías). En NS hay más ruido: cartas coleccionables tienen un pico en Fan Aislado (n=8, base chica) y cine no diferencia entre perfiles. La regla general aguanta: <em>a mayor identificación con el fandom, mayor gasto en categorías anime</em>.
+</div>
+
 <!-- =========================================================== -->
 <h2>3a. Billetera capturable (versión binaria, la de la foto)</h2>
 <p class="sub">Toma 4 categorías "adentro" al 100% (eventos + cartas + merch + comida) y descarta las otras 4 al 0%. Es la definición usada en la comunicación original.</p>
+
+<div class="nota info">
+<strong>¿Qué es "billetera capturable"?</strong> Es la porción del gasto mensual de fandom (anime) que Cineplanet podría <em>canalizar hacia su experiencia cine</em>: dulcería, tienda de merch, activaciones dentro del complejo, pop-ups temáticos, etc. Se calcula sumando las categorías donde CP puede razonablemente montar oferta dentro de su ecosistema. Se excluyen streaming, videojuegos y manga porque esa plata no pasa por el canal cine. El resultado normalizado a 100% dice qué proporción de esa billetera total pertenece a cada uno de los 4 perfiles, combinando cuánto gasta cada persona con cuántas personas hay en el segmento.
+</div>
 
 <div class="grid-3">
   <div class="card">
